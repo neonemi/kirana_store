@@ -36,6 +36,29 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  equatable: ^2.0.3
+  shared_preferences: ^2.0.7
+  provider: ^6.0.2
+  flutter_bloc: ^8.0.1
+  loader_overlay: ^2.0.4+3
+  event_bus: ^2.0.0
+  http: ^0.13.4
+  connectivity_plus: ^2.1.0
+  package_info_plus: ^1.4.2
+  flutter_smart_dialog: ^4.5.5+6
+  fluttertoast: ^8.0.8
+  url_launcher: ^6.1.6
+  webview_flutter: ^3.0.4
+  flutter_vector_icons: ^2.0.0
+  intl: ^0.17.0
+  image_picker: ^0.8.6
+  hive: ^2.2.3
+  path_provider: ^2.0.1
+  get: ^4.6.5
+  geolocator:
+  geocoding:
+  google_maps_flutter:
+  location:
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +81,40 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/images/
 
+  fonts:
+    - family: Futura
+      fonts:
+        - asset: assets/fonts/Futura.otf
+        - asset: assets/fonts/Futura-Medium.otf
+        - asset: assets/fonts/FuturaBT-Light.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Bold.ttf
+        - asset: assets/fonts/Roboto-Medium.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
+    - family: dwarika
+      fonts:
+        - asset: assets/fonts/dwarikaIcons.ttf
+    - family: LetsBakeMuffins
+      fonts:
+        - asset: assets/fonts/LetsBakeMuffins.ttf
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Light.otf
+          weight: 100
+        - asset: assets/fonts/Montserrat-Medium.otf
+          weight: 300
+        - asset: assets/fonts/Montserrat-Regular.otf
+        - asset: assets/fonts/Montserrat-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/Montserrat-Thin.otf
+        - asset: assets/fonts/MontserratAlternates-Bold.otf
+        - asset: assets/fonts/MontserratAlternates-Medium.otf
+        - asset: assets/fonts/MontserratAlternates-Regular.otf
+        - asset: assets/fonts/MontserratAlternates-SemiBold.otf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
