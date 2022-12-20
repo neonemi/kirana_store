@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:vendorapp/core/core.dart';
+import 'package:kirana_store/core/core.dart';
+
+
 
 extension AlertExtension on BuildContext {
 

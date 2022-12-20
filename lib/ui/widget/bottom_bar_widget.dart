@@ -1,7 +1,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:vendorapp/ui/widget/triangle_paint.dart';
+import 'package:kirana_store/ui/widget/triangle_paint.dart';
 
 import '../../core/core.dart';
 

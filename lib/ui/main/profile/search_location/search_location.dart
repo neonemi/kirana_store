@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:location/location.dart';
-import 'package:vendorapp/core/core.dart';
+import 'package:kirana_store/core/core.dart';
 
 
 class SearchLocationScreen extends StatefulWidget {

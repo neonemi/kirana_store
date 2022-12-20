@@ -4,8 +4,8 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:vendorapp/core/core.dart';
-import 'package:vendorapp/core/model/cart_data.dart';
+import 'package:kirana_store/core/core.dart';
+import 'package:kirana_store/core/model/cart_data.dart';
 
 import '../../../core/controller/cart_controller.dart';
 import '../../ui.dart';

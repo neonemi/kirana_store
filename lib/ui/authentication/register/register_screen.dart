@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:vendorapp/core/icons/app_icon_keys.g.dart';
+import 'package:kirana_store/core/icons/app_icon_keys.g.dart';
 import '../../../../core/core.dart';
 import '../../ui.dart';
 

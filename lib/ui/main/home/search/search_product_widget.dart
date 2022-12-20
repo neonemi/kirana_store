@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vendorapp/ui/ui.dart';
+import 'package:kirana_store/ui/ui.dart';
 
 import '../../../../../core/core.dart';
 import '../../../../core/controller/cart_controller.dart';

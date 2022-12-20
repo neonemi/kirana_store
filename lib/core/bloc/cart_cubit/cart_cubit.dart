@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
-import 'package:vendorapp/core/model/cart_data.dart';
+import 'package:kirana_store/core/model/cart_data.dart';
 
 import '../../core.dart';
 

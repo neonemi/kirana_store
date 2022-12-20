@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:vendorapp/ui/main/home/home.dart';
+import 'package:kirana_store/ui/main/home/home.dart';
 
 import '../../../core/core.dart';
 

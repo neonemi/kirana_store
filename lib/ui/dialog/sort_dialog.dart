@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vendorapp/core/core.dart';
+import 'package:kirana_store/core/core.dart';
 
 class SortDialogBuilder {
   SortDialogBuilder(
