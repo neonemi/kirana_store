@@ -22,7 +22,8 @@ class AppImageLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO : finalize one method
-    return Image.network(
+    return
+      Image.network(
       imageUrl,
       height: height,
       width: width,
@@ -54,18 +55,25 @@ class AppImageLoader extends StatelessWidget {
                   height:  height!-7,
                   color: AppTheme.appRed,
                 ),
-                const SizedBox(height: 3),
-                LinearProgressIndicator(
-                  value: loadingProgress.expectedTotalBytes != null
-                      ? loadingProgress.cumulativeBytesLoaded /
-                      loadingProgress.expectedTotalBytes!
-                      : null,
-                )
+                // const SizedBox(height: 3),
+                // LinearProgressIndicator(
+                //   value: loadingProgress.expectedTotalBytes != null
+                //       ? loadingProgress.cumulativeBytesLoaded /
+                //       loadingProgress.expectedTotalBytes!
+                //       : null,
+                // )
               ],
             ),
           ),
         );
       },
     );
+    //   FadeInImage(
+    //     image:NetworkImage(imageUrl),
+    //     placeholder: const AssetImage(AppIconKeys.dwarikaMain),
+    //     height: height,
+    //     width: width,
+    //     fit: boxFit,
+    //   );
   }
 }

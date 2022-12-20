@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -223,6 +225,8 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                                   FoodAllProduct productData = state.response;
                                   if (kDebugMode) {
                                     print('response 3  $productData');
+                                    var pro= jsonEncode(productData);
+                                    print('response 3 $pro');
                                   }
                                   return productData.data == null
                                       ? Container(

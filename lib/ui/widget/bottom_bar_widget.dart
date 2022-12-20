@@ -26,25 +26,52 @@ class BottomItemWidget extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        CustomPaint(
-          painter:
-          TrianglePainter(
-            strokeColor:!isActive
-                ? AppTheme.appRed
-                : AppTheme.appWhite,
-            strokeWidth: 3,
-            paintingStyle: PaintingStyle.fill,
-          ),
-          child: const SizedBox(
-            height: 20,
-            width: 20,
+        // Container(
+        //   height: 30,
+        //   width: 30,
+        //   decoration: BoxDecoration(
+        //     color: Colors.black,
+        //     shape: BoxShape.values[]
+        //   ),
+        //
+        //   alignment: Alignment.topCenter,
+        //   child: RotatedBox(
+        //     quarterTurns: 1,
+        //     child: Icon(Icons.play_arrow,color:
+        //           !isActive
+        //               ? AppTheme.appRed
+        //               : AppTheme.appWhite,
+        //       // size: 30,
+        //     ),
+        //   ),
+        // ),
+        RotatedBox(
+          quarterTurns: 2,
+          child: CustomPaint(
+            painter:
+            TrianglePainter(
+              strokeColor:
+              !isActive
+                  ? AppTheme.appRed
+                  : AppTheme.appWhite,
+              //strokeWidth: 3,
+              paintingStyle: PaintingStyle.fill,
+            ),
+            child: const SizedBox(
+              height: 20,
+              width: 20,
+            ),
           ),
         ),
 
-        Icon(
-          image,
-          size: 22,
-          color:  AppTheme.appWhite,
+        SizedBox(
+          height: 20,
+              width: 20,
+          child: Icon(
+            image,
+            size: 22,
+            color:  AppTheme.appWhite,
+          ),
         ),
         const SizedBox(
           height: 10,

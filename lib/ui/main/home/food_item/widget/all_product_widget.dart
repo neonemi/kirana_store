@@ -10,7 +10,8 @@ import '../../../../ui.dart';
 class FoodAllProductScreen extends StatefulWidget {
   final List<ProductListData> productData;
   final String itemName;
-  const FoodAllProductScreen({super.key, required this.productData,required this.itemName});
+  const FoodAllProductScreen(
+      {super.key, required this.productData, required this.itemName});
   @override
   FoodAllProductScreenState createState() => FoodAllProductScreenState();
 }
@@ -25,12 +26,12 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
   void initState() {
     super.initState();
     productData = widget.productData;
-    itemName=widget.itemName;
+    itemName = widget.itemName;
     preference();
   }
 
   Future<void> preference() async {
-    cartListString = context.read<LocalRepository>().getCartList()?? '';
+    cartListString = context.read<LocalRepository>().getCartList() ?? '';
     setState(() {
       cartListString;
     });
@@ -49,23 +50,22 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
       ),
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: ()  {
+          onTap: () {
             // print(productData![index].id!);
-            Navigator.of(context).push(
-                MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        FoodDetailsScreen(
-                            id: productData![index].id!,
-                            orderId: productData![index].id!,
-                            unitPrice: productData![index].price!,
-                            price: productData![index].price!,
-                            quantity: 1,
-                            productId: productData![index].id!,
-                            nameProduct: productData![index].name!,
-                            imageProduct:
-                            productData![index].image!, unitqty: productData![index].unitqty.toString(), unitqtyname: productData![index].unitqtyname.toString(),
-                             categoryName: itemName!,)));
-
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => FoodDetailsScreen(
+                      id: productData![index].id!,
+                      orderId: productData![index].id!,
+                      unitPrice: productData![index].price!,
+                      price: productData![index].price!,
+                      quantity: 1,
+                      productId: productData![index].id!,
+                      nameProduct: productData![index].name!,
+                      imageProduct: productData![index].image!,
+                      unitqty: productData![index].unitqty.toString(),
+                      unitqtyname: productData![index].unitqtyname.toString(),
+                      categoryName: itemName!, discountedPrice: '', isDiscounted: '', gst: '',
+                    )));
           },
           child: SizedBox(
               width: 160,
@@ -117,7 +117,8 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                             builder: (value) {
                           var cartDataList = <CartData>[].obs;
                           cartListString =
-                              context.read<LocalRepository>().getCartList()?? '';
+                              context.read<LocalRepository>().getCartList() ??
+                                  '';
                           List<CartData>? cartList;
                           CartData? cartData;
                           if (cartListString != '') {
@@ -130,10 +131,9 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                 .toList();
 
                             if (outputList.isNotEmpty) {
-
                               cartData = outputList.first;
-                            }else{
-                              cartData=null;
+                            } else {
+                              cartData = null;
                             }
                           }
 
@@ -164,18 +164,24 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                         size: 15,
                                       )),
                                 ),
-                              if (cartData != null &&
-                                  cartData.quantity! >= 1 &&
-                                  cartData.id == productData![index].id)
-                                const SizedBox(
-                                  width: 5,
-                                ),
+                              // if (cartData != null &&
+                              //     cartData.quantity! >= 1 &&
+                              //     cartData.id == productData![index].id)
+                              //   const SizedBox(
+                              //     width: 5,
+                              //   ),
                               if (cartData != null &&
                                   cartData.quantity! >= 1 &&
                                   cartData.id == productData![index].id)
                                 Builder(builder: (context) {
                                   return Container(
+                                      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
                                       alignment: Alignment.centerLeft,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                        color: AppTheme.appRed,
+                                      )),
                                       child: Text(
                                         cartData != null
                                             ? '${cartData.quantity}'
@@ -185,22 +191,21 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                             fontWeight: FontWeight.w600),
                                       ));
                                 }),
-                              const SizedBox(
-                                width: 5,
-                              ),
+                              // const SizedBox(
+                              //   width: 5,
+                              // ),
                               GestureDetector(
                                 onTap: () {
                                   if (cartData != null) {
                                     if (kDebugMode) {
                                       print('1 condition');
                                     }
-                                      cartController
-                                          .counterAddProductToCart(cartData);
-                                      preference();
-                                      if (kDebugMode) {
-                                        print('3 condition');
-                                      }
-
+                                    cartController
+                                        .counterAddProductToCart(cartData);
+                                    preference();
+                                    if (kDebugMode) {
+                                      print('3 condition');
+                                    }
                                   } else {
                                     if (kDebugMode) {
                                       print(2);
@@ -214,10 +219,15 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                         productId: productData![index].id!,
                                         nameProduct: productData![index].name!,
                                         imageProduct:
-                                            productData![index].image!);
+                                            productData![index].image!,
+                                        unitqty: productData![index]
+                                            .unitqty
+                                            .toString(),
+                                        unitqtyname:
+                                            productData![index].unitqtyname!,
+                                        categoryName: itemName!, gst: '', isDiscounted: '', discountedPrice: '');
                                     preference();
                                   }
-
                                 },
                                 child: Container(
                                     height: 20,

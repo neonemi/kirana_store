@@ -64,6 +64,7 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                           unitqty: bestSellerData![index].unitqty.toString(),
                           unitqtyname:
                               bestSellerData![index].unitqtyname.toString(), categoryName: itemName!,
+                      gst: '', isDiscounted: '', discountedPrice: '',
                         )));
               },
               child: Container(
@@ -165,17 +166,23 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                           size: 15,
                                         )),
                                   ),
-                                if (cartData != null &&
-                                    cartData.quantity! >= 1 &&
-                                    cartData.id == bestSellerData![index].id)
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
+                                // if (cartData != null &&
+                                //     cartData.quantity! >= 1 &&
+                                //     cartData.id == bestSellerData![index].id)
+                                //   const SizedBox(
+                                //     width: 5,
+                                //   ),
                                 if (cartData != null &&
                                     cartData.quantity! >= 1 &&
                                     cartData.id == bestSellerData![index].id)
                                   Container(
-                                      alignment: Alignment.centerLeft,
+                                      padding: EdgeInsets.fromLTRB(5,0, 5, 0),
+                                      margin: EdgeInsets.fromLTRB(0,5, 0, 5),
+                                      alignment:
+                                      Alignment.centerLeft,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(color:  AppTheme.appRed,)
+                                      ),
                                       child: Text(
                                         cartData != null
                                             ? '${cartData.quantity}'
@@ -184,9 +191,9 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                             color: AppTheme.appRed,
                                             fontWeight: FontWeight.w600),
                                       )),
-                                const SizedBox(
-                                  width: 5,
-                                ),
+                                // const SizedBox(
+                                //   width: 5,
+                                // ),
                                 GestureDetector(
                                   onTap: () {
                                     if (cartData != null) {
@@ -214,7 +221,10 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                           nameProduct:
                                               bestSellerData![index].name!,
                                           imageProduct:
-                                              bestSellerData![index].image!);
+                                              bestSellerData![index].image!,
+                                        unitqty: bestSellerData![index].unitqty.toString(),
+                                        unitqtyname:
+                                        bestSellerData![index].unitqtyname.toString(), categoryName: itemName!, gst: '', isDiscounted: '', discountedPrice: '',);
                                       preference();
                                     }
                                   },
