@@ -1,7 +1,8 @@
 class Apis {
   static String prefix = 'https://';
-  static String baseUrl = "mundamisthan.com/api/V1";
-  static String imageBaseUrl = 'https://mundamisthan.com';
+  // static String baseUrl = "mundamisthan.com/api/V1";
+  static String baseUrl = "mundamisthan.mobilogicx.com/api/V1";
+  static String imageBaseUrl = 'https://mundamisthan.mobilogicx.com';
   static String updateProfile = "updateprofile";
   static String sendOtp = "sendotp";
   static String otpVerify = "otpverify";
