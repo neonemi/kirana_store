@@ -147,6 +147,7 @@ extension AlertExtension on BuildContext {
         ),
         alignment: Alignment.center,
         child:Column(
+          mainAxisAlignment: MainAxisAlignment.center,
             children:[
               Text('Time Out',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
               Row(

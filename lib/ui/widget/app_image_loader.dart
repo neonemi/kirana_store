@@ -45,26 +45,26 @@ class AppImageLoader extends StatelessWidget {
         return Container(
           height: height,
           width: width,
-          color: Colors.white,
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: width,
-                  height:  height!-7,
-                  color: AppTheme.appRed,
-                ),
-                // const SizedBox(height: 3),
-                // LinearProgressIndicator(
-                //   value: loadingProgress.expectedTotalBytes != null
-                //       ? loadingProgress.cumulativeBytesLoaded /
-                //       loadingProgress.expectedTotalBytes!
-                //       : null,
-                // )
-              ],
-            ),
-          ),
+          color: AppTheme.appRed,
+          // child: Center(
+          //   child: Column(
+          //     mainAxisSize: MainAxisSize.min,
+          //     children: [
+          //       // Container(
+          //       //   width: width,
+          //       //   height:  height!-7,
+          //       //   color: AppTheme.appRed,
+          //       // ),
+          //       // const SizedBox(height: 3),
+          //       // LinearProgressIndicator(
+          //       //   value: loadingProgress.expectedTotalBytes != null
+          //       //       ? loadingProgress.cumulativeBytesLoaded /
+          //       //       loadingProgress.expectedTotalBytes!
+          //       //       : null,
+          //       // )
+          //     ],
+          //   ),
+          // ),
         );
       },
     );
