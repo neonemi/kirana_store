@@ -332,7 +332,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ListView(
                 children: [
                   Container(
-                    color: Colors.red,
+                    color: AppTheme.appRed,
                     height: MediaQuery.of(context).size.height * 1 / 3,
                     width: MediaQuery.of(context).size.width,
                     alignment: Alignment.center,

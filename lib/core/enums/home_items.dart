@@ -1,1 +1,1 @@
-enum HomeItems { home, orderHistory, myCart, profile }
+enum HomeItems { home, orderHistory, myCart,smartList, profile }

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     bool isDarkMode = brightness == Brightness.dark;
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: isDarkMode ? Colors.black : Colors.red,
+      statusBarColor: isDarkMode ? Colors.black : AppTheme.appRed,
     ));
     return MultiRepositoryProvider(
       providers: [

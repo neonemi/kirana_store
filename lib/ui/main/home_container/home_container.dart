@@ -70,6 +70,8 @@ class _HomeContainerState extends State<HomeContainer> {
         }
       case HomeItems.myCart:
         return const CartScreen();
+      case HomeItems.smartList:
+        return const SmartListScreen();
       case HomeItems.profile:
         return const ProfileScreen();
       default:
@@ -93,8 +95,10 @@ class _HomeContainerState extends State<HomeContainer> {
         }
       case HomeItems.myCart:
         return 2;
-      case HomeItems.profile:
+      case HomeItems.smartList:
         return 3;
+      case HomeItems.profile:
+        return 4;
       default:
         return 0;
     }
@@ -119,6 +123,9 @@ class _HomeContainerState extends State<HomeContainer> {
           currentItem = HomeItems.myCart;
           break;
         case 3:
+          currentItem = HomeItems.smartList;
+          break;
+        case 4:
           currentItem = HomeItems.profile;
           break;
       }
@@ -172,6 +179,8 @@ class _BottomNavigationBar extends StatelessWidget {
               image: FontAwesome.file_text, text: 'Order History'),
           _bottomNavigationBarItem(
               image: FontAwesome.shopping_cart, text: 'My Cart'),
+          _bottomNavigationBarItem(
+              image: FontAwesome.list, text: 'Smart List'),
           _bottomNavigationBarItem(image: FontAwesome.male, text: 'Profile'),
         ],
       ),

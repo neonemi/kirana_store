@@ -27,7 +27,7 @@ class AppTheme {
   static BorderRadius clipRadius =
       BorderRadius.all(Radius.circular(cardRadiusInt));
 
-  static Color appRed = const Color(0xFFef3f3f);
+  static Color appRed = const Color(0xFF1fd655);
   static Color appGreen = const Color(0xFF17ab13);
   static Color appWhite = const Color(0xFFffffff);
   static Color appBlack = const Color(0xFF000000);

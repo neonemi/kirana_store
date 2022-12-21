@@ -78,7 +78,7 @@ class BottomItemWidget extends StatelessWidget {
         ),
         SizedBox(
           height: 15,
-          child: Text(text,style: TextStyle(color: AppTheme.appWhite,fontSize: 12),),
+          child: Text(text,style: TextStyle(color: AppTheme.appWhite,fontSize: 10),),
         ),
       ],
     );
