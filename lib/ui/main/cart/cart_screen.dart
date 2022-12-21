@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
@@ -141,7 +139,7 @@ class _CartScreenState extends State<CartScreen> {
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: MediaQuery.of(context).size.width -
                                           90,
                                       child: Text(currentLocation,
@@ -160,14 +158,12 @@ class _CartScreenState extends State<CartScreen> {
                                                           context) =>
                                                       const AddressScreen()));
                                         },
-                                        child: Container(
-                                          child: Text('Change',
-                                              style: TextStyle(
-                                                  color: AppTheme.appWhite,
-                                                  fontSize: 16,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontFamily: "Montserrat")),
-                                        ),
+                                        child: Text('Change',
+                                            style: TextStyle(
+                                                color: AppTheme.appWhite,
+                                                fontSize: 16,
+                                                fontStyle: FontStyle.normal,
+                                                fontFamily: "Montserrat")),
                                       ),
                                     )
                                   ],
@@ -184,7 +180,7 @@ class _CartScreenState extends State<CartScreen> {
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width - 90,
                                     child: Text('NA',
@@ -226,7 +222,7 @@ class _CartScreenState extends State<CartScreen> {
 
                         cartDataList.value = cartList;
                       }
-                      return Container(
+                      return SizedBox(
                         height: 200,
                         child: ListView.builder(
                             scrollDirection: Axis.vertical,
@@ -266,7 +262,7 @@ class _CartScreenState extends State<CartScreen> {
                                               fontStyle: FontStyle.normal,
                                               fontFamily: "Montserrat")),
                                       trailing: Container(
-                                        margin: EdgeInsets.only(top: 20),
+                                        margin: const EdgeInsets.only(top: 20),
                                         height: 30,
                                         child: Row(
                                           mainAxisAlignment:
@@ -312,9 +308,9 @@ class _CartScreenState extends State<CartScreen> {
                                                       cartList[index].id!)
                                                 Container(
                                                     padding:
-                                                        EdgeInsets.fromLTRB(
+                                                        const EdgeInsets.fromLTRB(
                                                             5, 0, 5, 0),
-                                                    margin: EdgeInsets.fromLTRB(
+                                                    margin: const EdgeInsets.fromLTRB(
                                                         0, 5, 0, 5),
                                                     alignment:
                                                         Alignment.centerLeft,
