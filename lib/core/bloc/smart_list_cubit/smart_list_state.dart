@@ -15,20 +15,13 @@ class SmartStateLoading extends SmartState {
 }
 
 class SmartStateSuccess extends SmartState {
-  const SmartStateSuccess(this.address);
-
-  final String address;
-  @override
-  List<Object> get props => [address];
-}
-class SmartStateSearchSuccess extends SearchState {
-  const SmartStateSearchSuccess(this.response);
+  const SmartStateSuccess(this.response);
 
   final GetSearchProduct response;
-
   @override
   List<Object> get props => [response];
 }
+
 
 class SmartStateError extends SmartState {
   const SmartStateError(this.message);

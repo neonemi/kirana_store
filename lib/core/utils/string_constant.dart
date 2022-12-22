@@ -46,4 +46,7 @@ class StringConstant {
   static const sorryNoProduct='Sorry, No product found\nYou can browse complete product list by';
   static const search='Search';
 
+  static const addItem='Add Item';
+  static const buy="Buy";
+  static const searchHintAddItem='Select Category';
 }

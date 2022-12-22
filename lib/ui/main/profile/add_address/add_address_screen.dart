@@ -106,7 +106,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                           initialValue: _titleController,
                           maxLength: 200,
                           // controller: _emailController,
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.text,
                           inputFormatters: <TextInputFormatter>[
                             FilteringTextInputFormatter.singleLineFormatter
                           ],
@@ -198,7 +198,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                           initialValue: _landMarkController,
                           maxLength: 200,
                           // controller: _emailController,
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.text,
                           inputFormatters: <TextInputFormatter>[
                             FilteringTextInputFormatter.singleLineFormatter
                           ],
@@ -237,7 +237,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                           initialValue: _floorController,
                           maxLength: 200,
                           // controller: _emailController,
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.text,
                           inputFormatters: <TextInputFormatter>[
                             FilteringTextInputFormatter.singleLineFormatter
                           ],
@@ -276,7 +276,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                           initialValue: _pinController,
                           maxLength: 200,
                           // controller: _emailController,
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.text,
                           inputFormatters: <TextInputFormatter>[
                             FilteringTextInputFormatter.singleLineFormatter
                           ],

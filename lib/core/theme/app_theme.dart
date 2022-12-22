@@ -35,6 +35,7 @@ class AppTheme {
   static Color appBlack = const Color(0xFF000000);
   static Color appGrey = const Color(0xFF777777);
   static Color appPink = const Color(0xFFFF0090);
+  static Color appLightGrey = const Color(0x1F000000);
   // static Color appYellow = const Color(0xFFF9b130);
   Gradient get appGradient => const LinearGradient(
         colors: [Color(0xffef3f3f), Color(0xffffffff)],

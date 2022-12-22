@@ -26,18 +26,18 @@ class SmartListCubit extends Cubit<SmartState> {
   //   }
   // }
 
-  // void getSearchProduct({
-  //   required String text,
-  // }) async {
-  //   emit(SmartStateLoading());
-  //   try {
-  //     GetSearchProduct response = await coreRepository.getSearchProduct(text: text);
-  //     emit(SmartStateSearchSuccess(response));
-  //   } catch (e) {
-  //     String message = e.toString().replaceAll('api - ', '');
-  //     emit(SmartStateError(message));
-  //   }
-  // }
+  void getSearchProduct({
+    required String text,
+  }) async {
+    emit(SmartStateLoading());
+    try {
+      GetSearchProduct response = await coreRepository.getSearchProduct(text: text);
+      emit(SmartStateSuccess(response));
+    } catch (e) {
+      String message = e.toString().replaceAll('api - ', '');
+      emit(SmartStateError(message));
+    }
+  }
 
   Future<List<CartData>>  cartData() async {
     String cartListString=  coreRepository.localRepository.getCartList();

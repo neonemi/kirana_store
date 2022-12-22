@@ -1,9 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
-import 'package:kirana_store/core/model/cart_data.dart';
 
 import '../../../core/controller/cart_controller.dart';
 import '../../ui.dart';
@@ -80,7 +78,7 @@ class _SmartListScreenState extends State<SmartListScreen> {
                 width: MediaQuery.of(context).size.width,
                 child: Stack(
                   children: [
-                    Container(
+                    SizedBox(
                       height: MediaQuery.of(context).size.height-200,
                       child: ListView.builder(
                           scrollDirection: Axis.vertical,
@@ -101,7 +99,7 @@ class _SmartListScreenState extends State<SmartListScreen> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                  Container(
+                                  SizedBox(
                                     height: 80,
                                     width: 80,
                                     child: ClipRRect(
@@ -109,7 +107,7 @@ class _SmartListScreenState extends State<SmartListScreen> {
                                       child: Container(
                                         height:60,
                                         width: 60,
-                                        padding: EdgeInsets.all(4),
+                                        padding: const EdgeInsets.all(4),
                                         color: AppTheme.appWhite,
                                             child: AppImageLoader(
                                               imageUrl:
@@ -119,7 +117,7 @@ class _SmartListScreenState extends State<SmartListScreen> {
                                           ),
                                         ),
                                       ),
-                                      Container(
+                                      SizedBox(
                                         width: MediaQuery.of(context).size.width-120,
                                         child: Column(
                                           children: [
@@ -134,7 +132,7 @@ class _SmartListScreenState extends State<SmartListScreen> {
                                           style: TextStyle(
                                               color: AppTheme.appBlack,
                                               fontSize: 12)),
-                                              trailing:  Container(
+                                              trailing:  SizedBox(
                                                 width: 60,
                                                 height: 20,
                                                 child: GetBuilder<CartController>(
@@ -270,7 +268,7 @@ class _SmartListScreenState extends State<SmartListScreen> {
                                               ),
                                             ),
                                             Container(
-                                              margin: EdgeInsets.only(right: 14),
+                                              margin: const EdgeInsets.only(right: 14),
                                               alignment: Alignment.centerRight,
                                               child: Text('₹150.00', style: TextStyle(
                                                   color: AppTheme.appYellow,
@@ -304,7 +302,7 @@ class _SmartListScreenState extends State<SmartListScreen> {
                               foregroundColor: Colors.white,
                               backgroundColor: AppTheme.appGreen,
                               elevation: 3,
-                              padding: EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(8),
                               alignment: Alignment.center,
                               shape: RoundedRectangleBorder(
                                   borderRadius:
@@ -312,20 +310,22 @@ class _SmartListScreenState extends State<SmartListScreen> {
                               //fixedSize: const Size(100, 30),
                               //////// HERE
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              _onAddItem(context);
+                            },
                             child: const Text(
-                              "Add Item",
+                              StringConstant.addItem,
                               style: TextStyle(fontSize: 14),
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          SizedBox(width: 20,),
+                          const SizedBox(width: 20,),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: AppTheme.appRed,
                               elevation: 3,
-                              padding: EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(8),
                               alignment: Alignment.center,
                               shape: RoundedRectangleBorder(
                                   borderRadius:
@@ -333,9 +333,11 @@ class _SmartListScreenState extends State<SmartListScreen> {
                              // fixedSize: const Size(100, 30),
                               //////// HERE
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              _onBuyItem(context);
+                            },
                             child: const Text(
-                              "Buy",
+                              StringConstant.buy,
                               style: TextStyle(fontSize: 14),
                               textAlign: TextAlign.center,
                             ),
@@ -350,5 +352,13 @@ class _SmartListScreenState extends State<SmartListScreen> {
   }
 
 //const Center(child: Text("profile",style: TextStyle(color: Colors.red),));
+ void _onAddItem(BuildContext context){
+   Navigator.of(context).push(MaterialPageRoute(
+       builder: (BuildContext context) =>
+       const AddItemScreen()));
+ }
 
+ void _onBuyItem(BuildContext context){
+
+ }
 }

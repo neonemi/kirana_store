@@ -14,6 +14,8 @@ class CouponScreen extends StatefulWidget {
 
 class CouponScreenState extends State<CouponScreen> {
   late final CouponCubit _cubit;
+  double fontSize = 14.0;
+  String _couponController = "";
   @override
   void initState() {
     super.initState();
@@ -69,7 +71,63 @@ class CouponScreenState extends State<CouponScreen> {
                 ),
                 body: Container(
                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                     child: ListView(
+                       children: [
+                         Padding(
+                           padding: EdgeInsets.symmetric(horizontal:  MediaQuery.of(context).size.width * 0.07, vertical: 22),
+                           child: TextFormField(
+                             style: TextStyle(
+                                 fontSize: fontSize, color: AppTheme.appBlack),
+                             decoration:  InputDecoration(
+                               hintText: 'Enter Promo Code',
+                                 contentPadding:
+                                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                                 enabledBorder:  UnderlineInputBorder(
+                                   borderSide: BorderSide(color:  AppTheme.appLightGrey),
+                                 ),
+                                 focusedBorder:  UnderlineInputBorder(
+                                   borderSide: BorderSide(color:  AppTheme.appLightGrey),
+                                 ),
+                                 counterStyle: const TextStyle(
+                                   height: double.minPositive,
+                                 ),
+                                 counterText: "",
+                               suffixIcon: Container(
+                                 padding: EdgeInsets.only(top:10),
+                                 child: Text('Apply',style: TextStyle(
+                                     fontSize: 16, color: AppTheme.appRed,fontWeight: FontWeight.w600),),
+                               )
+                             ),
+                             onChanged: (landmark) {
+                               _couponController = landmark;
+                             },
+                             initialValue: _couponController,
+                             maxLength: 200,
+                             // controller: _emailController,
+                             keyboardType: TextInputType.text,
+                             inputFormatters: <TextInputFormatter>[
+                               FilteringTextInputFormatter.singleLineFormatter
+                             ],
+                           ),
+                         ),
 
+                         Container(
+                           width: MediaQuery.of(context).size.width,
+                           height: 40,
+                           margin: const EdgeInsets.only(left: 20,right: 20),
+                           decoration: BoxDecoration(color: AppTheme.appLightGrey),
+                           alignment: Alignment.centerLeft,
+                           padding: EdgeInsets.all(8),
+                           child: const Text('Available Offers'),
+                         ),
+                         Container(
+                             width: MediaQuery.of(context).size.width,
+                             height: 40,
+                             margin: const EdgeInsets.only(left: 20,right: 20,top: 20),
+                             alignment: Alignment.center,
+                             child: const Text('Sorry No Coupon Found'))
+                       ],
+                     ),
                 ))));
   }
 
