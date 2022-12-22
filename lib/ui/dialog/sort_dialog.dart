@@ -27,7 +27,7 @@ class SortDialogBuilder {
   showSortDialog(BuildContext context, final void Function(String)? onConfirm) {
     var dialog = Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      backgroundColor: AppTheme.appRed,
+      backgroundColor: AppTheme.appYellow,
       insetPadding: const EdgeInsets.only(top: 60),
       alignment: Alignment.topCenter,
       child: SizedBox(

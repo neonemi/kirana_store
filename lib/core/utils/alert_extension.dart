@@ -8,7 +8,7 @@ extension AlertExtension on BuildContext {
 
   showSuccessAlert({
     required String message,
-    String? title,
+    required String title,
     final void Function()? onConfirm,
     String? confirmTextButton,
     String? cancelTextButton,
@@ -31,7 +31,7 @@ extension AlertExtension on BuildContext {
             children:[
               Container(
                 padding: const EdgeInsets.all(8),
-                  child: Text('Alert',style: TextStyle(color: AppTheme.appBlack,fontWeight: FontWeight.w600,fontSize: 18),textAlign: TextAlign.left,)),
+                  child: Text(title.isEmpty?'Alert':title,style: TextStyle(color: AppTheme.appBlack,fontWeight: FontWeight.w600,fontSize: 18),textAlign: TextAlign.left,)),
               if(message.isNotEmpty)Container(
                   padding: const EdgeInsets.all(8),child: Text(message)),
               Row(
@@ -139,7 +139,7 @@ extension AlertExtension on BuildContext {
   }) {
     SmartDialog.show(builder: (context) {
       return Container(
-        height: 180,
+        height: 140,
         width: 180,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -147,21 +147,41 @@ extension AlertExtension on BuildContext {
         ),
         alignment: Alignment.center,
         child:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children:[
-              Text('Time Out',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ElevatedButton(
-                    //Colors.orange,
-                    onPressed: () {
-                      onConfirm?.call();
-                      SmartDialog.dismiss();
-                    },
-                    child: Text(confirmTextButton ??'Ok',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
-                  ),
-                ],
+              Text('Time Out',style: TextStyle(color: AppTheme.appBlack,fontSize: 24),textAlign: TextAlign.center,),
+              Icon(Icons.timer_off_rounded,size: 30,color: AppTheme.appRed,),
+              Container(
+                width: 180,
+                alignment: Alignment.centerRight,
+                margin: const EdgeInsets.only(right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: AppTheme.appYellow,
+                        elevation: 3,
+                        padding: const EdgeInsets.all(4),
+                        alignment: Alignment.center,
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.circular(30.0)),
+                        // fixedSize: const Size(150, 52),
+                        //////// HERE
+                      ),
+                      onPressed: () {
+                        onConfirm?.call();
+                        SmartDialog.dismiss();
+                      },
+                      child: Text(confirmTextButton ??'Ok',style: TextStyle(color: AppTheme.appWhite),textAlign: TextAlign.left,),
+                    ),
+                  ],
+                ),
               )
             ]),
       );
@@ -264,4 +284,94 @@ extension AlertExtension on BuildContext {
       );
     });
   }
+
+  showPlaceOrderAlert({
+    final void Function()? onProceed,
+    final void Function()? onAddressChange,
+    String? confirmTextButton,
+    String? cancelTextButton,
+    required String address
+  }) {
+    SmartDialog.show(builder: (context) {
+      return Container(
+        height: 300,
+        width: MediaQuery.of(context).size.width-40,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        alignment: Alignment.center,
+        child:Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:[
+              Container(
+                 margin: const EdgeInsets.only(bottom: 10,left: 10),
+                  child: Text('Place Order',style: TextStyle(color: AppTheme.appBlack,fontSize: 24,fontWeight: FontWeight.w600),textAlign: TextAlign.left,)),
+              Container(
+                  margin: const EdgeInsets.only(bottom: 10,left: 10),
+                  child: Text('Your order will be delivered at $address',style: TextStyle(color: AppTheme.appBlack,fontSize:16),textAlign: TextAlign.left,)),
+              Container(
+                width: MediaQuery.of(context).size.width-40,
+                alignment: Alignment.centerRight,
+
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+
+                      onPressed: () {
+                        onProceed?.call();
+                        SmartDialog.dismiss();
+                      },
+                      child: Text(confirmTextButton ??'PROCEED',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width-40,
+                alignment: Alignment.centerRight,
+                // margin: EdgeInsets.only(right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+
+                      onPressed: () {
+                        onAddressChange?.call();
+                        SmartDialog.dismiss();
+                      },
+                      child: Text(confirmTextButton ??'CHANGE ADDRESS',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width-40,
+                alignment: Alignment.centerRight,
+                // margin: EdgeInsets.only(right: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+
+                      onPressed: () {
+
+                        SmartDialog.dismiss();
+                      },
+                      child: Text(confirmTextButton ??'CANCEL',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
+                    ),
+                  ],
+                ),
+              )
+            ]),
+      );
+    });
+  }
+
 }

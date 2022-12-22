@@ -51,7 +51,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
             },
             child: Scaffold(
               appBar: AppBar(
-                backgroundColor: AppTheme.appRed,
+                backgroundColor: AppTheme.appYellow,
                 iconTheme: IconThemeData(color: AppTheme.appWhite),
                 centerTitle: true,
                 elevation: 0.0,
@@ -295,7 +295,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.white,
-                                backgroundColor: AppTheme.appRed,
+                                backgroundColor: AppTheme.appYellow,
                                 elevation: 3,
                                 alignment: Alignment.center,
                                 shape: RoundedRectangleBorder(

@@ -52,7 +52,7 @@ class BottomItemWidget extends StatelessWidget {
             TrianglePainter(
               strokeColor:
               !isActive
-                  ? AppTheme.appRed
+                  ? AppTheme.appYellow
                   : AppTheme.appWhite,
               //strokeWidth: 3,
               paintingStyle: PaintingStyle.fill,

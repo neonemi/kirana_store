@@ -96,7 +96,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: AppTheme.appRed,
+          backgroundColor: AppTheme.appYellow,
           iconTheme: IconThemeData(color: AppTheme.appWhite),
           centerTitle: true,
           elevation: 0.0,
@@ -118,7 +118,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
         body: Stack(
           children: [
             Container(
-              color: AppTheme.appRed,
+              color: AppTheme.appYellow,
               height: MediaQuery.of(context).size.height * 1 / 4,
               width: MediaQuery.of(context).size.width,
               child: Text(
@@ -197,7 +197,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                                   print(cartData!.quantity);
                                 }
                                 cartController
-                                    .counterRemoveProductToCart(cartData!);
+                                    .counterRemoveProductToCart(context,cartData!);
                                 preference();
                               },
                               child: Container(
@@ -205,7 +205,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                                   width: 20,
                                   alignment: Alignment.center,
                                   decoration:
-                                      BoxDecoration(color: AppTheme.appRed),
+                                      BoxDecoration(color: AppTheme.appYellow),
                                   child: Icon(
                                     Icons.remove,
                                     color: AppTheme.appBlack,
@@ -227,14 +227,14 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                                 alignment: Alignment.centerLeft,
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                  color: AppTheme.appRed,
+                                  color: AppTheme.appYellow,
                                 )),
                                 child: Text(
                                   cartData != null
                                       ? '${cartData.quantity}'
                                       : '',
                                   style: TextStyle(
-                                      color: AppTheme.appRed,
+                                      color: AppTheme.appYellow,
                                       fontWeight: FontWeight.w600),
                                 )),
                           // const SizedBox(
@@ -279,7 +279,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                                       width: 20,
                                       alignment: Alignment.center,
                                       decoration:
-                                          BoxDecoration(color: AppTheme.appRed),
+                                          BoxDecoration(color: AppTheme.appYellow),
                                       child: Icon(
                                         Icons.add,
                                         color: AppTheme.appBlack,
@@ -293,7 +293,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                                           bottom: 5),
                                       height: 30,
                                       decoration:
-                                          BoxDecoration(color: AppTheme.appRed),
+                                          BoxDecoration(color: AppTheme.appYellow),
                                       child: Text(
                                         "ADD",
                                         style: TextStyle(
@@ -330,7 +330,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                       child: Text(
                         '₹$price',
                         style: TextStyle(
-                            color: AppTheme.appRed,
+                            color: AppTheme.appYellow,
                             fontWeight: FontWeight.w600,
                             fontSize: 14),
                       )),

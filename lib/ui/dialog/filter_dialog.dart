@@ -12,17 +12,10 @@ class FilterDialogBuilder {
   late final FilterCubit _cubit;
   TextEditingController commentController = TextEditingController();
 
-  final List<Map<String, dynamic>> sortingList = [
-    {
-      "sort": ['PRICE LOW TO HIGH', 'PRICE HIGH TO LOW'],
-      "value": ['asc', 'dsc'],
-      "select": [false, false]
-    }
-  ];
   showFilterDialog(BuildContext context, final void Function(String)? onConfirm) {
     var dialog = Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      backgroundColor: AppTheme.appRed,
+      backgroundColor: AppTheme.appYellow,
       insetPadding: const EdgeInsets.only(top: 60),
       alignment: Alignment.topCenter,
       child: SizedBox(

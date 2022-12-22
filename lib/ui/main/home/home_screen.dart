@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
                     alignment: Alignment.topLeft,
                     child: RefreshIndicator(
-                      color: AppTheme.appRed,
+                      color: AppTheme.appYellow,
                       onRefresh: () => loadData(context),
                       child: ListView(
                         shrinkWrap: true,
@@ -187,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             fillColor: Colors.grey.shade300,
             filled: true,
-            hintText: 'Cakes, Pastry, Patties',
+            hintText: StringConstant.searchHint,
             enabledBorder: OutlineInputBorder(
                 borderRadius: const BorderRadius.all(Radius.circular(1000)),
                 borderSide: BorderSide(color: Colors.grey.shade300)),

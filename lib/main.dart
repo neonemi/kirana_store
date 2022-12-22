@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     bool isDarkMode = brightness == Brightness.dark;
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: isDarkMode ? Colors.black : AppTheme.appRed,
+      statusBarColor: isDarkMode ? Colors.black : AppTheme.appYellow,
     ));
     return MultiRepositoryProvider(
       providers: [
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
             useDefaultLoading: false,
             overlayWidget: Center(
               child: CircularProgressIndicator(
-                color: AppTheme.appRed,
+                color: AppTheme.appYellow,
               ),
             ),
             child: MultiBlocListener(
@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
                       if (state is ConnectivityOffline) {
                         return _ConnectionStatusAppBar(
                           title: "No internet",
-                          color: AppTheme.appRed,
+                          color: AppTheme.appYellow,
                           icon: Icons.signal_wifi_connected_no_internet_4,
                         );
                       }

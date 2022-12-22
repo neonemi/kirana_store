@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               context.showOtpConfirm(
                   message: state.response.message.toString(),
                   onConfirm: () {},
-                  title: 'Alert');
+                  title: StringConstant.alert);
               // context.showToast(state.otp.message.toString());
             } else {
               context.showToast(state.response.message.toString());
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
             preferredSize: const Size.fromHeight(0.0),
             child: AppBar(
               toolbarHeight: 0,
-              backgroundColor: AppTheme.appRed,
+              backgroundColor: AppTheme.appYellow,
               elevation: 0.0,
             ),
           ),
@@ -82,15 +82,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    color: AppTheme.appRed,
+                    color: AppTheme.appYellow,
                     height: MediaQuery.of(context).size.height * 1 / 3,
                     width: MediaQuery.of(context).size.width,
                     child: Center(
-                        child: Image.asset(
-                      AppIconKeys.dwarikaLogo2,
-                      height: 200,
-                      width: 200,
-                    )),
+                        child: AppLogo()),
                   ),
                   const SizedBox(
                     height: 10,
@@ -98,12 +94,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                       alignment: Alignment.center,
                       child: Text(
-                        'Sign In',
+                        StringConstant.signIn,
                         style: TextStyle(
                             fontSize: 24,
                             color: AppTheme.appBlack,
                             fontWeight: FontWeight.w600,
-                            fontFamily: 'Montserrat'),
+                            fontFamily: StringConstant.fontFamily),
                       )),
                   const SizedBox(
                     height: 20,
@@ -112,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       alignment: Alignment.center,
                       margin: const EdgeInsets.all(10),
                       child: Text(
-                        'Enter your phone number and we will send an OTP to continue',
+                        StringConstant.signInNote,
                         style:
                             TextStyle(fontSize: 16, color: AppTheme.appBlack),
                         textAlign: TextAlign.center,
@@ -123,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: MediaQuery.of(context).size.width,
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Mobile No.',
+                        StringConstant.mobileNo,
                         style:
                             TextStyle(fontSize: 14, color: AppTheme.appBlack),
                         textAlign: TextAlign.left,
@@ -147,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   width: 70,
                                   alignment: Alignment.center,
                                   child: Text(
-                                    '+91',
+                                    StringConstant.nineOne,
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: AppTheme.appBlack),
@@ -168,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: TextStyle(
                                     fontSize: 16, color: AppTheme.appBlack),
                                 decoration: InputDecoration(
-                                    hintText: 'Phone Number',
+                                    hintText: StringConstant.phoneNumber,
                                     hintStyle: TextStyle(
                                         fontSize: 16,
                                         color: AppTheme.appGrey),
@@ -204,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: AppTheme.appRed,
+                          backgroundColor: AppTheme.appYellow,
                           elevation: 3,
                           alignment: Alignment.center,
                           shape: RoundedRectangleBorder(
@@ -214,7 +210,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         onPressed: () => _onTapSendOtp(context),
                         child: const Text(
-                          "Send OTP",
+                          StringConstant.sendOtp,
                           style: TextStyle(fontSize: 16),
                           textAlign: TextAlign.center,
                         ),
@@ -232,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Didn't have account?",
+                          StringConstant.didNotHaveAccount,
                           style: TextStyle(
                               fontSize: 16, color: AppTheme.appBlack),
                           textAlign: TextAlign.center,
@@ -249,9 +245,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             ));
                           },
                           child: Text(
-                            'Sign Up',
+                            StringConstant.signUp,
                             style: TextStyle(
-                                fontSize: 16, color: AppTheme.appRed),
+                                fontSize: 16, color: AppTheme.appYellow),
                             textAlign: TextAlign.center,
                           ),
                         )
@@ -282,7 +278,7 @@ class _LoginScreenState extends State<LoginScreen> {
         phoneNumber: _phoneController.text,
       );
     } else {
-      context.showToast("Enter Mobile Number");
+      context.showToast(StringConstant.enterMobileNumber);
     }
   }
 }

@@ -65,7 +65,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
             preferredSize: const Size.fromHeight(0.0),
             child: AppBar(
               toolbarHeight: 0,
-              backgroundColor: AppTheme.appRed,
+              backgroundColor: AppTheme.appYellow,
               elevation: 0.0,
             ),
           ),
@@ -83,15 +83,11 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      color: AppTheme.appRed,
+                      color: AppTheme.appYellow,
                       height: MediaQuery.of(context).size.height * 1 / 3,
                       width: MediaQuery.of(context).size.width,
                       child: Center(
-                          child: Image.asset(
-                        AppIconKeys.dwarikaLogo2,
-                        height: 200,
-                        width: 200,
-                      )),
+                          child:  AppLogo(),),
                     ),
                     const SizedBox(
                       height: 30,
@@ -99,12 +95,12 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                     Container(
                         alignment: Alignment.center,
                         child: Text(
-                          'Enter Verification Code',
+                          StringConstant.enterVerificationCode,
                           style: TextStyle(
                               fontSize: 18,
                               color: AppTheme.appBlack,
                               fontWeight: FontWeight.w600,
-                              fontFamily: 'Montserrat'),
+                              fontFamily: StringConstant.fontFamily),
                         )),
                     const SizedBox(
                       height: 20,
@@ -113,7 +109,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                         alignment: Alignment.center,
                         margin: const EdgeInsets.all(10),
                         child: Text(
-                          'We have sent an OTP on ${widget.phoneNumber}',
+                          '${StringConstant.weHaveSendOtp} ${widget.phoneNumber}',
                           style:
                               TextStyle(fontSize: 16, color: AppTheme.appBlack),
                           textAlign: TextAlign.center,
@@ -162,7 +158,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
-                            backgroundColor: AppTheme.appRed,
+                            backgroundColor: AppTheme.appYellow,
                             elevation: 3,
                             alignment: Alignment.center,
                             shape: RoundedRectangleBorder(
@@ -172,7 +168,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                           ),
                           onPressed: () => _onTapVerifyOtp(context),
                           child: const Text(
-                            "Continue",
+                           StringConstant.continueButton,
                             style: TextStyle(fontSize: 16),
                             textAlign: TextAlign.center,
                           ),
@@ -218,7 +214,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Didn't receive the code?",
+                            StringConstant.didNotReceiveCode,
                             style: TextStyle(
                                 fontSize: 16, color: AppTheme.appBlack),
                             textAlign: TextAlign.center,
@@ -231,9 +227,9 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                               _onTapResend(context);
                             },
                             child: Text(
-                              'Resend Now',
+                              StringConstant.resendNow,
                               style:
-                                  TextStyle(fontSize: 16, color: AppTheme.appRed),
+                                  TextStyle(fontSize: 16, color: AppTheme.appYellow),
                               textAlign: TextAlign.center,
                             ),
                           )
@@ -262,7 +258,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
       _cubit.verifyOTP(
           phoneNumber: widget.phoneNumber, otp: _otpController.text);
     } else {
-      context.showToast("Enter OTP");
+      context.showToast(StringConstant.enterOtp);
     }
   }
   _onTapResend(BuildContext context) {

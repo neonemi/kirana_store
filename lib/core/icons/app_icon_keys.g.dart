@@ -2,11 +2,11 @@
 class AppIconKeys {
 static const cards = "assets/images/cards.png";
 static const cashpay = "assets/images/cashpay.png";
-static const dwarikaLogo1 = "assets/images/dwarikaLogo1.png";
-static const dwarikaLogo2 = "assets/images/dwarikaLogo2.png";
-static const dwarikaLogo3= "assets/images/dwarikaLogo3.png";
-static const dwarikaLogo4= "assets/images/dwarikaLogo4.png";
-static const dwarikaMain= "assets/images/icon-2.png";
+// static const dwarikaLogo1 = "assets/images/dwarikaLogo1.png";
+// static const dwarikaLogo2 = "assets/images/dwarikaLogo2.png";
+// static const dwarikaLogo3= "assets/images/dwarikaLogo3.png";
+// static const dwarikaLogo4= "assets/images/dwarikaLogo4.png";
+static const dwarikaMain= "assets/images/grocery-cart.png";
 static const filter= 'assets/images/filter.png';
 static const helpImage= "assets/images/helpImage.png";
 static const homeIcon= "assets/images/homeIcon.png";

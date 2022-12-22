@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.neologicx.kiranastore.kirana_store">
    <application
-        android:label="kirana_store"
+        android:label="Kirana App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

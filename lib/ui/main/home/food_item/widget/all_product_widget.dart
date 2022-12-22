@@ -108,7 +108,7 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                             child: Text(
                               '₹${productData![index].price!}',
                               style: TextStyle(
-                                  color: AppTheme.appRed,
+                                  color: AppTheme.appYellow,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14),
                             )),
@@ -149,7 +149,7 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                       print(cartData!.quantity);
                                     }
                                     cartController
-                                        .counterRemoveProductToCart(cartData!);
+                                        .counterRemoveProductToCart(context,cartData!);
                                     preference();
                                   },
                                   child: Container(
@@ -157,7 +157,7 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                       width: 20,
                                       alignment: Alignment.center,
                                       decoration:
-                                          BoxDecoration(color: AppTheme.appRed),
+                                          BoxDecoration(color: AppTheme.appYellow),
                                       child: Icon(
                                         Icons.remove,
                                         color: AppTheme.appBlack,
@@ -180,14 +180,14 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                       alignment: Alignment.centerLeft,
                                       decoration: BoxDecoration(
                                           border: Border.all(
-                                        color: AppTheme.appRed,
+                                        color: AppTheme.appYellow,
                                       )),
                                       child: Text(
                                         cartData != null
                                             ? '${cartData.quantity}'
                                             : '',
                                         style: TextStyle(
-                                            color: AppTheme.appRed,
+                                            color: AppTheme.appYellow,
                                             fontWeight: FontWeight.w600),
                                       ));
                                 }),
@@ -234,7 +234,7 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                     width: 20,
                                     alignment: Alignment.center,
                                     decoration:
-                                        BoxDecoration(color: AppTheme.appRed),
+                                        BoxDecoration(color: AppTheme.appYellow),
                                     child: Icon(
                                       Icons.add,
                                       color: AppTheme.appBlack,

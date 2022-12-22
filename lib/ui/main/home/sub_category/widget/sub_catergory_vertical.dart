@@ -1,37 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:kirana_store/core/core.dart';
+import 'package:kirana_store/ui/main/home/home.dart';
+import 'package:kirana_store/ui/ui.dart';
 
-import '../../../../core/core.dart';
-import '../../../ui.dart';
-import '../home.dart';
 
-class HomeVerticalList extends StatelessWidget {
-  final List<CategoryData> categoryData;
-  const HomeVerticalList({super.key, required this.categoryData});
+
+class SubCategoryVerticalList extends StatelessWidget {
+  final List<SubCategoryData>? categoryData;
+  final String bannerImage;
+  const SubCategoryVerticalList({super.key, required this.categoryData,required this.bannerImage});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-     // height: 200,
-      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+      // height: 200,
+      margin: const EdgeInsets.fromLTRB(10, 20, 10, 0),
       child: ListView.builder(
           scrollDirection: Axis.vertical,
-          itemCount: categoryData.length,
+          itemCount: categoryData!.length,
           physics: const ClampingScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            print('id: ${categoryData[index].id!} : ${categoryData[index].id! + 1}');
+            print('id: ${categoryData![index].id!} : ${categoryData![index].id! + 1}');
             return GestureDetector(
               onTap: () => {
-              Navigator.of(context).push(
-              MaterialPageRoute(
-              builder: (BuildContext context) =>
-               FoodItemScreen(itemName: categoryData[index].name != null? categoryData[index].name.toString():"", id:  categoryData[index].id!=null? (categoryData[index].id!).toString():"",)))
-
-                // Navigator.of(context).push(
-                //     MaterialPageRoute(
-                //         builder: (BuildContext context) =>
-                //             SubCategoryScreen(itemName: categoryData[index].name != null? categoryData[index].name.toString():"", id:  categoryData[index].id!=null? (categoryData[index].id!).toString():"", bannerImage: Apis.imageBaseUrl + categoryData[index].image!,)))
-
+                Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            FoodItemScreen(itemName: categoryData![index].name != null? categoryData![index].name.toString():"", id:  categoryData![index].id!=null? (categoryData![index].id!).toString():"",)))
               },
               child: Stack(
                 children: [
@@ -41,7 +37,7 @@ class HomeVerticalList extends StatelessWidget {
                       margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                       child: AppImageLoader(
                         imageUrl:
-                            Apis.imageBaseUrl + categoryData[index].image!,
+                        bannerImage,
                         boxFit: BoxFit.cover,
                         width: MediaQuery.of(context).size.width - 60,
                         height: 200,
@@ -50,7 +46,7 @@ class HomeVerticalList extends StatelessWidget {
                     width: MediaQuery.of(context).size.width - 20,
                     height: 200,
                     decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                    BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                     child: Center(
                       child: Container(
@@ -63,10 +59,10 @@ class HomeVerticalList extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                             child: Text(
-                          categoryData[index].name!,
-                          style: TextStyle(color: AppTheme.appWhite,fontWeight: FontWeight.w600),
-                          textAlign: TextAlign.center,
-                        )),
+                              categoryData![index].name!,
+                              style: TextStyle(color: AppTheme.appWhite,fontWeight: FontWeight.w600),
+                              textAlign: TextAlign.center,
+                            )),
                       ),
                     ),
                   ),

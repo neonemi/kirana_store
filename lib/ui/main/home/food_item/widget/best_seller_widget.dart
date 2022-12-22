@@ -135,7 +135,7 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                 child: Text(
                                   '₹${bestSellerData![index].price!}',
                                   style: TextStyle(
-                                      color: AppTheme.appRed,
+                                      color: AppTheme.appYellow,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14),
                                 )),
@@ -150,7 +150,7 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                       if (kDebugMode) {
                                         print(cartData!.quantity);
                                       }
-                                      cartController.counterRemoveProductToCart(
+                                      cartController.counterRemoveProductToCart(context,
                                           cartData!);
                                       preference();
                                     },
@@ -159,7 +159,7 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                         width: 20,
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
-                                            color: AppTheme.appRed),
+                                            color: AppTheme.appYellow),
                                         child: Icon(
                                           Icons.remove,
                                           color: AppTheme.appBlack,
@@ -181,14 +181,14 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                       alignment:
                                       Alignment.centerLeft,
                                       decoration: BoxDecoration(
-                                          border: Border.all(color:  AppTheme.appRed,)
+                                          border: Border.all(color:  AppTheme.appYellow,)
                                       ),
                                       child: Text(
                                         cartData != null
                                             ? '${cartData.quantity}'
                                             : '',
                                         style: TextStyle(
-                                            color: AppTheme.appRed,
+                                            color: AppTheme.appYellow,
                                             fontWeight: FontWeight.w600),
                                       )),
                                 // const SizedBox(
@@ -233,7 +233,7 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                       width: 20,
                                       alignment: Alignment.center,
                                       decoration:
-                                          BoxDecoration(color: AppTheme.appRed),
+                                          BoxDecoration(color: AppTheme.appYellow),
                                       child: Icon(
                                         Icons.add,
                                         color: AppTheme.appBlack,

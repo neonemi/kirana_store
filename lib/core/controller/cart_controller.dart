@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/core.dart';
 
 import '../model/cart_data.dart';
-import '../repository/local_repository.dart';
 
 class CartController extends GetxController {
   CartController({required this.localRepository});
@@ -101,7 +102,7 @@ class CartController extends GetxController {
     // }
   }
 
-  Future<void> counterRemoveProductToCart(CartData cartData) async {
+  Future<void> counterRemoveProductToCart(BuildContext context,CartData cartData) async {
     print('remove${cartData.quantity!}');
     if (cartData.quantity! > 1) {
       int quantityUpdate = cartData.quantity! + -1;
@@ -124,10 +125,22 @@ class CartController extends GetxController {
       localRepository.setCartList(encodedData);
       update();
     } else {
-      deleteFromCart(idOrder: cartData.orderId!);
+      _onTapRemoveLastItem(context,cartData);
+      // deleteFromCart(idOrder: cartData.orderId!);
     }
   }
-
+  _onTapRemoveLastItem(BuildContext context,CartData cartData) {
+    AlertExtension(context).showSuccessAlert(
+      title: 'Warning',
+        message: 'Are you sure, you want to remove this item from cart?',
+        cancelTextButton: 'NO',
+        confirmTextButton: 'YES',
+        onConfirm: () {
+          deleteFromCart(idOrder: cartData.orderId!);
+        },
+        height: 170,
+        width: MediaQuery.of(context).size.width - 40);
+  }
   double cartTotalPrice() {
     double total = 0;
     for (var item in cartDataList) {

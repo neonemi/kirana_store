@@ -58,13 +58,13 @@ class _HomeContainerState extends State<HomeContainer> {
         if (login != false) {
           return const OrderHistoryScreen(showAppBar: false,);
         } else {
-          AlertExtension(context).showSuccessAlert(message: 'Please register/login to continue.',cancelTextButton: 'NO',confirmTextButton: 'YES',onConfirm: (){
+          AlertExtension(context).showSuccessAlert(message: StringConstant.pleaseRegisterLogin,cancelTextButton: StringConstant.no,confirmTextButton: StringConstant.yes,onConfirm: (){
             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
               builder: (context) {
                 return const LoginScreen();
               },
             ), (e) => false);
-          }, height: 150, width: MediaQuery.of(context).size.width-40);
+          }, height: 150, width: MediaQuery.of(context).size.width-40, title: '');
           // showDialog();
           return const HomeScreen();
         }
@@ -137,7 +137,7 @@ class _HomeContainerState extends State<HomeContainer> {
     if (currentBackPressTime == null ||
         now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
       currentBackPressTime = now;
-      context.showToast('Press again to close app');
+      context.showToast(StringConstant.pressAgain);
       return Future.value(false);
     }
     return Future.value(true);
@@ -158,9 +158,9 @@ class _BottomNavigationBar extends StatelessWidget {
     return Theme(
       data: Theme.of(context).copyWith(
           // sets the background color of the `BottomNavigationBar`
-          canvasColor: AppTheme.appRed,
+          canvasColor: AppTheme.appYellow,
           // sets the active color of the `BottomNavigationBar` if `Brightness` is light
-          primaryColor: AppTheme.appRed,
+          primaryColor: AppTheme.appYellow,
           textTheme: Theme.of(context).textTheme.copyWith(
                   caption: TextStyle(
                 color: AppTheme.appWhite,
@@ -169,19 +169,19 @@ class _BottomNavigationBar extends StatelessWidget {
       child: BottomNavigationBar(
         selectedFontSize: 5,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: AppTheme.appRed,
+        backgroundColor: AppTheme.appYellow,
         currentIndex: currentPage,
         elevation: 0.0,
         onTap: onTapItem,
         items: [
-          _bottomNavigationBarItem(image: FontAwesome.home, text: 'Home'),
+          _bottomNavigationBarItem(image: FontAwesome.home, text: StringConstant.home),
           _bottomNavigationBarItem(
-              image: FontAwesome.file_text, text: 'Order History'),
+              image: FontAwesome.file_text, text: StringConstant.orderHistory),
           _bottomNavigationBarItem(
-              image: FontAwesome.shopping_cart, text: 'My Cart'),
+              image: FontAwesome.shopping_cart, text:StringConstant.myCart),
           _bottomNavigationBarItem(
-              image: FontAwesome.list, text: 'Smart List'),
-          _bottomNavigationBarItem(image: FontAwesome.male, text: 'Profile'),
+              image: FontAwesome.list, text: StringConstant.smartList),
+          _bottomNavigationBarItem(image: FontAwesome.male, text: StringConstant.profile),
         ],
       ),
     );

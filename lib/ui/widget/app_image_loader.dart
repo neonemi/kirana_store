@@ -45,7 +45,7 @@ class AppImageLoader extends StatelessWidget {
         return Container(
           height: height,
           width: width,
-          color: AppTheme.appRed,
+          color: AppTheme.appYellow,
           // child: Center(
           //   child: Column(
           //     mainAxisSize: MainAxisSize.min,

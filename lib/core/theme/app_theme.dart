@@ -27,12 +27,15 @@ class AppTheme {
   static BorderRadius clipRadius =
       BorderRadius.all(Radius.circular(cardRadiusInt));
 
-  static Color appRed = const Color(0xFF1fd655);
+  // static Color appRed = const Color(0xFF1fd655);
+  static Color appYellow = const Color(0xFFF9b130);
+  static Color appRed = const Color(0xFFef3f3f);
   static Color appGreen = const Color(0xFF17ab13);
   static Color appWhite = const Color(0xFFffffff);
   static Color appBlack = const Color(0xFF000000);
   static Color appGrey = const Color(0xFF777777);
-
+  static Color appPink = const Color(0xFFFF0090);
+  // static Color appYellow = const Color(0xFFF9b130);
   Gradient get appGradient => const LinearGradient(
         colors: [Color(0xffef3f3f), Color(0xffffffff)],
         stops: [0, 1],

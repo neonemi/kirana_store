@@ -65,7 +65,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
           },
           child: Scaffold(
               appBar: AppBar(
-                backgroundColor: AppTheme.appRed,
+                backgroundColor: AppTheme.appYellow,
                 iconTheme: IconThemeData(color: AppTheme.appWhite),
                 centerTitle: true,
                 elevation: 0.0,
@@ -122,7 +122,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           Container(
                             height: 150,
                             width: MediaQuery.of(context).size.width,
-                            color: AppTheme.appRed,
+                            color: AppTheme.appYellow,
                             alignment: Alignment.center,
                             child: GestureDetector(
                               onTap: () {
@@ -168,7 +168,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             height: 40,
                                             width: 40,
                                             decoration: BoxDecoration(
-                                                color: AppTheme.appRed,
+                                                color: AppTheme.appYellow,
                                                 shape: BoxShape.circle),
                                             child: Icon(
                                               Icons.facebook,
@@ -518,7 +518,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     foregroundColor: Colors.white,
-                                    backgroundColor: AppTheme.appRed,
+                                    backgroundColor: AppTheme.appYellow,
                                     elevation: 3,
                                     alignment: Alignment.center,
                                     shape: RoundedRectangleBorder(
@@ -578,7 +578,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           Container(
                             height: 150,
                             width: MediaQuery.of(context).size.width,
-                            color: AppTheme.appRed,
+                            color: AppTheme.appYellow,
                             alignment: Alignment.center,
                             child: GestureDetector(
                               onTap: () {
@@ -623,7 +623,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             height: 40,
                                             width: 40,
                                             decoration: BoxDecoration(
-                                                color: AppTheme.appRed,
+                                                color: AppTheme.appYellow,
                                                 shape: BoxShape.circle),
                                             child: Icon(
                                               Icons.facebook,
@@ -973,7 +973,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     foregroundColor: Colors.white,
-                                    backgroundColor: AppTheme.appRed,
+                                    backgroundColor: AppTheme.appYellow,
                                     elevation: 3,
                                     alignment: Alignment.center,
                                     shape: RoundedRectangleBorder(
@@ -1013,7 +1013,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         Container(
                           height: 150,
                           width: MediaQuery.of(context).size.width,
-                          color: AppTheme.appRed,
+                          color: AppTheme.appYellow,
                           alignment: Alignment.center,
                           child: GestureDetector(
                             onTap: () {
@@ -1059,7 +1059,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                           height: 40,
                                           width: 40,
                                           decoration: BoxDecoration(
-                                              color: AppTheme.appRed,
+                                              color: AppTheme.appYellow,
                                               shape: BoxShape.circle),
                                           child: Icon(
                                             Icons.facebook,
@@ -1400,7 +1400,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.white,
-                                  backgroundColor: AppTheme.appRed,
+                                  backgroundColor: AppTheme.appYellow,
                                   elevation: 3,
                                   alignment: Alignment.center,
                                   shape: RoundedRectangleBorder(

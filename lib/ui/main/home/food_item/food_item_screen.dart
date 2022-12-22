@@ -77,7 +77,8 @@ class FoodItemScreenState extends State<FoodItemScreen> {
               }
 
             },
-            child:  BlocBuilder<FoodItemCubit, FoodItemState>(
+            child:
+            BlocBuilder<FoodItemCubit, FoodItemState>(
                 buildWhen: (previous, current) =>
                 current is FoodSubCategorySuccess,
                 builder: (context, state) {
@@ -89,9 +90,10 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                           getSubCategory.data![0].id.toString());
                     }
                     // }
-                    return Scaffold(
+                    return
+                      Scaffold(
                       appBar: AppBar(
-                        backgroundColor: AppTheme.appRed,
+                        backgroundColor: AppTheme.appYellow,
                         iconTheme: IconThemeData(color: AppTheme.appWhite),
                         centerTitle: true,
                         elevation: 0.0,
@@ -117,8 +119,8 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                                 setState((){
                                   visibleBestSeller=false;
                                 });
-                                _cubit.getFoodProduct(getSubCategory.data![0].id.toString(), value, "");
-                                // Navigator.of(context).pop;
+                                 _cubit.getFoodProduct(getSubCategory.data![0].id.toString(), value, "");
+                                 //_cubit.getFoodProduct(itemId, value, "");
                               });
                             },
                             child: Container(
@@ -140,7 +142,8 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                                 setState((){
                                   visibleBestSeller=false;
                                 });
-                                _cubit.getFoodProduct(getSubCategory.data![0].id.toString(), "", value);
+                                 _cubit.getFoodProduct(getSubCategory.data![0].id.toString(), "", value);
+                                //_cubit.getFoodProduct(itemId, "", value);
                               });
                             },
                             child: Container(
@@ -157,8 +160,10 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                           )
                         ],
                       ),
-                      body:  getSubCategory.data==null?const SizedBox.shrink():
-                      getSubCategory.data!.isEmpty?const SizedBox.shrink(): SingleChildScrollView(
+                      body:
+    getSubCategory.data==null?const SizedBox.shrink():
+                      getSubCategory.data!.isEmpty?const SizedBox.shrink():
+    SingleChildScrollView(
                         child: Column(
                                 children: [
                                   SizedBox(
@@ -172,9 +177,10 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                                           margin: const EdgeInsets.fromLTRB(20,20,20,0),
                                           alignment: Alignment.centerLeft,
                                           child: Text(
-                                            getSubCategory.data![0].name.toString(),
+                                            // getSubCategory.data![0].name.toString(),
+    itemName,
                                             style: TextStyle(
-                                                color: AppTheme.appRed,
+                                                color: AppTheme.appYellow,
                                                 fontSize: 16,
                                                 fontStyle: FontStyle.normal,
                                                 fontWeight: FontWeight.w600,
@@ -287,7 +293,7 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                   }
                   return Scaffold(
                     appBar: AppBar(
-                      backgroundColor: AppTheme.appRed,
+                      backgroundColor: AppTheme.appYellow,
                       iconTheme: IconThemeData(color: AppTheme.appWhite),
                       centerTitle: true,
                       elevation: 0.0,
@@ -355,6 +361,7 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                     ),
                   );
               }
-            )));
+     ))
+);
   }
 }

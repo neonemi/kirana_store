@@ -52,7 +52,7 @@ class SearchScreenState extends State<SearchScreen> {
           },
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: AppTheme.appRed,
+              backgroundColor: AppTheme.appYellow,
               iconTheme: IconThemeData(color: AppTheme.appWhite),
               centerTitle: true,
               elevation: 0.0,
@@ -61,7 +61,7 @@ class SearchScreenState extends State<SearchScreen> {
                 height: 50,
                 alignment: Alignment.center,
                 child: Text(
-                  'Search',
+                  StringConstant.search,
                   style: TextStyle(
                       color: AppTheme.appWhite,
                       fontSize: 20,
@@ -77,7 +77,7 @@ class SearchScreenState extends State<SearchScreen> {
                 children: [
                   Container(
                       height: 90,
-                      color: AppTheme.appRed,
+                      color: AppTheme.appYellow,
                       child: searchBar(
                           context, MediaQuery.of(context).size.width * 0.07)),
                   BlocBuilder<SearchCubit, SearchState>(
@@ -98,7 +98,7 @@ class SearchScreenState extends State<SearchScreen> {
                                   height: 10,
                                 ),
                                 const Text(
-                                  'Sorry, No product found\nYou can browse complete product list by',
+                                  StringConstant.sorryNoProduct,
                                   style: TextStyle(fontSize: 14),
                                   textAlign: TextAlign.center,
                                 ),
@@ -107,12 +107,43 @@ class SearchScreenState extends State<SearchScreen> {
                                 ),
                                 GestureDetector(
                                     onTap: () {
-                                      Navigator.of(context).pop();
+                                      _navigationPop(context);
                                     },
                                     child: Text(
-                                      'clicking here',
+                                      StringConstant.clickingHere,
                                       style: TextStyle(
-                                          color: AppTheme.appRed,
+                                          color: AppTheme.appYellow,
+                                          fontSize: 14,
+                                          decoration: TextDecoration.underline,
+                                          fontWeight: FontWeight.w600),
+                                      textAlign: TextAlign.center,
+                                    ))
+                              ],
+                            ),
+                          ):getSearchProduct.data!.isEmpty
+                              ?  Container(
+                            margin: const EdgeInsets.only(top: 90),
+                            child: ListView(
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  StringConstant.sorryNoProduct,
+                                  style: TextStyle(fontSize: 14),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                GestureDetector(
+                                    onTap: () {
+                                      _navigationPop(context);
+                                    },
+                                    child: Text(
+                                      StringConstant.clickingHere,
+                                      style: TextStyle(
+                                          color: AppTheme.appYellow,
                                           fontSize: 14,
                                           decoration: TextDecoration.underline,
                                           fontWeight: FontWeight.w600),
@@ -132,7 +163,7 @@ class SearchScreenState extends State<SearchScreen> {
                               height: 10,
                             ),
                             const Text(
-                              'Sorry, No product found\nYou can browse complete product list by',
+                              StringConstant.sorryNoProduct,
                               style: TextStyle(fontSize: 14),
                               textAlign: TextAlign.center,
                             ),
@@ -141,12 +172,13 @@ class SearchScreenState extends State<SearchScreen> {
                             ),
                             GestureDetector(
                                 onTap: () {
-                                  Navigator.of(context).pop();
+                                  _navigationPop(context);
+
                                 },
                                 child: Text(
-                                  'clicking here',
+                                  StringConstant.clickingHere,
                                   style: TextStyle(
-                                      color: AppTheme.appRed,
+                                      color: AppTheme.appYellow,
                                       fontSize: 14,
                                       decoration: TextDecoration.underline,
                                       fontWeight: FontWeight.w600),
@@ -173,15 +205,15 @@ class SearchScreenState extends State<SearchScreen> {
         textDirection: TextDirection.ltr,
         keyboardType: TextInputType.text,
         style: TextStyle(color: AppTheme.appWhite),
-        cursorColor: AppTheme.appRed,
+        cursorColor: AppTheme.appYellow,
         cursorHeight: 0.0,
         cursorWidth: 0.0,
         decoration: InputDecoration(
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-            fillColor: AppTheme.appRed,
+            fillColor: AppTheme.appYellow,
             filled: true,
-            hintText: 'Cakes, Pastry, Patties',
+            hintText: StringConstant.searchHint,
             hintStyle: TextStyle(color: AppTheme.appWhite),
             enabledBorder: OutlineInputBorder(
                 borderRadius: const BorderRadius.all(Radius.circular(1000)),
@@ -215,5 +247,7 @@ class SearchScreenState extends State<SearchScreen> {
       ),
     );
   }
-
+ void _navigationPop(BuildContext context){
+   Navigator.of(context).pop();
+ }
 }

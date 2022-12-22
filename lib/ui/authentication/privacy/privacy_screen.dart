@@ -29,7 +29,7 @@ class PrivacyScreenState extends State<PrivacyScreen> {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.appRed,
+        backgroundColor: AppTheme.appYellow,
           iconTheme:IconThemeData(color: AppTheme.appWhite ),
         title: Container(
           padding: const EdgeInsets.only(left: 10.0),
@@ -41,7 +41,7 @@ class PrivacyScreenState extends State<PrivacyScreen> {
                 color: AppTheme.appWhite,
                 fontSize: 20,
                 fontStyle: FontStyle.normal,
-                fontFamily: "Montserrat"),
+                fontFamily: StringConstant.fontFamily),
             textAlign: TextAlign.center,
           ),
         ),

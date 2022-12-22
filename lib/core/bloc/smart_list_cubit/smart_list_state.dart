@@ -21,7 +21,14 @@ class SmartStateSuccess extends SmartState {
   @override
   List<Object> get props => [address];
 }
+class SmartStateSearchSuccess extends SearchState {
+  const SmartStateSearchSuccess(this.response);
 
+  final GetSearchProduct response;
+
+  @override
+  List<Object> get props => [response];
+}
 
 class SmartStateError extends SmartState {
   const SmartStateError(this.message);

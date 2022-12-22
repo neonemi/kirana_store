@@ -52,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           if (state is ProfileSuccess) {
             return Scaffold(
               appBar: AppBar(
-                backgroundColor: AppTheme.appRed,
+                backgroundColor: AppTheme.appYellow,
                 centerTitle: true,
                 elevation: 0.0,
                 iconTheme: IconThemeData(color: AppTheme.appWhite),
@@ -77,7 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      color: AppTheme.appRed,
+                      color: AppTheme.appYellow,
                       height: MediaQuery.of(context).size.height * 1 / 4,
                       width: MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
@@ -208,7 +208,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color: AppTheme.appBlack,
                             size: 22,
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                const NotificationScreen()));
+                          },
                         ),
                         ListTile(
                           visualDensity:
@@ -332,7 +336,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ListView(
                 children: [
                   Container(
-                    color: AppTheme.appRed,
+                    color: AppTheme.appYellow,
                     height: MediaQuery.of(context).size.height * 1 / 3,
                     width: MediaQuery.of(context).size.width,
                     alignment: Alignment.center,
@@ -501,6 +505,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
          _cubit.logout();
         },
         height: 150,
-        width: MediaQuery.of(context).size.width - 40);
+        width: MediaQuery.of(context).size.width - 40, title: '');
   }
 }

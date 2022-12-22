@@ -25,7 +25,7 @@ class HelpScreenState extends State<HelpScreen> {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: AppTheme.appRed,
+          backgroundColor: AppTheme.appYellow,
           iconTheme: IconThemeData(color: AppTheme.appWhite),
           centerTitle: true,
           title: Container(

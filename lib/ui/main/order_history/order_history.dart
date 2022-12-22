@@ -17,7 +17,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
 
     return  Scaffold(
       appBar: widget.showAppBar==true?AppBar(
-        backgroundColor: AppTheme.appRed,
+        backgroundColor: AppTheme.appYellow,
         centerTitle: true,
         elevation: 0.0,
         iconTheme: IconThemeData(color: AppTheme.appWhite),

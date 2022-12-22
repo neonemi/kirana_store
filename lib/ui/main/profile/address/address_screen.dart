@@ -52,7 +52,7 @@ class AddressScreenState extends State<AddressScreen> {
             },
             child: Scaffold(
               appBar: AppBar(
-                backgroundColor: AppTheme.appRed,
+                backgroundColor: AppTheme.appYellow,
                 iconTheme: IconThemeData(color: AppTheme.appWhite),
                 centerTitle: true,
                 elevation: 0.0,
@@ -94,12 +94,12 @@ class AddressScreenState extends State<AddressScreen> {
                               Icon(
                                 Icons.add,
                                 size: 12,
-                                color: AppTheme.appRed,
+                                color: AppTheme.appYellow,
                               ),
                               Text(
                                 'Add Address',
                                 style: TextStyle(
-                                    color: AppTheme.appRed,
+                                    color: AppTheme.appYellow,
                                     fontSize: 16,
                                     fontStyle: FontStyle.normal,
                                     fontWeight: FontWeight.w500),
@@ -196,7 +196,7 @@ class AddressScreenState extends State<AddressScreen> {
                                           child: Text(
                                             'EDIT',
                                             style: TextStyle(
-                                                color: AppTheme.appRed,
+                                                color: AppTheme.appYellow,
                                                 fontSize: 14,
                                                 fontStyle: FontStyle.normal,
                                                ),
@@ -208,7 +208,7 @@ class AddressScreenState extends State<AddressScreen> {
                                         child: Text(
                                           'DELETE',
                                           style: TextStyle(
-                                              color: AppTheme.appRed,
+                                              color: AppTheme.appYellow,
                                               fontSize: 14,
                                               fontStyle: FontStyle.normal,
                                               ),

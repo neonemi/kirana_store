@@ -78,7 +78,7 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
 
             return Scaffold(
               appBar: AppBar(
-                backgroundColor: AppTheme.appRed,
+                backgroundColor: AppTheme.appYellow,
                 centerTitle: true,
                 elevation: 0.0,
                 iconTheme: IconThemeData(color: AppTheme.appWhite),

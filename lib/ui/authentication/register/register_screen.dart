@@ -61,7 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             preferredSize: const Size.fromHeight(0.0),
             child: AppBar(
               toolbarHeight: 0,
-              backgroundColor: AppTheme.appRed,
+              backgroundColor: AppTheme.appYellow,
               elevation: 0.0,
             ),
           ),
@@ -79,25 +79,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      color: AppTheme.appRed,
+                      color: AppTheme.appYellow,
                       height: MediaQuery.of(context).size.height * 1 / 3,
                       width: MediaQuery.of(context).size.width,
                       child: Center(
-                          child: Image.asset(
-                            AppIconKeys.dwarikaLogo2,
-                            height: 200,
-                            width: 200,
-                          )),
+                          child:  AppLogo(),),
                     ),
                     const SizedBox(height: 10,),
                     Container(
                         alignment: Alignment.center,
                         child:  Text(
-                          'Sign Up',
+                          StringConstant.signUp,
                           style: TextStyle(
                               fontSize: 24,color: AppTheme.appBlack,
                               fontWeight: FontWeight.w600,
-                              fontFamily: 'Montserrat'),
+                              fontFamily: StringConstant.fontFamily),
                         )),
                     const SizedBox(
                       height: 10,
@@ -106,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         margin: const EdgeInsets.only(left: 20,right: 20,top: 10),
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.centerLeft,
-                        child: Text('Full Name',style: TextStyle(fontSize: 14,color: AppTheme.appBlack),textAlign: TextAlign.left,)),
+                        child: Text(StringConstant.fullName,style: TextStyle(fontSize: 14,color: AppTheme.appBlack),textAlign: TextAlign.left,)),
                     Container(
                       margin: const EdgeInsets.only(left: 20,right: 20),
                       height: 50,
@@ -116,7 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextFormField(
                             style: TextStyle(fontSize: 16,color: AppTheme.appBlack) ,
                             decoration: InputDecoration(
-                                hintText: 'Enter your name',
+                                hintText: StringConstant.enterYourName,
                                 hintStyle: TextStyle(fontSize: 16,color: AppTheme.appGrey),
                                 border: InputBorder.none,
                                 counterStyle: const TextStyle(height: double.minPositive,),
@@ -140,7 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         margin: const EdgeInsets.only(left: 20,right: 20,top: 10),
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.centerLeft,
-                        child: Text('Email',style: TextStyle(fontSize: 14,color: AppTheme.appBlack),textAlign: TextAlign.left,)),
+                        child: Text(StringConstant.email,style: TextStyle(fontSize: 14,color: AppTheme.appBlack),textAlign: TextAlign.left,)),
                     Container(
                       margin: const EdgeInsets.only(left: 20,right: 20),
                       height: 50,
@@ -150,7 +146,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextFormField(
                             style: TextStyle(fontSize: 16,color: AppTheme.appBlack) ,
                             decoration: InputDecoration(
-                                hintText: 'Enter your email',
+                                hintText: StringConstant.enterYourEmail,
                                 hintStyle: TextStyle(fontSize: 16,color: AppTheme.appGrey),
                                 border: InputBorder.none,
                                 counterStyle: const TextStyle(height: double.minPositive,),
@@ -175,7 +171,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         margin: const EdgeInsets.only(left: 20,right: 20,top: 10),
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.centerLeft,
-                        child: Text('Mobile No.',style: TextStyle(fontSize: 14,color: AppTheme.appBlack),textAlign: TextAlign.left,)),
+                        child: Text(StringConstant.mobileNo,style: TextStyle(fontSize: 14,color: AppTheme.appBlack),textAlign: TextAlign.left,)),
                     Container(
                       margin: const EdgeInsets.only(left: 20,right: 20),
                       height: 60,
@@ -192,7 +188,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 Container(
                                     height: 48,width: 70,
                                     alignment: Alignment.center,
-                                    child: Text('+91',style: TextStyle(fontSize: 16,color: AppTheme.appBlack),)),
+                                    child: Text(StringConstant.nineOne,style: TextStyle(fontSize: 16,color: AppTheme.appBlack),)),
                                 const Divider(height: 1,color: Colors.grey,)
                               ],
                             ),
@@ -205,7 +201,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 TextFormField(
                                   style: TextStyle(fontSize: 16,color: AppTheme.appBlack) ,
                                   decoration: InputDecoration(
-                                      hintText: 'Phone Number',
+                                      hintText: StringConstant.phoneNumber,
                                       hintStyle: TextStyle(fontSize: 16,color: AppTheme.appGrey),
                                       border: InputBorder.none,
                                       counterStyle: const TextStyle(height: double.minPositive,),
@@ -245,12 +241,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ?  SizedBox(
                                 width: 20,
                                 height: 20,
-                                child: Icon(Icons.check_box,color: AppTheme.appRed,)
+                                child: Icon(Icons.check_box,color: AppTheme.appYellow,)
                             )
                                 :  SizedBox(
                                 width: 20,
                                 height: 20,
-                                child:Icon(Icons.check_box_outline_blank,color: AppTheme.appRed,)
+                                child:Icon(Icons.check_box_outline_blank,color: AppTheme.appYellow,)
                             ),
                           ),
                           Container(
@@ -258,7 +254,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: Row(
                               children: [
                                 Text(
-                                  "Please agree to our",
+                                  StringConstant.pleaseAgreeToOur,
                                   style: TextStyle(
                                       color: AppTheme.appBlack),
                                 ),
@@ -267,13 +263,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     //launchPrivacyUrl(context: context, url: 'https://mundamisthan.com/privacypolicy');
                                     Navigator.of(context).push(MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                         PrivacyScreen(url: Apis.privacyUrl, heading: "Privacy policy",)));
+                                         PrivacyScreen(url: Apis.privacyUrl, heading: StringConstant.privacyPolicy,)));
 
                                     },
                                   child: Container(
                                     margin: const EdgeInsets.only(left: 5),
                                     child: Text(
-                                      "Privacy Policy",
+                                      StringConstant.privacyPolicy,
                                       style: TextStyle(
                                           color: AppTheme.appBlack,fontWeight: FontWeight.w600),
                                     ),
@@ -293,7 +289,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
-                            backgroundColor: AppTheme.appRed,
+                            backgroundColor: AppTheme.appYellow,
                             elevation: 3,
                             alignment: Alignment.center,
                             shape: RoundedRectangleBorder(
@@ -303,7 +299,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           onPressed: () => _onTapSendOtp(context),
                           child: const Text(
-                            "Sign Up",
+                            StringConstant.signUp,
                             style: TextStyle(fontSize: 16),
                             textAlign: TextAlign.center,
                           ),
@@ -319,7 +315,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Already have account?",
+                            StringConstant.alreadyHaveAccount,
                             style: TextStyle(
                                 fontSize: 16
                                 ,color: AppTheme.appBlack
@@ -336,10 +332,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ), (e) => false);
                             },
                             child: Text(
-                              'Sign In',
+                              StringConstant.signIn,
                               style: TextStyle(
                                   fontSize: 16
-                                  ,color: AppTheme.appRed
+                                  ,color: AppTheme.appYellow
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -376,16 +372,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 name: _nameController.text,
                 email: _emailController.text);
           }else{
-            context.showToast("Please agree to our policy");
+            context.showToast(StringConstant.pleaseAgreeToOurPolicy);
           }
         } else {
-          context.showToast("Enter Mobile Number");
+          context.showToast(StringConstant.enterMobileNumber);
         }
       }else{
-        context.showToast("Enter your email");
+        context.showToast(StringConstant.enterYourEmail);
       }
     }else{
-      context.showToast("Enter your name");
+      context.showToast(StringConstant.enterYourName);
     }
   }
   Future<void> launchPrivacyUrl(
@@ -394,7 +390,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       await launch(url);
     } else {
       debugPrint('Unable to launch url');
-      ToastExtension(context).showToast("Unable to launch url");
+      ToastExtension(context).showToast(StringConstant.enableToLaunch);
     }
 
     return;
