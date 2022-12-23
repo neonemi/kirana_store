@@ -323,8 +323,9 @@ extension AlertExtension on BuildContext {
                     ElevatedButton(
 
                       onPressed: () {
-                        onProceed?.call();
                         SmartDialog.dismiss();
+                        onProceed?.call();
+
                       },
                       child: Text(confirmTextButton ??'PROCEED',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
                     ),
@@ -342,8 +343,9 @@ extension AlertExtension on BuildContext {
                     ElevatedButton(
 
                       onPressed: () {
-                        onAddressChange?.call();
                         SmartDialog.dismiss();
+                        onAddressChange?.call();
+
                       },
                       child: Text(confirmTextButton ??'CHANGE ADDRESS',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
                     ),

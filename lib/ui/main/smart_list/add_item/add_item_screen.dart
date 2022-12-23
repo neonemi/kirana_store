@@ -53,7 +53,7 @@ class AddItemScreenState extends State<AddItemScreen> {
                   iconTheme: IconThemeData(color: AppTheme.appWhite),
                   leading: GestureDetector(
                     onTap: (){
-                      Navigator.of(context).pop();
+                      _navigationPop(context);
                     },
                     child: Center(
                       child: Container(

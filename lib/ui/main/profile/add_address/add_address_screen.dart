@@ -19,6 +19,8 @@ class AddAddressScreenState extends State<AddAddressScreen> {
   String _floorController = "";
   String _pinController = "";
   String locationValue = "";
+  String latValue='';
+  String longValue='';
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   double fontSize = 14.0;
   @override
@@ -126,7 +128,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
-                              const SearchLocationScreen()));
+                                  const SearchLocationScreen()));
                         },
                         child: Container(
                           margin: const EdgeInsets.only(top: 10),
@@ -303,7 +305,17 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                                 // fixedSize: const Size(150, 52),
                                 //////// HERE
                               ),
-                              onPressed: () => _onTapSave(context),
+                              onPressed: ()  {
+                                _onTapSave(
+                                    context,
+                                    _titleController,
+                                    locationValue,
+                                    latValue,
+                                    longValue,
+                                    _floorController,
+                                    _landMarkController,
+                                    _pinController);
+                              },
                               child: Text(
                                 "Save Address",
                                 style: TextStyle(
@@ -323,5 +335,15 @@ class AddAddressScreenState extends State<AddAddressScreen> {
             )));
   }
 
-  _onTapSave(context) {}
+  _onTapSave(context,  String address, String location,
+      String lat, String lng, String floor, String landmark, String pincode) {
+    _cubit.addAddress(
+        address: address,
+        location: location,
+        lat: lat,
+        lng: lng,
+        floor: floor,
+        landmark: landmark,
+        pincode: pincode);
+  }
 }

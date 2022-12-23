@@ -16,3 +16,4 @@ export 'location_cubit/location_cubit.dart';
 export 'smart_list_cubit/smart_list_cubit.dart';
 export 'notification_cubit/notification_cubit.dart';
 export 'coupon_cubit/coupon_cubit.dart';
+export 'order_cubit/order_cubit.dart';

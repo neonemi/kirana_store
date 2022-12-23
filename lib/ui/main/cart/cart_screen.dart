@@ -105,7 +105,7 @@ class _CartScreenState extends State<CartScreen> {
                         children: [
                           Container(
                             color: AppTheme.appYellow,
-                            // height: MediaQuery.of(context).size.height * 1 / 4,
+                             height: MediaQuery.of(context).size.height * 1 / 5,
                             width: MediaQuery.of(context).size.width,
                             alignment: Alignment.center,
                             child: Column(
@@ -125,7 +125,7 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 20,
+                                  height: 10,
                                 ),
                                 Container(
                                   margin: const EdgeInsets.only(
@@ -142,7 +142,7 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  height: 20,
+                                  height: 10,
                                 ),
                                 Container(
                                   margin: const EdgeInsets.only(
@@ -160,6 +160,8 @@ class _CartScreenState extends State<CartScreen> {
                                             MediaQuery.of(context).size.width -
                                                 90,
                                         child: Text(currentLocation,
+                                            maxLines: 3,
+                                            overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 color: AppTheme.appWhite,
                                                 fontSize: 16,
@@ -190,7 +192,7 @@ class _CartScreenState extends State<CartScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 200,
+                              height: MediaQuery.of(context).size.height * 1 / 4,
                             child: ListView.builder(
                                 scrollDirection: Axis.vertical,
                                 itemCount: cartList!.length,
@@ -391,99 +393,108 @@ class _CartScreenState extends State<CartScreen> {
                                   );
                                 }),
                           ),
-                          ListTile(
-                            dense: true,
-                            visualDensity: const VisualDensity(
-                                horizontal: 0, vertical: -4),
-                            title: Text('Item Total',
-                                style: TextStyle(
-                                    color: AppTheme.appBlack,
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat")),
-                            trailing: Text('₹17.00',
-                                style: TextStyle(
-                                    color: AppTheme.appBlack,
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat")),
+                          if(cartList!.length>=1)
+                          Container(
+                            height: MediaQuery.of(context).size.height * 1 / 4,
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  dense: true,
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -4),
+                                  title: Text('Item Total',
+                                      style: TextStyle(
+                                          color: AppTheme.appBlack,
+                                          fontSize: 14,
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: "Montserrat")),
+                                  trailing: Text('₹17.00',
+                                      style: TextStyle(
+                                          color: AppTheme.appBlack,
+                                          fontSize: 14,
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: "Montserrat")),
+                                ),
+                                ListTile(
+                                  dense: true,
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -4),
+                                  title: Text('GST',
+                                      style: TextStyle(
+                                          color: AppTheme.appBlack,
+                                          fontSize: 14,
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: "Montserrat")),
+                                  trailing: Text('₹1.00',
+                                      style: TextStyle(
+                                          color: AppTheme.appBlack,
+                                          fontSize: 14,
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: "Montserrat")),
+                                ),
+                                ListTile(
+                                  dense: true,
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -4),
+                                  minLeadingWidth: 0,
+                                  title: Text('Delivery Charge',
+                                      style: TextStyle(
+                                          color: AppTheme.appBlack,
+                                          fontSize: 14,
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: "Montserrat")),
+                                  trailing: Text('₹30.00',
+                                      style: TextStyle(
+                                          color: AppTheme.appBlack,
+                                          fontSize: 14,
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: "Montserrat")),
+                                ),
+                                ListTile(
+                                  dense: true,
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -4),
+                                  title: Text('Apply Coupons',
+                                      style: TextStyle(
+                                          color: AppTheme.appYellow,
+                                          fontSize: 16,
+                                          decoration: TextDecoration.underline,
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: "Montserrat")),
+                                  onTap: (){
+                                    _onApplyCoupon(context);
+                                  },
+                                ),
+                                Divider(
+                                  color: AppTheme.appGrey,
+                                  indent: 10,
+                                  endIndent: 10,
+                                ),
+                                ListTile(
+                                  dense: true,
+                                  visualDensity: const VisualDensity(
+                                      horizontal: 0, vertical: -4),
+                                  minLeadingWidth: 0,
+                                  title: Text('Grand Total',
+                                      style: TextStyle(
+                                          color: AppTheme.appBlack,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: "Montserrat")),
+                                  trailing: Text('₹48.00',
+                                      style: TextStyle(
+                                          color: AppTheme.appBlack,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle: FontStyle.normal,
+                                          fontFamily: "Montserrat")),
+                                ),
+                              ],
+                            ),
                           ),
-                          ListTile(
-                            dense: true,
-                            visualDensity: const VisualDensity(
-                                horizontal: 0, vertical: -4),
-                            title: Text('GST',
-                                style: TextStyle(
-                                    color: AppTheme.appBlack,
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat")),
-                            trailing: Text('₹1.00',
-                                style: TextStyle(
-                                    color: AppTheme.appBlack,
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat")),
-                          ),
-                          ListTile(
-                            dense: true,
-                            visualDensity: const VisualDensity(
-                                horizontal: 0, vertical: -4),
-                            minLeadingWidth: 0,
-                            title: Text('Delivery Charge',
-                                style: TextStyle(
-                                    color: AppTheme.appBlack,
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat")),
-                            trailing: Text('₹30.00',
-                                style: TextStyle(
-                                    color: AppTheme.appBlack,
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat")),
-                          ),
-                          ListTile(
-                            dense: true,
-                            visualDensity: const VisualDensity(
-                                horizontal: 0, vertical: -4),
-                            title: Text('Apply Coupons',
-                                style: TextStyle(
-                                    color: AppTheme.appYellow,
-                                    fontSize: 16,
-                                    decoration: TextDecoration.underline,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat")),
-                            onTap: (){
-                              _onApplyCoupon(context);
-                            },
-                          ),
-                          Divider(
-                            color: AppTheme.appGrey,
-                            indent: 10,
-                            endIndent: 10,
-                          ),
-                          ListTile(
-                            dense: true,
-                            visualDensity: const VisualDensity(
-                                horizontal: 0, vertical: -4),
-                            minLeadingWidth: 0,
-                            title: Text('Grand Total',
-                                style: TextStyle(
-                                    color: AppTheme.appBlack,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat")),
-                            trailing: Text('₹48.00',
-                                style: TextStyle(
-                                    color: AppTheme.appBlack,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat")),
-                          ),
+                          if(cartList!.length>=1)
                           Container(
                             width: MediaQuery.of(context).size.width,
                             alignment: Alignment.center,
@@ -544,7 +555,7 @@ class _CartScreenState extends State<CartScreen> {
                     children: [
                       Container(
                         color: AppTheme.appYellow,
-                        // height: MediaQuery.of(context).size.height * 1 / 4,
+                         height: MediaQuery.of(context).size.height * 1 / 5,
                         width: MediaQuery.of(context).size.width,
                         alignment: Alignment.center,
                         child: Column(
@@ -564,7 +575,7 @@ class _CartScreenState extends State<CartScreen> {
                               ),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             Container(
                               margin:
@@ -581,7 +592,7 @@ class _CartScreenState extends State<CartScreen> {
                               ),
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             Container(
                               margin:

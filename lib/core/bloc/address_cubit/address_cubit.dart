@@ -9,7 +9,7 @@ class AddressCubit extends Cubit<AddressState> {
   final CoreRepository coreRepository;
 
   void addAddress(
-      {required String userid,
+      {
       required String address,
       required String location,
       required String lat,
@@ -19,8 +19,12 @@ class AddressCubit extends Cubit<AddressState> {
       required String pincode}) async {
     emit(AddressLoading());
     try {
+      String? userId = await coreRepository.localRepository.getUserId();
+      if (kDebugMode) {
+        print(userId);
+      }
       SuccessResponse response = await coreRepository.addAddress(
-          userid: userid,
+          userid: userId!,
           address: address,
           location: location,
           lat: lat,
@@ -36,7 +40,7 @@ class AddressCubit extends Cubit<AddressState> {
   }
 
   void updateAddress(
-      {required String userid,
+      {
       required String address,
       required String location,
       required String lat,
@@ -45,8 +49,12 @@ class AddressCubit extends Cubit<AddressState> {
       required String addressId}) async {
     emit(AddressLoading());
     try {
+      String? userId = await coreRepository.localRepository.getUserId();
+      if (kDebugMode) {
+        print(userId);
+      }
       SuccessResponse response = await coreRepository.updateAddress(
-          userid: userid,
+          userid: userId!,
           address: address,
           location: location,
           lat: lat,
