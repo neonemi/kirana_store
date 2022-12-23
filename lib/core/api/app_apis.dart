@@ -6,11 +6,17 @@ class Apis {
   static String updateProfile = "updateprofile";
   static String sendOtp = "sendotp";
   static String otpVerify = "otpverify";
+  static String updateToken = "updatetoken";
   static String registerUrl = "register";
   static String bannerImageUrl = "bannerimage";
   static String categoryUrl = "category";
   static String allProductUrl = "products";
   static String bestSellerUrl = "bestsellers";
+  static String couponUrl = "coupon";
+  static String notificationUrl = "notifications";
+  static String deleteNotificationUrl = "notifications";
+  static String readNotificationUrl = "readnotifications";
+  static String unReadCountNotificationUrl = "unreadnotificationcount";
   static String subCategory = "subcategory";
   static String privacyUrl = "https://mundamisthan.com/privacypolicy";
   static String menuUrl = "https://mundamisthan.com/menu";
@@ -20,4 +26,8 @@ class Apis {
   static String updateAddressUrl ='updateaddress';
   static String defaultaddressUrl ='defaultaddress';
   static String deleteaddressUrl ='deleteaddress';
+  static String allAddressUrl = "getalladdress";
+  static String orderUrl='order';
+  static String customerOrderUrl='customerorders';
+  static String trackOrderUrl='trackorder';
 }

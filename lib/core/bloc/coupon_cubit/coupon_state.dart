@@ -15,8 +15,12 @@ class CouponLoading extends CouponState {
 }
 
 class CouponSuccess extends CouponState {
+  const CouponSuccess(this.response);
+
+  final GetCouponResponse response;
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [response];
 }
 
 

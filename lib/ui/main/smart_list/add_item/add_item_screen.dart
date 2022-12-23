@@ -51,14 +51,19 @@ class AddItemScreenState extends State<AddItemScreen> {
                 appBar: AppBar(
                   backgroundColor: AppTheme.appWhite,
                   iconTheme: IconThemeData(color: AppTheme.appWhite),
-                  leading: Center(
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          color: AppTheme.appYellow, shape: BoxShape.circle),
-                      child: const Center(
-                        child: Icon(Icons.arrow_back),
+                  leading: GestureDetector(
+                    onTap: (){
+                      Navigator.of(context).pop();
+                    },
+                    child: Center(
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            color: AppTheme.appYellow, shape: BoxShape.circle),
+                        child: const Center(
+                          child: Icon(Icons.arrow_back),
+                        ),
                       ),
                     ),
                   ),

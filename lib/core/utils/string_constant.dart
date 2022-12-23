@@ -49,4 +49,9 @@ class StringConstant {
   static const addItem='Add Item';
   static const buy="Buy";
   static const searchHintAddItem='Select Category';
+  static const sorryNoCouponFound='Sorry No Coupon Found';
+  static const availableOffer='Available Offers';
+  static const apply='Apply';
+  static const enterPromoCode='Enter Promo Code';
+  static const couponScreen='Coupon Screen';
 }

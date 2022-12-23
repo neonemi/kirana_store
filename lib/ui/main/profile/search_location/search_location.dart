@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -19,20 +21,28 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
   final double latitudevalue=28.0325;
   final  double longitudevalue=73.3295;
   final zoomvalue = 16.0;
+  StreamSubscription<LocationData>? locationSubscription;
   @override
   void initState() {
     super.initState();
     getLocation();
   }
+
+  @override
+  void dispose() {
+    locationSubscription!.cancel();
+    super.dispose();
+  }
   GoogleMapController? _controller;
   Location currentLocation = Location();
   Set<Marker> _markers={};
   void getLocation() async{
+
     var location = await currentLocation.getLocation();
-    currentLocation.onLocationChanged.listen((LocationData loc){
+    locationSubscription =  currentLocation.onLocationChanged.listen((LocationData loc){
 
       _controller?.animateCamera(CameraUpdate.newCameraPosition( CameraPosition(
-        target: LatLng(latitudevalue , longitudevalue),
+        target: LatLng(location.latitude! , location.longitude!),
         zoom:zoomvalue,
       )));
       if (kDebugMode) {
@@ -97,8 +107,8 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
                 ),
               ),
               body: SizedBox(
-                height: 200,
-                width: 200,
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
                 child:
                 GoogleMap(
                   mapType: MapType.normal,

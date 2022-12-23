@@ -14,14 +14,14 @@ class AddressScreen extends StatefulWidget {
 
 class AddressScreenState extends State<AddressScreen> {
   late final AddressCubit _cubit;
-    int selectedIndex=-1;
-  final Map<String, dynamic> addressList = {
-    "title": ['Work', 'Home'],
-    "address": [
-      'Old Ginnani, Bikaner Fort, Bikaner, Rajasthan, India, 334001, Ginnani, 334001',
-      '322/41, Rambagh, Prayagraj, Uttar Pradesh 211003, India, Near Station, 455611'
-    ],
-  };
+  int selectedIndex = -1;
+  // final Map<String, dynamic> addressList = {
+  //   "title": ['Work', 'Home'],
+  //   "address": [
+  //     'Old Ginnani, Bikaner Fort, Bikaner, Rajasthan, India, 334001, Ginnani, 334001',
+  //     '322/41, Rambagh, Prayagraj, Uttar Pradesh 211003, India, Near Station, 455611'
+  //   ],
+  // };
   @override
   void initState() {
     super.initState();
@@ -34,7 +34,8 @@ class AddressScreenState extends State<AddressScreen> {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return BlocProvider<AddressCubit>(
         create: (context) {
-          _cubit = AddressCubit(context.read<CoreRepository>());
+          _cubit = AddressCubit(context.read<CoreRepository>())
+            ..getAllAddress();
           // _cubit.getProfile();
           return _cubit;
         },
@@ -120,110 +121,275 @@ class AddressScreenState extends State<AddressScreen> {
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.w500),
                     ),
-                    ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: addressList['title'].length,
-                        physics: const ClampingScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-
-                          return Container(
-                            alignment: Alignment.topLeft,
-                            width: MediaQuery.of(context).size.width,
-                            margin: const EdgeInsets.only(top: 10, bottom: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width,
-                                  child: ListTile(
-                                      visualDensity:
-                                      const VisualDensity(horizontal: -2, vertical: -3),
-                                      title: Text(
-                                        addressList['title'][index],
-                                        style: TextStyle(
-                                            color: AppTheme.appBlack,
-                                            fontSize: 16,
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                      trailing:selectedIndex==index?
-
-                                      Image.asset(
-                                              AppIconKeys.selected,
-                                              height: 20,
-                                              width: 20,
-                                              color: AppTheme.appBlack,
-                                            )
-                                          : Image.asset(
-                                              AppIconKeys.unselected,
-                                              height: 20,
-                                              width: 20,
-                                              color: AppTheme.appBlack,
-                                            ),
-                                      onTap: () {
-
-                                        setState(() {
-                                          selectedIndex=index;
-                                        });
-                                      },
-                                  subtitle:  Text(
-                                    addressList['address'][index],
-                                    style: TextStyle(
-                                      color: AppTheme.appBlack,
-                                      fontSize: 12,
-                                      fontStyle: FontStyle.normal,
-                                    ),
-                                  ),),
-                                ),
-                                Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  margin: const EdgeInsets.only(left: 15, right: 15),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.of(context).push(MaterialPageRoute(
-                                              builder: (BuildContext context) =>
-                                              const AddAddressScreen()));
-                                        },
-                                        child: SizedBox(
-                                          width: 100,
-                                          child: Text(
-                                            'EDIT',
-                                            style: TextStyle(
-                                                color: AppTheme.appYellow,
-                                                fontSize: 14,
-                                                fontStyle: FontStyle.normal,
-                                               ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 100,
-                                        child: Text(
-                                          'DELETE',
-                                          style: TextStyle(
-                                              color: AppTheme.appYellow,
-                                              fontSize: 14,
-                                              fontStyle: FontStyle.normal,
+                    BlocBuilder<AddressCubit, AddressState>(
+                        builder: (context, state) {
+                      if (state is AllAddressSuccess) {
+                        GetAllAddressResponse response = state.response;
+                        return response.data == null
+                            ? const SizedBox.shrink()
+                            : response.data!.isEmpty
+                                ? const SizedBox.shrink()
+                                : ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: response.data!.length,
+                                    physics: const ClampingScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) {
+                                      return Container(
+                                        alignment: Alignment.topLeft,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        margin: const EdgeInsets.only(
+                                            top: 10, bottom: 10),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              child: ListTile(
+                                                visualDensity:
+                                                    const VisualDensity(
+                                                        horizontal: -2,
+                                                        vertical: -3),
+                                                title: Text(
+                                                  response
+                                                      .data![index].address!,
+                                                  style: TextStyle(
+                                                      color: AppTheme.appBlack,
+                                                      fontSize: 16,
+                                                      fontStyle:
+                                                          FontStyle.normal,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                                trailing:GestureDetector(
+                                                  onTap: (){
+                                                    // setState(() {
+                                                    //   selectedIndex = index;
+                                                    // });
+                                                    _cubit.defaultAddress( addressId:  response
+                                                        .data![index].id.toString(), location:response
+                                                        .data![index].location!);
+                                                  },
+                                                  child: response
+                                                      .data![index].isDefault==1?
+                                                  //selectedIndex == index ?
+                                                  Image.asset(
+                                                          AppIconKeys.selected,
+                                                          height: 20,
+                                                          width: 20,
+                                                          color:
+                                                              AppTheme.appBlack,
+                                                        )
+                                                      : Image.asset(
+                                                          AppIconKeys.unselected,
+                                                          height: 20,
+                                                          width: 20,
+                                                          color:
+                                                              AppTheme.appBlack,
+                                                        ),
+                                                ),
+                                                // onTap: () {
+                                                //
+                                                //
+                                                // },
+                                                subtitle: Text(
+                                                  response
+                                                      .data![index].location!,
+                                                  style: TextStyle(
+                                                    color: AppTheme.appBlack,
+                                                    fontSize: 12,
+                                                    fontStyle: FontStyle.normal,
+                                                  ),
+                                                ),
                                               ),
+                                            ),
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              margin: const EdgeInsets.only(
+                                                  left: 15, right: 15),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.of(context).push(
+                                                          MaterialPageRoute(
+                                                              builder: (BuildContext
+                                                                      context) =>
+                                                                  const AddAddressScreen()));
+                                                    },
+                                                    child: SizedBox(
+                                                      width: 100,
+                                                      child: Text(
+                                                        'EDIT',
+                                                        style: TextStyle(
+                                                          color: AppTheme
+                                                              .appYellow,
+                                                          fontSize: 14,
+                                                          fontStyle:
+                                                              FontStyle.normal,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      _onTapDelete(context,response
+                                                          .data![index].id.toString());
+                                                      // _cubit.deleteAddress( addressId:  response
+                                                      //     .data![index].id.toString());
+                                                    },
+                                                    child: SizedBox(
+                                                      width: 100,
+                                                      child: Text(
+                                                        'DELETE',
+                                                        style: TextStyle(
+                                                          color: AppTheme
+                                                              .appYellow,
+                                                          fontSize: 14,
+                                                          fontStyle:
+                                                              FontStyle.normal,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        }),
+                                      );
+                                    });
+                      }
+                      return const SizedBox.shrink();
+                        // ListView.builder(
+                        //   scrollDirection: Axis.vertical,
+                        //   itemCount: addressList['title'].length,
+                        //   physics: const ClampingScrollPhysics(),
+                        //   shrinkWrap: true,
+                        //   itemBuilder: (context, index) {
+                        //     return Container(
+                        //       alignment: Alignment.topLeft,
+                        //       width: MediaQuery.of(context).size.width,
+                        //       margin:
+                        //           const EdgeInsets.only(top: 10, bottom: 10),
+                        //       child: Column(
+                        //         mainAxisAlignment: MainAxisAlignment.start,
+                        //         crossAxisAlignment: CrossAxisAlignment.start,
+                        //         children: [
+                        //           SizedBox(
+                        //             width: MediaQuery.of(context).size.width,
+                        //             child: ListTile(
+                        //               visualDensity: const VisualDensity(
+                        //                   horizontal: -2, vertical: -3),
+                        //               title: Text(
+                        //                 addressList['title'][index],
+                        //                 style: TextStyle(
+                        //                     color: AppTheme.appBlack,
+                        //                     fontSize: 16,
+                        //                     fontStyle: FontStyle.normal,
+                        //                     fontWeight: FontWeight.w600),
+                        //               ),
+                        //               trailing: selectedIndex == index
+                        //                   ? Image.asset(
+                        //                       AppIconKeys.selected,
+                        //                       height: 20,
+                        //                       width: 20,
+                        //                       color: AppTheme.appBlack,
+                        //                     )
+                        //                   : Image.asset(
+                        //                       AppIconKeys.unselected,
+                        //                       height: 20,
+                        //                       width: 20,
+                        //                       color: AppTheme.appBlack,
+                        //                     ),
+                        //               onTap: () {
+                        //                 setState(() {
+                        //                   selectedIndex = index;
+                        //                 });
+                        //               },
+                        //               subtitle: Text(
+                        //                 addressList['address'][index],
+                        //                 style: TextStyle(
+                        //                   color: AppTheme.appBlack,
+                        //                   fontSize: 12,
+                        //                   fontStyle: FontStyle.normal,
+                        //                 ),
+                        //               ),
+                        //             ),
+                        //           ),
+                        //           Container(
+                        //             width: MediaQuery.of(context).size.width,
+                        //             margin: const EdgeInsets.only(
+                        //                 left: 15, right: 15),
+                        //             child: Row(
+                        //               mainAxisAlignment:
+                        //                   MainAxisAlignment.start,
+                        //               mainAxisSize: MainAxisSize.min,
+                        //               children: [
+                        //                 GestureDetector(
+                        //                   onTap: () {
+                        //                     Navigator.of(context).push(
+                        //                         MaterialPageRoute(
+                        //                             builder: (BuildContext
+                        //                                     context) =>
+                        //                                 const AddAddressScreen()));
+                        //                   },
+                        //                   child: SizedBox(
+                        //                     width: 100,
+                        //                     child: Text(
+                        //                       'EDIT',
+                        //                       style: TextStyle(
+                        //                         color: AppTheme.appYellow,
+                        //                         fontSize: 14,
+                        //                         fontStyle: FontStyle.normal,
+                        //                       ),
+                        //                     ),
+                        //                   ),
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 100,
+                        //                   child: Text(
+                        //                     'DELETE',
+                        //                     style: TextStyle(
+                        //                       color: AppTheme.appYellow,
+                        //                       fontSize: 14,
+                        //                       fontStyle: FontStyle.normal,
+                        //                     ),
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     );
+                        //   });
+                    }),
                   ],
                 ),
               ),
             )));
+  }
+  _onTapDelete(BuildContext context,String id) {
+    AlertExtension(context).showSuccessAlert(
+        message: 'Are you sure, you want to delete address?',
+        cancelTextButton: 'NO',
+        confirmTextButton: 'YES',
+        onConfirm: () {
+          _cubit.deleteAddress( addressId:  id);
+        },
+        height: 150,
+        width: MediaQuery.of(context).size.width - 40, title: '');
   }
 }

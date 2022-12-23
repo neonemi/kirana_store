@@ -9,15 +9,15 @@ class CouponCubit extends Cubit<CouponState> {
   CouponCubit(this.coreRepository) : super(CouponInitial());
   final CoreRepository coreRepository;
 
-  // void logout() async {
-  //   emit(NotificationLoading());
-  //   try {
-  //     coreRepository.localRepository.clearDatabase();
-  //     emit(NotificationSuccess());
-  //   } catch (e) {
-  //     String message = e.toString().replaceAll('api - ', '');
-  //     emit(NotificationError(message));
-  //   }
-  // }
+  void getCoupon() async {
+    emit(CouponLoading());
+    try {
+      GetCouponResponse response = await coreRepository.getCoupon();
+      emit(CouponSuccess(response));
+    } catch (e) {
+      String message = e.toString().replaceAll('api - ', '');
+      emit(CouponError(message));
+    }
+  }
 
 }

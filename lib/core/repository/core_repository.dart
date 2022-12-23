@@ -86,7 +86,23 @@ class CoreRepository {
     }
     return RegisterUserResponse.fromJson(response);
   }
-
+  Future updateToken(
+      {required String userId, required String token}) async {
+    final Uri api = apiProvider.getUri(Apis.updateToken);
+    String body = jsonEncode({'userid': userId, 'token': token, 'is_ios':Platform.isIOS?'1':'0'});
+    final response = await apiProvider.post(
+      requestBody: body,
+      endPoint: api,
+    );
+    if (kDebugMode) {
+      print('json$response');
+    }
+    SuccessResponse successResponse = SuccessResponse.fromJson(response);
+    if (kDebugMode) {
+      print('json 1 $successResponse');
+    }
+    return successResponse;
+  }
   Future getBannerImage() async {
     final Uri api = apiProvider.getUri(Apis.bannerImageUrl);
     final response = await apiProvider.get(api);
@@ -260,7 +276,7 @@ class CoreRepository {
     return getSearchProduct;
   }
 
-  Future<SuccessResponse> addAddress(
+  Future addAddress(
       {required String userid,
       required String address,
       required String location,
@@ -287,14 +303,14 @@ class CoreRepository {
     if (kDebugMode) {
       print('json$response');
     }
-    SuccessResponse otpSent = SuccessResponse.fromJson(response);
+    SuccessResponse successResponse = SuccessResponse.fromJson(response);
     if (kDebugMode) {
-      print('json 1 $otpSent');
+      print('json 1 $successResponse');
     }
-    return SuccessResponse.fromJson(response);
+    return successResponse;
   }
 
-  Future<SuccessResponse> updateAddress({
+  Future updateAddress({
     required String userid,
     required String address,
     required String location,
@@ -318,16 +334,16 @@ class CoreRepository {
       endPoint: api,
     );
     if (kDebugMode) {
-      print('json$response');
+      print('updateAddress json$response');
     }
-    SuccessResponse otpSent = SuccessResponse.fromJson(response);
+    SuccessResponse successResponse = SuccessResponse.fromJson(response);
     if (kDebugMode) {
-      print('json 1 $otpSent');
+      print('updateAddress json 1 $successResponse');
     }
-    return SuccessResponse.fromJson(response);
+    return successResponse;
   }
 
-  Future<SuccessResponse> defaultAddress({
+  Future defaultAddress({
     required String addressId,
     required String userid,
   }) async {
@@ -338,16 +354,16 @@ class CoreRepository {
       endPoint: api,
     );
     if (kDebugMode) {
-      print('json$response');
+      print('defaultAddress json$response');
     }
-    SuccessResponse otpSent = SuccessResponse.fromJson(response);
+    SuccessResponse successResponse = SuccessResponse.fromJson(response);
     if (kDebugMode) {
-      print('json 1 $otpSent');
+      print('defaultAddress json 1 $successResponse');
     }
-    return SuccessResponse.fromJson(response);
+    return successResponse;
   }
 
-  Future<SuccessResponse> deleteAddress({required String addressId}) async {
+  Future deleteAddress({required String addressId}) async {
     final Uri api = apiProvider.getUri(Apis.deleteaddressUrl);
     String body = jsonEncode({'addressid': addressId});
     final response = await apiProvider.post(
@@ -355,11 +371,136 @@ class CoreRepository {
       endPoint: api,
     );
     if (kDebugMode) {
-      print('json$response');
+      print('deleteAddress json$response');
     }
-    SuccessResponse otpSent = SuccessResponse.fromJson(response);
+    SuccessResponse successResponse = SuccessResponse.fromJson(response);
     if (kDebugMode) {
-      print('json 1 $otpSent');
+      print('deleteAddress json 1 $successResponse');
+    }
+    return successResponse;
+  }
+  Future getAllAddress(String id) async {
+    final Uri api = apiProvider.getUri('${Apis.allAddressUrl}/$id');
+    final response = await apiProvider.get(api);
+    debugPrint('getAllAddress response 1 $response');
+    GetAllAddressResponse successResponse =
+    GetAllAddressResponse.fromJson(response);
+    debugPrint('getAllAddress response 2 $successResponse');
+    return successResponse;
+  }
+  Future getCoupon() async {
+    final Uri api = apiProvider.getUri(Apis.couponUrl);
+    final response = await apiProvider.get(api);
+    debugPrint('getCoupon response 1 $response');
+    GetCouponResponse successResponse =
+    GetCouponResponse.fromJson(response);
+    debugPrint('getCoupon response 2 $successResponse');
+    return successResponse;
+  }
+  Future getNotifications(String id) async {
+    final Uri api = apiProvider.getUri('${Apis.notificationUrl}/$id');
+    final response = await apiProvider.get(api);
+    debugPrint('getNotifications response 1 $response');
+    GetNotificationResponse successResponse =
+    GetNotificationResponse.fromJson(response);
+    debugPrint('getNotifications response 2 $successResponse');
+    return successResponse;
+  }
+
+
+  Future deleteNotifications(String id) async {
+    final Uri api = apiProvider.getUri('${Apis.notificationUrl}/$id');
+    final response = await apiProvider.delete(api);
+    debugPrint('deleteNotifications response 1 $response');
+    GetNotificationResponse successResponse =
+    GetNotificationResponse.fromJson(response);
+    debugPrint('deleteNotifications response 2 $successResponse');
+    return successResponse;
+  }
+  Future readNotifications(String id) async {
+    final Uri api = apiProvider.getUri('${Apis.readNotificationUrl}/$id');
+    final response = await apiProvider.get(api);
+    debugPrint('readNotifications response 1 $response');
+    GetNotificationResponse successResponse =
+    GetNotificationResponse.fromJson(response);
+    debugPrint('readNotifications response 2 $successResponse');
+    return successResponse;
+  }
+  Future unReadCountNotifications(String id) async {
+    final Uri api = apiProvider.getUri('${Apis.unReadCountNotificationUrl}/$id');
+    final response = await apiProvider.get(api);
+    debugPrint('unReadCountNotifications response 1 $response');
+    GetUnReadNotificationCount successResponse =
+    GetUnReadNotificationCount.fromJson(response);
+    debugPrint('unReadCountNotifications response 2 $successResponse');
+    return successResponse;
+  }
+  Future order(
+      {required String mobile,
+        required String name,
+        required String address,
+        required String products,
+        required String cartamount,
+        required String coupon,
+        required String finalamount}) async {
+    final Uri api = apiProvider.getUri(Apis.orderUrl);
+    String body = jsonEncode({
+      'mobile': mobile,
+      'name': name,
+      'address': address,
+      'products': products, //[{"id":1,"name":"Gulab jamun","qty":1,"unitqty":1,"unitqtyname":"Pieces","unitprice":1,"price":1}]
+      'cartamount': cartamount,
+      'coupon': coupon,
+      'finalamount': finalamount
+    });
+    final response = await apiProvider.post(
+      requestBody: body,
+      endPoint: api,
+    );
+    if (kDebugMode) {
+      print('order json :$response');
+    }
+    GetOrderResponse orderResponse = GetOrderResponse.fromJson(response);
+    if (kDebugMode) {
+      print('order json 1: $orderResponse');
+    }
+    return orderResponse;
+  }
+  Future customerOrders(
+      {required String mobile}) async {
+    final Uri api = apiProvider.getUri(Apis.customerOrderUrl);
+    String body = jsonEncode({
+      'mobile': mobile
+    });
+    final response = await apiProvider.post(
+      requestBody: body,
+      endPoint: api,
+    );
+    if (kDebugMode) {
+      print('customerOrders response: $response');
+    }
+    GetCustomOrderResponse getCustomOrderResponse = GetCustomOrderResponse.fromJson(response);
+    if (kDebugMode) {
+      print('customerOrders response 1 : $getCustomOrderResponse');
+    }
+    return getCustomOrderResponse;
+  }
+  Future<SuccessResponse> trackOrders(
+      {required String orderId}) async {
+    final Uri api = apiProvider.getUri(Apis.trackOrderUrl);
+    String body = jsonEncode({
+      'order_id': orderId
+    });
+    final response = await apiProvider.post(
+      requestBody: body,
+      endPoint: api,
+    );
+    if (kDebugMode) {
+      print('trackOrders response : $response');
+    }
+    SuccessResponse successResponse = SuccessResponse.fromJson(response);
+    if (kDebugMode) {
+      print('trackOrders response 1 :  $successResponse');
     }
     return SuccessResponse.fromJson(response);
   }

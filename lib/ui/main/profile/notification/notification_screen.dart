@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
 
-
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
 
@@ -22,28 +21,24 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return BlocProvider<NotificationCubit>(
       create: (context) {
-        _cubit = NotificationCubit(context.read<CoreRepository>());
+        _cubit = NotificationCubit(context.read<CoreRepository>())
+          ..getNotifications();
 
         return _cubit;
       },
       child: BlocListener<NotificationCubit, NotificationState>(
-        listener: (context, state) {
-          if (state is NotificationLoading) {
-            context.loaderOverlay.show();
-          } else {
-            context.loaderOverlay.hide();
-          }
-          if (state is NotificationSuccess) {
-
-          }
-          if (state is NotificationError) {
-            context.showToast(state.message);
-          }
-        },
-        child:
-        BlocBuilder<NotificationCubit,NotificationState>(builder: (context, state) {
-
-          return Scaffold(
+          listener: (context, state) {
+            if (state is NotificationLoading) {
+              context.loaderOverlay.show();
+            } else {
+              context.loaderOverlay.hide();
+            }
+            if (state is NotificationSuccess) {}
+            if (state is NotificationError) {
+              context.showToast(state.message);
+            }
+          },
+          child: Scaffold(
               appBar: AppBar(
                 backgroundColor: AppTheme.appYellow,
                 // centerTitle: true,
@@ -64,16 +59,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   ),
                 ),
               ),
-              body: const SizedBox(
-                height: 200,
-                width: 200,)
-
-          );
-        }),
-      ),
+              body: BlocBuilder<NotificationCubit, NotificationState>(
+                  builder: (context, state) {
+                return const SizedBox(
+                  height: 200,
+                  width: 200,
+                );
+              }))),
     );
     //const Center(child: Text("profile",style: TextStyle(color: Colors.red),));
   }
-
-
 }
