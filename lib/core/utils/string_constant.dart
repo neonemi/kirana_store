@@ -55,4 +55,23 @@ class StringConstant {
   static const enterPromoCode='Enter Promo Code';
   static const couponScreen='Coupon Screen';
   static const saveAddress ="Save Address";
+
+  //help screen
+  static const help='Help';
+  static const helpCentre='Help Centre';
+  static const pleaseGetInTouchNote='Please get in touch and we will be happy to help you';
+  static const welcomeToHelpCentre='Welcome to the help centre. Munda Snacks and Foods is serving its customers, We value our customer above all.\nIf you are facing any problem, you can contact us directly on customer care number given below:';
+  static const youCanCallUs='You can call us';
+  static const nineToSeven='(9:00 AM to 7:00 PM)';
+  static const helpMobileNumber='+91 730940 02814';
+  static const kareliLocation='Kareli, Dariyabad';
+  static const customerService='Customer Service';
+  static const manageOrders='Manage Orders';
+  static const allOfYourOrdersHaveBeen='All of your orders have been stored under "My Orders" section. The orders have been categorised under 3 sections namely completed, pending & cancelled. You can repeat any order by clicking icon given in front of them. The order list also help you find a particular product, which you ordered earlier, liked it but forget its name.';
+  static const returnsRefund='Returns & Refunds';
+  static const onceAOrder='Once a order has been placed by the customer & received by Munda Snacks & Foods and accepted, It directly goes to kitchen to either cooked freshly or for being packed. As food is fresh in nature, we can not cancel the order once it has been gone into cooking.';
+  static const transaction='Transaction';
+  static const youNeedToPayOnline='You need to pay online to place the order. You can contact us with provided helpline number to cancel the order before it cooked';
+  static const other='Other';
+  static const contactOnTheHelpline='Contact on the helpline number for any other query not covered in this section between 9am to 7pm.';
 }

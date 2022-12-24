@@ -58,9 +58,22 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     textAlign: TextAlign.center,
                   ),
                 ),
+                actions: [
+                  GestureDetector(
+                      onTap: (){
+                        _cubit.readNotifications();
+                      },
+                      child: Icon(Icons.more_vert,color: AppTheme.appWhite))
+                ],
               ),
               body: BlocBuilder<NotificationCubit, NotificationState>(
                   builder: (context, state) {
+                    if(state is NotificationSuccess){
+
+                    }
+                    if(state is NotificationReadSuccess){
+
+                    }
                 return const SizedBox(
                   height: 200,
                   width: 200,

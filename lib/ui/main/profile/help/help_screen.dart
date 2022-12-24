@@ -33,12 +33,12 @@ class HelpScreenState extends State<HelpScreen> {
             height: 50,
             alignment: Alignment.center,
             child: Text(
-              'Help',
+              StringConstant.help,
               style: TextStyle(
                   color: AppTheme.appWhite,
                   fontSize: 20,
                   fontStyle: FontStyle.normal,
-                  fontFamily: "Montserrat"),
+                  fontFamily: StringConstant.fontFamily),
               textAlign: TextAlign.center,
             ),
           ),
@@ -56,7 +56,7 @@ class HelpScreenState extends State<HelpScreen> {
                 height: 20,
               ),
               Text(
-                'Help Centre',
+                StringConstant.helpCentre,
                 style: TextStyle(
                     color: AppTheme.appBlack,
                     fontSize: 18,
@@ -67,7 +67,7 @@ class HelpScreenState extends State<HelpScreen> {
                 height: 10,
               ),
               Text(
-                'Please get in touch and we will be happy to help you',
+                StringConstant.pleaseGetInTouchNote,
                 style: TextStyle(color: AppTheme.appBlack, fontSize: 10),
                 textAlign: TextAlign.center,
               ),
@@ -82,7 +82,7 @@ class HelpScreenState extends State<HelpScreen> {
                 height: 10,
               ),
               Text(
-                'Welcome to the help centre. Munda Snacks and Foods is serving its customers, We value our customer above all.\nIf you are facing any problem, you can contact us directly on customer care number given below:',
+                StringConstant.welcomeToHelpCentre,
                 style: TextStyle(color: AppTheme.appBlack, fontSize: 14),
                 textAlign: TextAlign.left,
               ),
@@ -90,7 +90,7 @@ class HelpScreenState extends State<HelpScreen> {
                 height: 20,
               ),
               Text(
-                'You can call us',
+                StringConstant.youCanCallUs,
                 style: TextStyle(
                     color: AppTheme.appBlack,
                     fontSize: 18,
@@ -98,7 +98,7 @@ class HelpScreenState extends State<HelpScreen> {
                 textAlign: TextAlign.center,
               ),
               Text(
-                '(9:00 AM to 7:00 PM)',
+                StringConstant.nineToSeven,
                 style: TextStyle(color: AppTheme.appBlack, fontSize: 10),
                 textAlign: TextAlign.center,
               ),
@@ -113,7 +113,7 @@ class HelpScreenState extends State<HelpScreen> {
                     color: AppTheme.appGrey,
                   ),
                   Text(
-                    '+91 730940 02814',
+                    StringConstant.helpMobileNumber,
                     style: TextStyle(
                         color: AppTheme.appBlack,
                         fontSize: 16,
@@ -133,7 +133,7 @@ class HelpScreenState extends State<HelpScreen> {
                     color: AppTheme.appGrey,
                   ),
                   Text(
-                    'Kareli, Dariyabad',
+                    StringConstant.kareliLocation,
                     style: TextStyle(
                         color: AppTheme.appBlack,
                         fontSize: 16,
@@ -153,7 +153,7 @@ class HelpScreenState extends State<HelpScreen> {
                 height: 10,
               ),
               Text(
-                'Customer Service',
+                StringConstant.customerService,
                 style: TextStyle(
                     color: AppTheme.appBlack,
                     fontSize: 16,
@@ -173,7 +173,7 @@ class HelpScreenState extends State<HelpScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Manage Orders',
+                      StringConstant.manageOrders,
                       style: TextStyle(
                           color: AppTheme.appBlack,
                           fontSize: 14,
@@ -194,7 +194,7 @@ class HelpScreenState extends State<HelpScreen> {
               Visibility(
                   visible: !manageOrder,
                   child: Text(
-                    'All of your orders have been stored under "My Orders" section. The orders have been categorised under 3 sections namely completed, pending & cancelled. You can repeat any order by clicking icon given in front of them. The order list also help you find a particular product, which you ordered earlier, liked it but forget its name.',
+                    StringConstant.allOfYourOrdersHaveBeen,
                     style: TextStyle(
                         color: AppTheme.appBlack,
                         fontSize: 12,
@@ -227,7 +227,7 @@ class HelpScreenState extends State<HelpScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Returns & Refunds',
+                      StringConstant.returnsRefund,
                       style: TextStyle(
                           color: AppTheme.appBlack,
                           fontSize: 14,
@@ -248,11 +248,11 @@ class HelpScreenState extends State<HelpScreen> {
               Visibility(
                   visible: !returnRefund,
                   child: Text(
-                    'Once a order has been placed by the customer & received by Munda Snacks & Foods and accepted, It directly goes to kitchen to either cooked freshly or for being packed. As food is fresh in nature, we can not cancel the order once it has been gone into cooking.',
+                    StringConstant.onceAOrder,
                     style: TextStyle(
                         color: AppTheme.appBlack,
                         fontSize: 12,
-                        fontFamily: 'Montserrat'),
+                        fontFamily: StringConstant.fontFamily),
                     textAlign: TextAlign.justify,
                   )),
               Visibility(
@@ -281,7 +281,7 @@ class HelpScreenState extends State<HelpScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Transaction',
+                      StringConstant.transaction,
                       style: TextStyle(
                           color: AppTheme.appBlack,
                           fontSize: 14,
@@ -302,8 +302,8 @@ class HelpScreenState extends State<HelpScreen> {
               Visibility(
                   visible: !transaction,
                   child: Text(
-                    'You need to pay online to place the order. You can contact us with provided helpline number to cancel the order before it cooked',
-                    style: TextStyle(
+                    StringConstant.youNeedToPayOnline,
+                     style: TextStyle(
                         color: AppTheme.appBlack,
                         fontSize: 12,
                         fontFamily: 'Montserrat'),
@@ -335,7 +335,7 @@ class HelpScreenState extends State<HelpScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Other',
+                      StringConstant.other,
                       style: TextStyle(
                           color: AppTheme.appBlack,
                           fontSize: 14,
@@ -356,7 +356,7 @@ class HelpScreenState extends State<HelpScreen> {
               Visibility(
                   visible: !other,
                   child: Text(
-                    'Contact on the helpline number for any other query not covered in this section between 9am to 7pm.',
+                    StringConstant.contactOnTheHelpline,
                     style: TextStyle(
                         color: AppTheme.appBlack,
                         fontSize: 12,
