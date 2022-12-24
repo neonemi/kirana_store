@@ -195,7 +195,7 @@ class _CartScreenState extends State<CartScreen> {
                               height: MediaQuery.of(context).size.height * 1 / 4,
                             child: ListView.builder(
                                 scrollDirection: Axis.vertical,
-                                itemCount: cartList!.length,
+                                itemCount: cartList.length,
                                 physics: const ClampingScrollPhysics(),
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
@@ -393,8 +393,8 @@ class _CartScreenState extends State<CartScreen> {
                                   );
                                 }),
                           ),
-                          if(cartList!.length>=1)
-                          Container(
+                          if(cartList.isNotEmpty)
+                          SizedBox(
                             height: MediaQuery.of(context).size.height * 1 / 4,
                             child: Column(
                               children: [
@@ -494,11 +494,11 @@ class _CartScreenState extends State<CartScreen> {
                               ],
                             ),
                           ),
-                          if(cartList!.length>=1)
+                          if(cartList.isNotEmpty)
                           Container(
                             width: MediaQuery.of(context).size.width,
                             alignment: Alignment.center,
-                            child: Container(
+                            child: SizedBox(
                               width: 200,
                               child: ListTile(
                                 dense: true,

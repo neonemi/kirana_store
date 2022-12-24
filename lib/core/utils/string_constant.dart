@@ -54,4 +54,5 @@ class StringConstant {
   static const apply='Apply';
   static const enterPromoCode='Enter Promo Code';
   static const couponScreen='Coupon Screen';
+  static const saveAddress ="Save Address";
 }

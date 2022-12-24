@@ -43,7 +43,9 @@ class SearchScreenState extends State<SearchScreen> {
       ],
       child: BlocListener<SearchCubit, SearchState>(
           listener: (context, state) {
-            print(state);
+            if (kDebugMode) {
+              print(state);
+            }
             if (state is SearchLoading) {
               context.loaderOverlay.show();
             } else {

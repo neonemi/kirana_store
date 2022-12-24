@@ -317,7 +317,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                                     _pinController);
                               },
                               child: Text(
-                                "Save Address",
+                                StringConstant.saveAddress,
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,

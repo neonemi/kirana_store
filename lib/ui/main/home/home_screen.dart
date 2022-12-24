@@ -46,7 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
     ],
         child: BlocListener<HomeCubit, HomeState>(
           listener: (context, state) {
-            print(state);
+            if (kDebugMode) {
+              print(state);
+            }
             if (state is HomeLoading) {
               context.loaderOverlay.show();
             } else {

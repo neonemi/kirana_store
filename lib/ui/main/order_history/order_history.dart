@@ -115,17 +115,17 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Order Id: xyz'),
-                                    Text('Price: xyz'),
+                                    const Text('Order Id: xyz'),
+                                    const Text('Price: xyz'),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Date: xyz'),
+                                    const Text('Date: xyz'),
                                   ],
                                 ),
-                                Divider(),
+                                const Divider(),
                                 Container(
                                   alignment: Alignment.centerRight,
                                   child: Row(
