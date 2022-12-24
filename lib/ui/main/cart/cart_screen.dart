@@ -70,12 +70,12 @@ class _CartScreenState extends State<CartScreen> {
               height: 50,
               alignment: Alignment.center,
               child: Text(
-                'Cart',
+                StringConstant.cart,
                 style: TextStyle(
                     color: AppTheme.appWhite,
                     fontSize: 20,
                     fontStyle: FontStyle.normal,
-                    fontFamily: "Montserrat"),
+                    fontFamily: StringConstant.fontFamily),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -116,12 +116,12 @@ class _CartScreenState extends State<CartScreen> {
                                   width: MediaQuery.of(context).size.width,
                                   alignment: Alignment.topCenter,
                                   child: Text(
-                                    'Only one offer/coupon will be applicable on one order at a time.',
+                                    StringConstant.onlyOneOffer,
                                     style: TextStyle(
                                         color: AppTheme.appWhite,
                                         fontSize: 14,
                                         fontStyle: FontStyle.normal,
-                                        fontFamily: "Montserrat"),
+                                        fontFamily: StringConstant.fontFamily),
                                   ),
                                 ),
                                 const SizedBox(
@@ -133,12 +133,12 @@ class _CartScreenState extends State<CartScreen> {
                                   width: MediaQuery.of(context).size.width,
                                   alignment: Alignment.topLeft,
                                   child: Text(
-                                    'DELIVERY AT',
+                                    StringConstant.deliveryAt,
                                     style: TextStyle(
                                         color: AppTheme.appWhite,
                                         fontSize: 16,
                                         fontStyle: FontStyle.normal,
-                                        fontFamily: "Montserrat"),
+                                        fontFamily: StringConstant.fontFamily),
                                   ),
                                 ),
                                 const SizedBox(
@@ -166,7 +166,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 color: AppTheme.appWhite,
                                                 fontSize: 16,
                                                 fontStyle: FontStyle.normal,
-                                                fontFamily: "Montserrat")),
+                                                fontFamily: StringConstant.fontFamily)),
                                       ),
                                       Expanded(
                                         child: GestureDetector(
@@ -177,12 +177,12 @@ class _CartScreenState extends State<CartScreen> {
                                                             context) =>
                                                         const AddressScreen()));
                                           },
-                                          child: Text('Change',
+                                          child: Text(StringConstant.change,
                                               style: TextStyle(
                                                   color: AppTheme.appWhite,
                                                   fontSize: 16,
                                                   fontStyle: FontStyle.normal,
-                                                  fontFamily: "Montserrat")),
+                                                  fontFamily: StringConstant.fontFamily)),
                                         ),
                                       )
                                     ],
@@ -222,15 +222,15 @@ class _CartScreenState extends State<CartScreen> {
                                                   color: AppTheme.appBlack,
                                                   fontSize: 16,
                                                   fontStyle: FontStyle.normal,
-                                                  fontFamily: "Montserrat")),
+                                                  fontFamily: StringConstant.fontFamily)),
                                           subtitle: Text(
-                                              "₹${cartList[index].price}",
+                                              "${StringConstant.rupeeSymbol}${cartList[index].price}",
                                               style: TextStyle(
                                                   color: AppTheme.appBlack,
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w600,
                                                   fontStyle: FontStyle.normal,
-                                                  fontFamily: "Montserrat")),
+                                                  fontFamily: StringConstant.fontFamily)),
                                           trailing: Container(
                                             margin:
                                                 const EdgeInsets.only(top: 20),
@@ -402,29 +402,29 @@ class _CartScreenState extends State<CartScreen> {
                                   dense: true,
                                   visualDensity: const VisualDensity(
                                       horizontal: 0, vertical: -4),
-                                  title: Text('Item Total',
+                                  title: Text(StringConstant.itemTotal,
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
-                                          fontFamily: "Montserrat")),
+                                          fontFamily: StringConstant.fontFamily)),
                                   trailing: Text('₹17.00',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
-                                          fontFamily: "Montserrat")),
+                                          fontFamily: StringConstant.fontFamily)),
                                 ),
                                 ListTile(
                                   dense: true,
                                   visualDensity: const VisualDensity(
                                       horizontal: 0, vertical: -4),
-                                  title: Text('GST',
+                                  title: Text(StringConstant.gst,
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
-                                          fontFamily: "Montserrat")),
+                                          fontFamily: StringConstant.fontFamily)),
                                   trailing: Text('₹1.00',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
@@ -437,31 +437,31 @@ class _CartScreenState extends State<CartScreen> {
                                   visualDensity: const VisualDensity(
                                       horizontal: 0, vertical: -4),
                                   minLeadingWidth: 0,
-                                  title: Text('Delivery Charge',
+                                  title: Text(StringConstant.deliveryCharge,
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
-                                          fontFamily: "Montserrat")),
+                                          fontFamily: StringConstant.fontFamily)),
                                   trailing: Text('₹30.00',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
-                                          fontFamily: "Montserrat")),
+                                          fontFamily:StringConstant.fontFamily)),
                                 ),
                                 ListTile(
                                   dense: true,
                                   visualDensity: const VisualDensity(
                                       horizontal: 0, vertical: -4),
-                                  title: Text('Apply Coupons',
+                                  title: Text(StringConstant.applyCoupon,
                                       style: TextStyle(
                                           color: AppTheme.appYellow,
                                           fontSize: 16,
                                           decoration: TextDecoration.underline,
                                           fontWeight: FontWeight.w600,
                                           fontStyle: FontStyle.normal,
-                                          fontFamily: "Montserrat")),
+                                          fontFamily: StringConstant.fontFamily)),
                                   onTap: (){
                                     _onApplyCoupon(context);
                                   },
@@ -476,20 +476,20 @@ class _CartScreenState extends State<CartScreen> {
                                   visualDensity: const VisualDensity(
                                       horizontal: 0, vertical: -4),
                                   minLeadingWidth: 0,
-                                  title: Text('Grand Total',
+                                  title: Text(StringConstant.grandTotal,
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
                                           fontStyle: FontStyle.normal,
-                                          fontFamily: "Montserrat")),
+                                          fontFamily: StringConstant.fontFamily)),
                                   trailing: Text('₹48.00',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
                                           fontStyle: FontStyle.normal,
-                                          fontFamily: "Montserrat")),
+                                          fontFamily: StringConstant.fontFamily)),
                                 ),
                               ],
                             ),
@@ -506,13 +506,13 @@ class _CartScreenState extends State<CartScreen> {
                                 visualDensity: const VisualDensity(
                                     horizontal: 0, vertical: -4),
                                 minLeadingWidth: 0,
-                                title: Text('Total',
+                                title: Text(StringConstant.total,
                                     style: TextStyle(
                                         color: AppTheme.appWhite,
                                         fontSize: 14,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FontStyle.normal,
-                                        fontFamily: "Montserrat")),
+                                        fontFamily: StringConstant.fontFamily)),
                                 subtitle: Text('₹48.00',
                                     style: TextStyle(
                                         color: AppTheme.appWhite,
@@ -524,13 +524,13 @@ class _CartScreenState extends State<CartScreen> {
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Text('Place Order',
+                                    Text(StringConstant.placeOrder,
                                         style: TextStyle(
                                             color: AppTheme.appWhite,
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600,
                                             fontStyle: FontStyle.normal,
-                                            fontFamily: "Montserrat")),
+                                            fontFamily: StringConstant.fontFamily)),
                                     Icon(
                                       Icons.arrow_right,
                                       color: AppTheme.appWhite,
@@ -566,12 +566,12 @@ class _CartScreenState extends State<CartScreen> {
                               width: MediaQuery.of(context).size.width,
                               alignment: Alignment.topCenter,
                               child: Text(
-                                'Only one offer/coupon will be applicable on one order at a time.',
+                                StringConstant.onlyOneOffer,
                                 style: TextStyle(
                                     color: AppTheme.appWhite,
                                     fontSize: 14,
                                     fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat"),
+                                    fontFamily:StringConstant.fontFamily),
                               ),
                             ),
                             const SizedBox(
@@ -583,12 +583,12 @@ class _CartScreenState extends State<CartScreen> {
                               width: MediaQuery.of(context).size.width,
                               alignment: Alignment.topLeft,
                               child: Text(
-                                'DELIVERY AT',
+                               StringConstant.deliveryAt,
                                 style: TextStyle(
                                     color: AppTheme.appWhite,
                                     fontSize: 16,
                                     fontStyle: FontStyle.normal,
-                                    fontFamily: "Montserrat"),
+                                    fontFamily: StringConstant.fontFamily),
                               ),
                             ),
                             const SizedBox(
@@ -607,23 +607,23 @@ class _CartScreenState extends State<CartScreen> {
                                   SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width - 90,
-                                    child: Text('NA',
+                                    child: Text(StringConstant.na,
                                         style: TextStyle(
                                             color: AppTheme.appWhite,
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600,
                                             fontStyle: FontStyle.normal,
-                                            fontFamily: "Montserrat")),
+                                            fontFamily: StringConstant.fontFamily)),
                                   ),
                                   Expanded(
                                     child: Container(
-                                      child: Text('ADD',
+                                      child: Text(StringConstant.add,
                                           style: TextStyle(
                                               color: AppTheme.appWhite,
                                               fontSize: 16,
                                               fontWeight: FontWeight.w600,
                                               fontStyle: FontStyle.normal,
-                                              fontFamily: "Montserrat")),
+                                              fontFamily: StringConstant.fontFamily)),
                                     ),
                                   )
                                 ],

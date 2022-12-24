@@ -74,4 +74,24 @@ class StringConstant {
   static const youNeedToPayOnline='You need to pay online to place the order. You can contact us with provided helpline number to cancel the order before it cooked';
   static const other='Other';
   static const contactOnTheHelpline='Contact on the helpline number for any other query not covered in this section between 9am to 7pm.';
+
+  //NOTIFICATION
+  static const notification='Notifications';
+
+  //Cart screen
+  static const cart='Cart';
+  static const onlyOneOffer='Only one offer/coupon will be applicable on one order at a time.';
+  static const deliveryAt='DELIVERY AT';
+  static const change='Change';
+  static const rupeeSymbol="₹";
+  static const itemTotal='Item Total';
+  static const gst='GST';
+  static const deliveryCharge='Delivery Charge';
+  static const applyCoupon='Apply Coupons';
+  static const grandTotal='Grand Total';
+  static const total ='Total';
+  static const placeOrder='Place Order';
+  static const na='NA';
+  static const add='ADD';
+
 }
