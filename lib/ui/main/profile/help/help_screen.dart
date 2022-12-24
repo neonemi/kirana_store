@@ -306,7 +306,7 @@ class HelpScreenState extends State<HelpScreen> {
                      style: TextStyle(
                         color: AppTheme.appBlack,
                         fontSize: 12,
-                        fontFamily: 'Montserrat'),
+                        fontFamily: StringConstant.fontFamily),
                     textAlign: TextAlign.justify,
                   )),
               Visibility(
