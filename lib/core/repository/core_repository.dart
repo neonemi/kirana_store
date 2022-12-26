@@ -479,13 +479,13 @@ class CoreRepository {
     if (kDebugMode) {
       print('customerOrders response: $response');
     }
-    GetCustomOrderResponse getCustomOrderResponse = GetCustomOrderResponse.fromJson(response);
+    GetCustomerOrderResponse getCustomOrderResponse = GetCustomerOrderResponse.fromJson(response);
     if (kDebugMode) {
       print('customerOrders response 1 : $getCustomOrderResponse');
     }
     return getCustomOrderResponse;
   }
-  Future<SuccessResponse> trackOrders(
+  Future<GetTrackOrderResponse> trackOrders(
       {required String orderId}) async {
     final Uri api = apiProvider.getUri(Apis.trackOrderUrl);
     String body = jsonEncode({
@@ -498,10 +498,33 @@ class CoreRepository {
     if (kDebugMode) {
       print('trackOrders response : $response');
     }
-    SuccessResponse successResponse = SuccessResponse.fromJson(response);
+    GetTrackOrderResponse successResponse = GetTrackOrderResponse.fromJson(response);
     if (kDebugMode) {
       print('trackOrders response 1 :  $successResponse');
     }
-    return SuccessResponse.fromJson(response);
+    return GetTrackOrderResponse.fromJson(response);
+  }
+
+  Future paymentPayload(
+      {required String orderId,required String userId,required String transactionId,required paymentStatus }) async {
+    final Uri api = apiProvider.getUri(Apis.customerOrderUrl);
+    String body = jsonEncode({
+      'order_id': orderId,
+      'userid':userId,
+      'transaction_id':transactionId,
+      'payment_status':paymentStatus
+    });
+    final response = await apiProvider.post(
+      requestBody: body,
+      endPoint: api,
+    );
+    if (kDebugMode) {
+      print('paymentPayload response: $response');
+    }
+    GetPaymentPayloadResponse getPaymentPayloadResponse = GetPaymentPayloadResponse.fromJson(response);
+    if (kDebugMode) {
+      print('paymentPayload response 1 : $getPaymentPayloadResponse');
+    }
+    return getPaymentPayloadResponse;
   }
 }

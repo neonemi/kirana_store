@@ -15,9 +15,17 @@ class OrderLoading extends OrderState {
 }
 
 class OrderSuccess extends OrderState {
-
+  const OrderSuccess(this.response);
+  final GetCustomerOrderResponse response;
   @override
-  List<Object> get props => [];
+  List<Object> get props => [response];
+}
+
+class OrderTrackSuccess extends OrderState {
+  const OrderTrackSuccess(this.message);
+  final GetTrackOrderResponse message;
+  @override
+  List<Object> get props => [message];
 }
 
 class OrderError extends OrderState {

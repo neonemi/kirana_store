@@ -94,4 +94,6 @@ class StringConstant {
   static const na='NA';
   static const add='ADD';
 
+  //Order Details screen
+  static const orderDetails='Order Details';
 }

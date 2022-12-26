@@ -30,4 +30,5 @@ class Apis {
   static String orderUrl='order';
   static String customerOrderUrl='customerorders';
   static String trackOrderUrl='trackorder';
+  static String paymentPayloadUrl='payment_payload';
 }

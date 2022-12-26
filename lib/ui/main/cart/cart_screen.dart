@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
@@ -20,6 +22,7 @@ class _CartScreenState extends State<CartScreen> {
   final cartController = Get.find<CartController>();
   int selectedIndex = 0;
   String cartListString = '';
+  String address='';
   Future<void> preference() async {
     cartListString = context.read<LocalRepository>().getCartList() ?? '';
     setState(() {
@@ -30,9 +33,32 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     super.initState();
-    // _getLocation();
+    getaddress();
   }
+  Future<void> getaddress() async {
+    address= await _getLocation();
+  }
+  Future<String> _getLocation() async {
+    String address= await context.read<LocalRepository>().getAddress();
+    String currentLocation ='';
+    if(address.isEmpty) {
+      LocationPermission permission;
+      permission = await Geolocator.requestPermission();
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      debugPrint('location: ${position.latitude}');
+      List<Placemark> addresses =
+      await placemarkFromCoordinates(position.latitude, position.longitude);
 
+      var first = addresses.first;
+      currentLocation =
+      "${first.name} ${first.subLocality} ${first.locality} ${first.administrativeArea} ${first.country} ${first.postalCode}";
+      context.read<LocalRepository>().setAddress(currentLocation);
+    }else{
+      currentLocation =address;
+    }
+    return currentLocation ;
+  }
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -56,6 +82,22 @@ class _CartScreenState extends State<CartScreen> {
             context.loaderOverlay.hide();
           }
           if (state is CartSuccess) {}
+          if(state is CartOrderPlacedSuccess){
+            GetOrderResponse response=state.orderResponse;
+            AlertExtension(context).showSmartList(
+                onPayNow: () {
+
+                  _cubit.paymentPayload(response.orderId.toString(), 'xyz', response.paymentStatus!);
+
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (BuildContext context) => const OrderHistoryScreen(
+                  //           showAppBar: true,
+                  //         )));
+                },
+                onCashDelivery: (){
+
+                });
+          }
           if (state is CartError) {
             context.showToast(state.message);
           }
@@ -81,8 +123,7 @@ class _CartScreenState extends State<CartScreen> {
             ),
           ),
           body: BlocBuilder<CartCubit, CartState>(builder: (context, state) {
-            if (state is CartSuccess) {
-              String currentLocation = state.address;
+
 
               return GetBuilder<CartController>(
                   // no need to initialize Controller ever again, just mention the type
@@ -97,6 +138,7 @@ class _CartScreenState extends State<CartScreen> {
 
                   cartDataList.value = cartList;
                 }
+
                 return SizedBox(
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
@@ -159,7 +201,7 @@ class _CartScreenState extends State<CartScreen> {
                                         width:
                                             MediaQuery.of(context).size.width -
                                                 90,
-                                        child: Text(currentLocation,
+                                        child: Text(address.isEmpty?'NA':address,
                                             maxLines: 3,
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
@@ -168,6 +210,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 fontStyle: FontStyle.normal,
                                                 fontFamily: StringConstant.fontFamily)),
                                       ),
+                                      if(address.isNotEmpty)
                                       Expanded(
                                         child: GestureDetector(
                                           onTap: () {
@@ -184,7 +227,19 @@ class _CartScreenState extends State<CartScreen> {
                                                   fontStyle: FontStyle.normal,
                                                   fontFamily: StringConstant.fontFamily)),
                                         ),
-                                      )
+                                      ),
+                                      if(address.isEmpty)
+                                        Expanded(
+                                          child: Container(
+                                            child: Text(StringConstant.add,
+                                                style: TextStyle(
+                                                    color: AppTheme.appWhite,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontFamily: StringConstant.fontFamily)),
+                                          ),
+                                        )
                                     ],
                                   ),
                                 )
@@ -217,7 +272,7 @@ class _CartScreenState extends State<CartScreen> {
                                       children: [
                                         ListTile(
                                           title: Text(
-                                              '${cartList[index].name!} ( ${cartList[index].unitqty} ${cartList[index].unitqtyname})',
+                                              '${cartList[index].name!} ${cartList[index].unitqty!=null?( '(${cartList[index].unitqty} ${cartList[index].unitqtyname})'):''}',
                                               style: TextStyle(
                                                   color: AppTheme.appBlack,
                                                   fontSize: 16,
@@ -408,7 +463,7 @@ class _CartScreenState extends State<CartScreen> {
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
                                           fontFamily: StringConstant.fontFamily)),
-                                  trailing: Text('₹17.00',
+                                  trailing: Text('₹${cartController.cartTotalPrice()}',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
@@ -425,7 +480,7 @@ class _CartScreenState extends State<CartScreen> {
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
                                           fontFamily: StringConstant.fontFamily)),
-                                  trailing: Text('₹1.00',
+                                  trailing: Text('₹${cartController.gstPrice()}',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
@@ -443,7 +498,7 @@ class _CartScreenState extends State<CartScreen> {
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
                                           fontFamily: StringConstant.fontFamily)),
-                                  trailing: Text('₹30.00',
+                                  trailing: Text('₹0.00',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
@@ -483,7 +538,7 @@ class _CartScreenState extends State<CartScreen> {
                                           fontWeight: FontWeight.w600,
                                           fontStyle: FontStyle.normal,
                                           fontFamily: StringConstant.fontFamily)),
-                                  trailing: Text('₹48.00',
+                                  trailing: Text('₹${cartController.grandTotalPrice(cartController.cartTotalPrice(),cartController.gstPrice())}',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
@@ -513,7 +568,7 @@ class _CartScreenState extends State<CartScreen> {
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FontStyle.normal,
                                         fontFamily: StringConstant.fontFamily)),
-                                subtitle: Text('₹48.00',
+                                subtitle: Text('₹${cartController.grandTotalPrice(cartController.cartTotalPrice(),cartController.gstPrice())}',
                                     style: TextStyle(
                                         color: AppTheme.appWhite,
                                         fontSize: 12,
@@ -539,114 +594,35 @@ class _CartScreenState extends State<CartScreen> {
                                   ],
                                 ),
                                 onTap: () {
-                                  _onTap(context, currentLocation);
+                                  _onTap(context, address,'${cartController.grandTotalPrice(cartController.cartTotalPrice(),cartController.gstPrice())}','${cartController.cartTotalPrice()}','');
                                 },
                               ),
                             ),
                           )
                         ]));
               });
-            }
-            return SizedBox(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: ListView(
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        color: AppTheme.appYellow,
-                         height: MediaQuery.of(context).size.height * 1 / 5,
-                        width: MediaQuery.of(context).size.width,
-                        alignment: Alignment.center,
-                        child: Column(
-                          children: [
-                            Container(
-                              margin:
-                                  const EdgeInsets.only(left: 10, right: 10),
-                              width: MediaQuery.of(context).size.width,
-                              alignment: Alignment.topCenter,
-                              child: Text(
-                                StringConstant.onlyOneOffer,
-                                style: TextStyle(
-                                    color: AppTheme.appWhite,
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily:StringConstant.fontFamily),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              margin:
-                                  const EdgeInsets.only(left: 10, right: 10),
-                              width: MediaQuery.of(context).size.width,
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                               StringConstant.deliveryAt,
-                                style: TextStyle(
-                                    color: AppTheme.appWhite,
-                                    fontSize: 16,
-                                    fontStyle: FontStyle.normal,
-                                    fontFamily: StringConstant.fontFamily),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              margin:
-                                  const EdgeInsets.only(left: 10, right: 10),
-                              width: MediaQuery.of(context).size.width,
-                              alignment: Alignment.topLeft,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width - 90,
-                                    child: Text(StringConstant.na,
-                                        style: TextStyle(
-                                            color: AppTheme.appWhite,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle: FontStyle.normal,
-                                            fontFamily: StringConstant.fontFamily)),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      child: Text(StringConstant.add,
-                                          style: TextStyle(
-                                              color: AppTheme.appWhite,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600,
-                                              fontStyle: FontStyle.normal,
-                                              fontFamily: StringConstant.fontFamily)),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ]));
+
+
           }),
         ),
       ),
     );
   }
 
-  void _onTap(BuildContext context, String currentLocation) {
+  void _onTap(BuildContext context, String currentLocation,String finalamount,String cartAmount,String coupon) {
     AlertExtension(context).showPlaceOrderAlert(
         address: currentLocation,
         onProceed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (BuildContext context) => const OrderHistoryScreen(
-                    showAppBar: true,
-                  )));
+          print(cartAmount);
+          print(coupon);
+          print(finalamount);
+          _cubit.placeOrder(cartAmount, coupon, finalamount);
+
+
+          // Navigator.of(context).push(MaterialPageRoute(
+          //     builder: (BuildContext context) => const OrderHistoryScreen(
+          //           showAppBar: true,
+          //         )));
         },
         onAddressChange: () {
           Navigator.of(context).push(MaterialPageRoute(

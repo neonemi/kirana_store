@@ -21,8 +21,21 @@ class CartSuccess extends CartState {
   @override
   List<Object> get props => [address];
 }
+class CartOrderPlacedSuccess extends CartState {
+  const CartOrderPlacedSuccess(this.orderResponse);
 
+  final GetOrderResponse orderResponse;
 
+  @override
+  List<Object> get props => [orderResponse];
+}
+class CartPaymentPayloadSuccess extends CartState {
+  const CartPaymentPayloadSuccess(this.orderResponse);
+
+  final GetPaymentPayloadResponse orderResponse;
+  @override
+  List<Object> get props => [orderResponse];
+}
 class CartError extends CartState {
   const CartError(this.message);
 

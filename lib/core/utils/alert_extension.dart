@@ -233,7 +233,84 @@ extension AlertExtension on BuildContext {
       );
     });
   }
-
+  showSmartList({
+    final void Function()? onCashDelivery,
+    final void Function()? onPayNow,
+  }) {
+    SmartDialog.show(builder: (context) {
+      return Container(
+        height: 150,
+        padding: const EdgeInsets.all(8),
+        width: MediaQuery.of(context).size.width-100,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        alignment: Alignment.center,
+        child:Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children:[
+              Container(alignment: Alignment.centerLeft,
+                  width: MediaQuery.of(context).size.width-100,
+                  child: Text('Alert',style: TextStyle(color: AppTheme.appBlack,fontSize: 22),textAlign: TextAlign.left,)),
+              const SizedBox(height: 10,),
+              Container(alignment: Alignment.centerLeft,
+                  width: MediaQuery.of(context).size.width-100,
+                  child: Text('Select Payment Method',style: TextStyle(color: AppTheme.appBlack,fontSize: 18),textAlign: TextAlign.left,)),
+              const SizedBox(height: 10,),
+              Container(alignment: Alignment.centerLeft,
+                width: MediaQuery.of(context).size.width-100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: AppTheme.appRed,
+                        elevation: 3,
+                        padding: const EdgeInsets.all(8),
+                        alignment: Alignment.center,
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.circular(0.0)),
+                        //fixedSize: const Size(100, 30),
+                        //////// HERE
+                      ),
+                      //Colors.orange,
+                      onPressed: () {
+                        onCashDelivery?.call();
+                        SmartDialog.dismiss();
+                      },
+                      child: Text('Cash on Delivery',style: TextStyle(color: AppTheme.appWhite),),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: AppTheme.appGreen,
+                        elevation: 3,
+                        padding: const EdgeInsets.all(8),
+                        alignment: Alignment.center,
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.circular(0.0)),
+                        //fixedSize: const Size(100, 30),
+                        //////// HERE
+                      ),
+                      //Colors.orange,
+                      onPressed: () {
+                        onPayNow?.call();
+                        SmartDialog.dismiss();
+                      },
+                      child: Text('Pay Now',style: TextStyle(color: AppTheme.appWhite),),
+                    )
+                  ],
+                ),
+              )
+            ]),
+      );
+    });
+  }
   showBottomSheet({
     bool isScrollControlled = true,
     Color backgroundColor = Colors.transparent,
