@@ -79,7 +79,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         color: AppTheme.appWhite,
                         fontSize: 20,
                         fontStyle: FontStyle.normal,
-                        fontFamily: "Montserrat"),
+                        fontFamily: StringConstant.fontFamily),
                     textAlign: TextAlign.center,
                   ),
                 ),

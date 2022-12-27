@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import '../../../core/core.dart';
@@ -47,12 +46,12 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                     height: 50,
                     alignment: Alignment.center,
                     child: Text(
-                      'My Orders',
+                      StringConstant.myOrders,
                       style: TextStyle(
                           color: AppTheme.appWhite,
                           fontSize: 20,
                           fontStyle: FontStyle.normal,
-                          fontFamily: "Montserrat"),
+                          fontFamily: StringConstant.fontFamily),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -70,22 +69,49 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                     height: 50,
                     alignment: Alignment.center,
                     child: Text(
-                      'My Orders',
+                      StringConstant.myOrders,
                       style: TextStyle(
                           color: AppTheme.appBlack,
                           fontSize: 20,
                           fontStyle: FontStyle.normal,
-                          fontFamily: "Montserrat"),
+                          fontFamily: StringConstant.fontFamily),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 BlocBuilder<OrderCubit, OrderState>(builder: (context, state) {
+                  if (state is OrderLoading) {
+                    context.loaderOverlay.show();
+                  } else {
+                    context.loaderOverlay.hide();
+                  }
                   if (state is OrderSuccess) {
                     GetCustomerOrderResponse response = state.response;
                     return response.data == null
-                        ? const SizedBox.shrink()
+                        ? Container(
+                      margin: const EdgeInsets.only(top: 10, bottom: 10),
+                      child: Text(
+                        StringConstant.firstOrderNote,
+                        style: TextStyle(
+                            color: AppTheme.appBlack,
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            fontFamily: StringConstant.fontFamily),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
                         :response.data!.isEmpty
-                        ? const SizedBox.shrink()
+                        ? Container(
+                      margin: const EdgeInsets.only(top: 10, bottom: 10),
+                      child: Text(
+                        StringConstant.firstOrderNote,
+                        style: TextStyle(
+                            color: AppTheme.appBlack,
+                            fontSize: 14,
+                            fontStyle: FontStyle.normal,
+                            fontFamily: StringConstant.fontFamily),
+                        textAlign: TextAlign.center,
+                      ),
+                    )
                         : ListView.builder(
                             scrollDirection: Axis.vertical,
                             itemCount: response.data!.length,
@@ -111,9 +137,9 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                              'Order Id: ${response.data![index].id!}'),
+                                              '${StringConstant.orderId} ${response.data![index].id!}'),
                                           Text(
-                                              'Price: ${StringConstant.rupeeSymbol}${response.data![index].finalamount!}'),
+                                              '${StringConstant.price} ${StringConstant.rupeeSymbol}${response.data![index].finalamount!}'),
                                         ],
                                       ),
                                       Row(
@@ -121,7 +147,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                              'Date: ${DateTime.parse(response.data![index].createdAt!).year}-${DateTime.parse(response.data![index].createdAt!).month}-${DateTime.parse(response.data![index].createdAt!).day}'),
+                                              '${StringConstant.date} ${DateTime.parse(response.data![index].createdAt!).year}-${DateTime.parse(response.data![index].createdAt!).month}-${DateTime.parse(response.data![index].createdAt!).day}'),
                                         ],
                                       ),
                                       const Divider(),
@@ -156,11 +182,11 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                                             OrderDetailsScreen(
                                                               orderitems: response
                                                                   .data![index]
-                                                                  .orderitems!,
+                                                                  .orderitems!, customerOrderData:  response.data![index],
                                                             )));
                                               },
                                               child: const Text(
-                                                'VIEW',
+                                                StringConstant.view,
                                                 style: TextStyle(fontSize: 14),
                                                 textAlign: TextAlign.center,
                                               ),
@@ -186,7 +212,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                               ),
                                               onPressed: () {},
                                               child: const Text(
-                                                'CANCEL',
+                                                StringConstant.cancel,
                                                 style: TextStyle(fontSize: 14),
                                                 textAlign: TextAlign.center,
                                               ),
@@ -203,12 +229,12 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   return Container(
                     margin: const EdgeInsets.only(top: 10, bottom: 10),
                     child: Text(
-                      'We are early waiting for your first order',
+                      StringConstant.firstOrderNote,
                       style: TextStyle(
                           color: AppTheme.appBlack,
                           fontSize: 14,
                           fontStyle: FontStyle.normal,
-                          fontFamily: "Montserrat"),
+                          fontFamily: StringConstant.fontFamily),
                       textAlign: TextAlign.center,
                     ),
                   );

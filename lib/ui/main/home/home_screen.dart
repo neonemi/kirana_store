@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: AppTheme.appBlack,
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
-                        fontFamily: "Montserrat"),
+                        fontFamily: StringConstant.fontFamily),
                     textAlign: TextAlign.center,
                   ),
                 ),

@@ -10,7 +10,8 @@ import '../../food_details/food_details_screen.dart';
 class FoodBestSellerList extends StatefulWidget {
   final List<BestSellerData> bestSellerData;
   final String itemName;
-  const FoodBestSellerList({super.key, required this.bestSellerData,required this.itemName});
+  const FoodBestSellerList(
+      {super.key, required this.bestSellerData, required this.itemName});
   @override
   FoodBestSellerListState createState() => FoodBestSellerListState();
 }
@@ -25,7 +26,7 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
   void initState() {
     super.initState();
     bestSellerData = widget.bestSellerData;
-    itemName=widget.itemName;
+    itemName = widget.itemName;
     preference();
   }
 
@@ -64,8 +65,13 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                           imageProduct: bestSellerData![index].image!,
                           unitqty: bestSellerData![index].unitqty.toString(),
                           unitqtyname:
-                              bestSellerData![index].unitqtyname.toString(), categoryName: itemName!,
-                      gst: '', isDiscounted: '', discountedPrice: '',
+                              bestSellerData![index].unitqtyname.toString(),
+                          categoryName: itemName!,
+                          gst: '',
+                          isDiscounted:
+                              bestSellerData![index].isDiscounted.toString(),
+                          discountedPrice:
+                              bestSellerData![index].discountedPrice.toString(),
                         )));
               },
               child: Container(
@@ -134,7 +140,7 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                             Container(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  '₹${bestSellerData![index].price!}',
+                                  '${StringConstant.rupeeSymbol}${bestSellerData![index].price!}',
                                   style: TextStyle(
                                       color: AppTheme.appYellow,
                                       fontWeight: FontWeight.w600,
@@ -151,8 +157,8 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                       if (kDebugMode) {
                                         print(cartData!.quantity);
                                       }
-                                      cartController.counterRemoveProductToCart(context,
-                                          cartData!);
+                                      cartController.counterRemoveProductToCart(
+                                          context, cartData!);
                                       preference();
                                     },
                                     child: Container(
@@ -177,13 +183,13 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                     cartData.quantity! >= 1 &&
                                     cartData.id == bestSellerData![index].id)
                                   Container(
-                                      padding: EdgeInsets.fromLTRB(5,0, 5, 0),
-                                      margin: EdgeInsets.fromLTRB(0,5, 0, 5),
-                                      alignment:
-                                      Alignment.centerLeft,
+                                      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                      alignment: Alignment.centerLeft,
                                       decoration: BoxDecoration(
-                                          border: Border.all(color:  AppTheme.appYellow,)
-                                      ),
+                                          border: Border.all(
+                                        color: AppTheme.appYellow,
+                                      )),
                                       child: Text(
                                         cartData != null
                                             ? '${cartData.quantity}'
@@ -212,20 +218,32 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                         print(2);
                                       }
                                       cartController.addProductToCart(
-                                          id: bestSellerData![index].id!,
-                                          orderId: bestSellerData![index].id!,
-                                          unitPrice:
-                                              bestSellerData![index].price!,
-                                          price: bestSellerData![index].price!,
-                                          quantity: 1,
-                                          productId: bestSellerData![index].id!,
-                                          nameProduct:
-                                              bestSellerData![index].name!,
-                                          imageProduct:
-                                              bestSellerData![index].image!,
-                                        unitqty: bestSellerData![index].unitqty.toString(),
-                                        unitqtyname:
-                                        bestSellerData![index].unitqtyname.toString(), categoryName: itemName!, gst: '', isDiscounted:bestSellerData![index].isDiscounted.toString(), discountedPrice:bestSellerData![index].discountedPrice.toString(),);
+                                        id: bestSellerData![index].id!,
+                                        orderId: bestSellerData![index].id!,
+                                        unitPrice:
+                                            bestSellerData![index].price!,
+                                        price: bestSellerData![index].price!,
+                                        quantity: 1,
+                                        productId: bestSellerData![index].id!,
+                                        nameProduct:
+                                            bestSellerData![index].name!,
+                                        imageProduct:
+                                            bestSellerData![index].image!,
+                                        unitqty: bestSellerData![index]
+                                            .unitqty
+                                            .toString(),
+                                        unitqtyname: bestSellerData![index]
+                                            .unitqtyname
+                                            .toString(),
+                                        categoryName: itemName!,
+                                        gst: '',
+                                        isDiscounted: bestSellerData![index]
+                                            .isDiscounted
+                                            .toString(),
+                                        discountedPrice: bestSellerData![index]
+                                            .discountedPrice
+                                            .toString(),
+                                      );
                                       preference();
                                     }
                                   },
@@ -233,8 +251,8 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                       height: 20,
                                       width: 20,
                                       alignment: Alignment.center,
-                                      decoration:
-                                          BoxDecoration(color: AppTheme.appYellow),
+                                      decoration: BoxDecoration(
+                                          color: AppTheme.appYellow),
                                       child: Icon(
                                         Icons.add,
                                         color: AppTheme.appBlack,

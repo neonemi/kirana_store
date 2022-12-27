@@ -22,7 +22,8 @@ class CartController extends GetxController {
     }
     productListString = localRepository.getCartList() ?? '';
     if (productListString != '') {
-      final List<ProductArray> productList = ProductArray.decode(productListString);
+      final List<ProductArray> productList =
+          ProductArray.decode(productListString);
 
       productDataList.value = productList;
     }
@@ -46,30 +47,28 @@ class CartController extends GetxController {
       required String discountedPrice}) async {
     print('add product${quantity}');
     cartDataList.add(CartData(
-      id: id,
-      orderId: orderId,
-      productId: productId,
-      unitPrice: unitPrice,
-      quantity: quantity,
-      price: price,
-      image: imageProduct,
-      name: nameProduct,
-      unitqty: unitqty,
-      unitqtyname: unitqtyname,
-      categoryName: categoryName,
-      gst: gst,
-      isDiscounted: isDiscounted,
-      discountedPrice: discountedPrice
-    ));
+        id: id,
+        orderId: orderId,
+        productId: productId,
+        unitPrice: unitPrice,
+        quantity: quantity,
+        price: price,
+        image: imageProduct,
+        name: nameProduct,
+        unitqty: unitqty,
+        unitqtyname: unitqtyname,
+        categoryName: categoryName,
+        gst: gst,
+        isDiscounted: isDiscounted,
+        discountedPrice: discountedPrice));
     productDataList.add(ProductArray(
-      id: id.toString(),
-      price: price.toString(),
-      name: nameProduct,
-      unitqty: unitqty,
-      unitqtyname: unitqtyname,
-      unitprice:unitPrice.toString(),
-      qty:quantity.toString()
-    ));
+        id: id.toString(),
+        price: price.toString(),
+        name: nameProduct,
+        unitqty: unitqty,
+        unitqtyname: unitqtyname,
+        unitprice: unitPrice.toString(),
+        qty: quantity.toString()));
     final String encodedData = CartData.encode(cartDataList);
     localRepository.setCartList(encodedData);
     final String encodedProductData = ProductArray.encode(productDataList);
@@ -85,24 +84,28 @@ class CartController extends GetxController {
     int quantityUpdate = cartData.quantity! + 1;
     if (quantityUpdate >= 1) {
       CartData cartUpdate = CartData(
-        id: cartData.id,
-        orderId: cartData.orderId,
-        productId: cartData.orderId,
-        unitPrice: cartData.unitPrice,
-        quantity: quantityUpdate,
-        price: cartData.price,
-        image: cartData.image,
-        name: cartData.name,
-      );
-      ProductArray productArrayUpdate =ProductArray(
-        id: cartData.id.toString(),
-        price: cartData.price.toString(),
-        name: cartData.name,
-        unitqtyname: cartData.unitqtyname,
-        unitqty: cartData.unitqty,
-          unitprice:cartData.unitPrice.toString(),
-          qty:cartData.quantity.toString()
-      );
+          id: cartData.id,
+          orderId: cartData.orderId,
+          productId: cartData.orderId,
+          unitPrice: cartData.unitPrice,
+          quantity: quantityUpdate,
+          price: cartData.price,
+          image: cartData.image,
+          name: cartData.name,
+          unitqty: cartData.unitqty,
+          unitqtyname: cartData.unitqtyname,
+          categoryName: cartData.categoryName,
+          gst: cartData.gst,
+          isDiscounted: cartData.isDiscounted,
+          discountedPrice: cartData.discountedPrice);
+      ProductArray productArrayUpdate = ProductArray(
+          id: cartData.id.toString(),
+          price: cartData.price.toString(),
+          name: cartData.name,
+          unitqtyname: cartData.unitqtyname,
+          unitqty: cartData.unitqty,
+          unitprice: cartData.unitPrice.toString(),
+          qty: quantityUpdate.toString());
       cartDataList.indexOf(cartData);
       cartDataList[cartDataList
           .indexWhere((element) => element.id == cartData.id)] = cartUpdate;
@@ -111,7 +114,8 @@ class CartController extends GetxController {
 
       productDataList.indexOf(cartData);
       productDataList[productDataList
-          .indexWhere((element) => element.id == cartData.id.toString())] = productArrayUpdate;
+              .indexWhere((element) => element.id == cartData.id.toString())] =
+          productArrayUpdate;
       final String encodedProductData = ProductArray.encode(productDataList);
       localRepository.setProductList(encodedProductData);
       update();
@@ -143,30 +147,28 @@ class CartController extends GetxController {
       int quantityUpdate = cartData.quantity! + -1;
       print('remove $quantityUpdate');
       CartData cartUpdate = CartData(
-        id: cartData.id,
-        orderId: cartData.orderId,
-        productId: cartData.orderId,
-        unitPrice: cartData.unitPrice,
-        quantity: quantityUpdate,
-        price: cartData.price,
-        image: cartData.image,
-        name: cartData.name,
-        unitqty: cartData.unitqty,
-        unitqtyname: cartData.unitqtyname,
-        categoryName: cartData.categoryName,
-        gst: cartData.gst,
-        isDiscounted: cartData.isDiscounted,
-        discountedPrice: cartData.discountedPrice
-      );
+          id: cartData.id,
+          orderId: cartData.orderId,
+          productId: cartData.orderId,
+          unitPrice: cartData.unitPrice,
+          quantity: quantityUpdate,
+          price: cartData.price,
+          image: cartData.image,
+          name: cartData.name,
+          unitqty: cartData.unitqty,
+          unitqtyname: cartData.unitqtyname,
+          categoryName: cartData.categoryName,
+          gst: cartData.gst,
+          isDiscounted: cartData.isDiscounted,
+          discountedPrice: cartData.discountedPrice);
       ProductArray productUpdate = ProductArray(
           id: cartData.id.toString(),
           price: cartData.price.toString(),
           name: cartData.name,
           unitqtyname: cartData.unitqtyname,
           unitqty: cartData.unitqty,
-          unitprice:cartData.unitPrice.toString(),
-          qty:cartData.quantity.toString()
-      );
+          unitprice: cartData.unitPrice.toString(),
+          qty:quantityUpdate.toString());
       cartDataList.indexOf(cartData);
       cartDataList[cartDataList
           .indexWhere((element) => element.id == cartData.id)] = cartUpdate;
@@ -174,11 +176,9 @@ class CartController extends GetxController {
       final String encodedData = CartData.encode(cartDataList);
       localRepository.setCartList(encodedData);
 
-
-
       productDataList.indexOf(cartData);
-      productDataList[productDataList
-          .indexWhere((element) => element.id == cartData.id.toString())] = productUpdate;
+      productDataList[productDataList.indexWhere(
+          (element) => element.id == cartData.id.toString())] = productUpdate;
 
       final String encodedProductData = ProductArray.encode(productDataList);
       localRepository.setProductList(encodedProductData);
@@ -211,18 +211,21 @@ class CartController extends GetxController {
     print('total cart controller $total');
     return total;
   }
+
   double gstPrice() {
     double gst = 0;
     for (var item in cartDataList) {
-      int price = int.parse(item.gst!=null?(item.gst!.isNotEmpty?item.gst!:'0'):'0');
+      int price = int.parse(
+          item.gst != null ? (item.gst!.isNotEmpty ? item.gst! : '0') : '0');
       gst += item.quantity! * price;
     }
     print('gst cart controller $gst');
     return gst;
   }
-  double grandTotalPrice(double totalPrice,double gstPrice) {
-    print('grand total controller ${totalPrice+gstPrice}');
-    return totalPrice+gstPrice;
+
+  double grandTotalPrice(double totalPrice, double gstPrice) {
+    print('grand total controller ${totalPrice + gstPrice}');
+    return totalPrice + gstPrice;
   }
 
   void deleteFromCart({required int idOrder}) async {
@@ -231,8 +234,8 @@ class CartController extends GetxController {
     final String encodedData = CartData.encode(cartDataList);
     localRepository.setCartList(encodedData);
 
-    productDataList
-        .removeAt(productDataList.indexWhere((element) => element.id == idOrder.toString()));
+    productDataList.removeAt(productDataList
+        .indexWhere((element) => element.id == idOrder.toString()));
     final String encodedProductData = ProductArray.encode(productDataList);
     localRepository.setProductList(encodedProductData);
     print('Done');

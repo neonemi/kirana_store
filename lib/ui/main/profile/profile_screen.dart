@@ -65,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: AppTheme.appWhite,
                         fontSize: 20,
                         fontStyle: FontStyle.normal,
-                        fontFamily: "Montserrat"),
+                        fontFamily:StringConstant.fontFamily),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -172,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: TextStyle(
                                 fontSize: 16,
                                 color: AppTheme.appBlack,
-                                fontFamily: 'Montserrat'),
+                                fontFamily: StringConstant.fontFamily),
                             textAlign: TextAlign.start,
                           ),
                           trailing: Icon(
@@ -200,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: TextStyle(
                                 fontSize: 16,
                                 color: AppTheme.appBlack,
-                                fontFamily: 'Montserrat'),
+                                fontFamily: StringConstant.fontFamily),
                             textAlign: TextAlign.start,
                           ),
                           trailing: Icon(
@@ -227,7 +227,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: TextStyle(
                                 fontSize: 16,
                                 color: AppTheme.appBlack,
-                                fontFamily: 'Montserrat'),
+                                fontFamily: StringConstant.fontFamily),
                             textAlign: TextAlign.start,
                           ),
                           trailing: Icon(
@@ -254,7 +254,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: TextStyle(
                                 fontSize: 16,
                                 color: AppTheme.appBlack,
-                                fontFamily: 'Montserrat'),
+                                fontFamily: StringConstant.fontFamily),
                             textAlign: TextAlign.start,
                           ),
                           trailing: Icon(
@@ -283,7 +283,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: TextStyle(
                                 fontSize: 16,
                                 color: AppTheme.appBlack,
-                                fontFamily: 'Montserrat'),
+                                fontFamily: StringConstant.fontFamily),
                             textAlign: TextAlign.start,
                           ),
                           trailing: Icon(
@@ -310,7 +310,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             style: TextStyle(
                                 fontSize: 16,
                                 color: AppTheme.appBlack,
-                                fontFamily: 'Montserrat'),
+                                fontFamily: StringConstant.fontFamily),
                             textAlign: TextAlign.start,
                           ),
                           trailing: Icon(
@@ -410,7 +410,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           style: TextStyle(
                               fontSize: 16,
                               color: AppTheme.appBlack,
-                              fontFamily: 'Montserrat'),
+                              fontFamily: StringConstant.fontFamily),
                           textAlign: TextAlign.start,
                         ),
                         trailing: Icon(
@@ -439,7 +439,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           style: TextStyle(
                               fontSize: 16,
                               color: AppTheme.appBlack,
-                              fontFamily: 'Montserrat'),
+                              fontFamily:StringConstant.fontFamily),
                           textAlign: TextAlign.start,
                         ),
                         trailing: Icon(
@@ -466,7 +466,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           style: TextStyle(
                               fontSize: 16,
                               color: AppTheme.appBlack,
-                              fontFamily: 'Montserrat'),
+                              fontFamily: StringConstant.fontFamily),
                           textAlign: TextAlign.start,
                         ),
                         trailing: Icon(

@@ -96,4 +96,18 @@ class StringConstant {
 
   //Order Details screen
   static const orderDetails='Order Details';
+  static const bill='Bill';
+  static const itemName='Item Name';
+  static const qty='Qty';
+  static const rate='Rate';
+
+
+  //order screen
+  static const firstOrderNote ='We are early waiting for your first order';
+  static const cancel='CANCEL';
+  static const view='VIEW';
+  static const date='Date:';
+  static const price='Price:';
+  static const orderId='Order Id:';
+  static const myOrders='My Orders';
 }

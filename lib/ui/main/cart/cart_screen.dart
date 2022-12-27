@@ -87,8 +87,8 @@ class _CartScreenState extends State<CartScreen> {
             AlertExtension(context).showSmartList(
                 onPayNow: () {
 
-                  _cubit.paymentPayload(response.orderId.toString(), 'xyz', response.paymentStatus!);
-
+                  // _cubit.paymentPayload(response.orderId.toString(), 'xyz', response.paymentStatus!);
+                  _cubit.paymentPayload(response.orderId.toString(), 'xyz', 'success');
                   // Navigator.of(context).push(MaterialPageRoute(
                   //     builder: (BuildContext context) => const OrderHistoryScreen(
                   //           showAppBar: true,
@@ -463,7 +463,7 @@ class _CartScreenState extends State<CartScreen> {
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
                                           fontFamily: StringConstant.fontFamily)),
-                                  trailing: Text('₹${cartController.cartTotalPrice()}',
+                                  trailing: Text('${StringConstant.rupeeSymbol}${cartController.cartTotalPrice()}',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
@@ -480,12 +480,12 @@ class _CartScreenState extends State<CartScreen> {
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
                                           fontFamily: StringConstant.fontFamily)),
-                                  trailing: Text('₹${cartController.gstPrice()}',
+                                  trailing: Text('${StringConstant.rupeeSymbol}${cartController.gstPrice()}',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
-                                          fontFamily: "Montserrat")),
+                                          fontFamily: StringConstant.fontFamily)),
                                 ),
                                 ListTile(
                                   dense: true,
@@ -498,7 +498,7 @@ class _CartScreenState extends State<CartScreen> {
                                           fontSize: 14,
                                           fontStyle: FontStyle.normal,
                                           fontFamily: StringConstant.fontFamily)),
-                                  trailing: Text('₹0.00',
+                                  trailing: Text('${StringConstant.rupeeSymbol}0.00',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
@@ -538,7 +538,7 @@ class _CartScreenState extends State<CartScreen> {
                                           fontWeight: FontWeight.w600,
                                           fontStyle: FontStyle.normal,
                                           fontFamily: StringConstant.fontFamily)),
-                                  trailing: Text('₹${cartController.grandTotalPrice(cartController.cartTotalPrice(),cartController.gstPrice())}',
+                                  trailing: Text('${StringConstant.rupeeSymbol}${cartController.grandTotalPrice(cartController.cartTotalPrice(),cartController.gstPrice())}',
                                       style: TextStyle(
                                           color: AppTheme.appBlack,
                                           fontSize: 14,
@@ -568,13 +568,13 @@ class _CartScreenState extends State<CartScreen> {
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FontStyle.normal,
                                         fontFamily: StringConstant.fontFamily)),
-                                subtitle: Text('₹${cartController.grandTotalPrice(cartController.cartTotalPrice(),cartController.gstPrice())}',
+                                subtitle: Text('${StringConstant.rupeeSymbol}${cartController.grandTotalPrice(cartController.cartTotalPrice(),cartController.gstPrice())}',
                                     style: TextStyle(
                                         color: AppTheme.appWhite,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FontStyle.normal,
-                                        fontFamily: "Montserrat")),
+                                        fontFamily: StringConstant.fontFamily)),
                                 trailing: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.end,

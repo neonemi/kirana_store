@@ -68,7 +68,7 @@ class _SmartListScreenState extends State<SmartListScreen> {
                         color: AppTheme.appBlack,
                         fontSize: 20,
                         fontStyle: FontStyle.normal,
-                        fontFamily: "Montserrat"),
+                        fontFamily: StringConstant.fontFamily),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -270,7 +270,7 @@ class _SmartListScreenState extends State<SmartListScreen> {
                                             Container(
                                               margin: const EdgeInsets.only(right: 14),
                                               alignment: Alignment.centerRight,
-                                              child: Text('₹150.00', style: TextStyle(
+                                              child: Text('${StringConstant.rupeeSymbol}150.00', style: TextStyle(
                                                   color: AppTheme.appYellow,
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 14)),

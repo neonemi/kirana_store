@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     fontSize: 32,
                     color: AppTheme.appWhite,
                     fontWeight: FontWeight.w600,
-                    fontFamily: 'Montserrat',
+                    fontFamily: StringConstant.fontFamily,
                   ),
               textAlign: TextAlign.center,)
             ],

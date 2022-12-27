@@ -65,7 +65,10 @@ class SearchProductScreenState extends State<SearchProductScreen> {
                       unitqty: productData![index].unitqty.toString(),
                       unitqtyname: productData![index].unitqtyname.toString(),
                       categoryName: productData![index].category.toString(),
-                  gst: productData![index].categoryrelation!.gst.toString(), isDiscounted:  productData![index].isDiscounted.toString(), discountedPrice:  productData![index].discountedPrice.toString(),
+                      gst: productData![index].categoryrelation!.gst.toString(),
+                      isDiscounted: productData![index].isDiscounted.toString(),
+                      discountedPrice:
+                          productData![index].discountedPrice.toString(),
                     )));
           },
           child: SizedBox(
@@ -105,7 +108,7 @@ class SearchProductScreenState extends State<SearchProductScreen> {
                         Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              '₹${productData![index].price!}',
+                              '${StringConstant.rupeeSymbol}${productData![index].price!}',
                               style: TextStyle(
                                   color: AppTheme.appYellow,
                                   fontWeight: FontWeight.w600,
@@ -147,16 +150,16 @@ class SearchProductScreenState extends State<SearchProductScreen> {
                                     if (kDebugMode) {
                                       print(cartData!.quantity);
                                     }
-                                    cartController
-                                        .counterRemoveProductToCart(context,cartData!);
+                                    cartController.counterRemoveProductToCart(
+                                        context, cartData!);
                                     preference();
                                   },
                                   child: Container(
                                       height: 20,
                                       width: 20,
                                       alignment: Alignment.center,
-                                      decoration:
-                                          BoxDecoration(color: AppTheme.appYellow),
+                                      decoration: BoxDecoration(
+                                          color: AppTheme.appYellow),
                                       child: Icon(
                                         Icons.remove,
                                         color: AppTheme.appBlack,
@@ -227,9 +230,13 @@ class SearchProductScreenState extends State<SearchProductScreen> {
                                       categoryName: productData![index]
                                           .category
                                           .toString(),
-                                      gst: '', isDiscounted: productData![index]
-                                        .isDiscounted.toString(), discountedPrice: productData![index]
-                                        .discountedPrice.toString(),
+                                      gst: productData![index].categoryrelation!.gst.toString(),
+                                      isDiscounted: productData![index]
+                                          .isDiscounted
+                                          .toString(),
+                                      discountedPrice: productData![index]
+                                          .discountedPrice
+                                          .toString(),
                                     );
                                     preference();
                                   }
@@ -238,8 +245,8 @@ class SearchProductScreenState extends State<SearchProductScreen> {
                                     height: 20,
                                     width: 20,
                                     alignment: Alignment.center,
-                                    decoration:
-                                        BoxDecoration(color: AppTheme.appYellow),
+                                    decoration: BoxDecoration(
+                                        color: AppTheme.appYellow),
                                     child: Icon(
                                       Icons.add,
                                       color: AppTheme.appBlack,

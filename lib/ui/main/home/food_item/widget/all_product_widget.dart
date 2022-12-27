@@ -106,7 +106,7 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                         Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              '₹${productData![index].price!}',
+                              '${StringConstant.rupeeSymbol}${productData![index].price!}',
                               style: TextStyle(
                                   color: AppTheme.appYellow,
                                   fontWeight: FontWeight.w600,
@@ -225,7 +225,7 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                             .toString(),
                                         unitqtyname:
                                             productData![index].unitqtyname!,
-                                        categoryName: itemName!, gst: '', isDiscounted: productData![index].isDiscounted.toString(), discountedPrice: productData![index].discountedPrice!.toString());
+                                        categoryName: itemName!, gst: '', isDiscounted: productData![index].isDiscounted.toString(), discountedPrice: productData![index].discountedPrice.toString());
                                     preference();
                                   }
                                 },
