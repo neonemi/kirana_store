@@ -1,16 +1,25 @@
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/ui/ui.dart';
 import 'core/controller/cart_controller.dart';
 import 'core/core.dart';
+import 'fcm/messaging_service.dart';
 
+final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+MessagingService _msgService = MessagingService();
+final navKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+  _msgService.init();
   final LocalRepository localRepository = await LocalRepository.instance;
   Get.put(CartController(localRepository: localRepository));
   runApp(MyApp(
@@ -23,7 +32,7 @@ class MyApp extends StatelessWidget {
   //Local database which contains SharedPreference
   final LocalRepository? localRepository;
 
-  final _navKey = GlobalKey<NavigatorState>();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -69,11 +78,11 @@ class MyApp extends StatelessWidget {
                 BlocListener<AppCoreCubit, AppCoreState>(
                   listener: (context, state) {
                     if (state is AppCoreRequestTimeOut) {
-                      _navKey.currentState!.context.showTimeOutAlert();
+                      navKey.currentState!.context.showTimeOutAlert();
                       context.showToast('Time Out');
                     }
                     if (state is AppCoreRequestError) {
-                      _navKey.currentState!.context.showToast(state.error);
+                      navKey.currentState!.context.showToast(state.error);
                     }
                   },
                 ),
@@ -101,7 +110,7 @@ class MyApp extends StatelessWidget {
                   ),
                   Expanded(
                     child: MaterialApp(
-                      navigatorKey: _navKey,
+                      navigatorKey: navKey,
                       title: 'Flutter Demo',
                       navigatorObservers: [FlutterSmartDialog.observer],
                       builder: FlutterSmartDialog.init(),
