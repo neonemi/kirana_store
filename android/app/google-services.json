@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "970667527560",
+    "project_id": "kiranaapp-19acd",
+    "storage_bucket": "kiranaapp-19acd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970667527560:android:9ac303f151d2d92a417e3d",
+        "android_client_info": {
+          "package_name": "com.neologicx.kiranaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970667527560-m4udtop4fcql6lgvugfaa82p804p6ipb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEfD0gVF75iFiWFL4hbM5vQHXmWiead3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970667527560-m4udtop4fcql6lgvugfaa82p804p6ipb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
