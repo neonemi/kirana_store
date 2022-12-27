@@ -10,8 +10,11 @@ import '../../food_details/food_details_screen.dart';
 class FoodBestSellerList extends StatefulWidget {
   final List<BestSellerData> bestSellerData;
   final String itemName;
-  const FoodBestSellerList(
-      {super.key, required this.bestSellerData, required this.itemName});
+  const FoodBestSellerList({
+    super.key,
+    required this.bestSellerData,
+    required this.itemName,
+  });
   @override
   FoodBestSellerListState createState() => FoodBestSellerListState();
 }
@@ -183,8 +186,10 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                     cartData.quantity! >= 1 &&
                                     cartData.id == bestSellerData![index].id)
                                   Container(
-                                      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                      padding:
+                                          const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                      margin:
+                                          const EdgeInsets.fromLTRB(0, 5, 0, 5),
                                       alignment: Alignment.centerLeft,
                                       decoration: BoxDecoration(
                                           border: Border.all(

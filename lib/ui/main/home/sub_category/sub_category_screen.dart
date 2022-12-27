@@ -1,6 +1,3 @@
-
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,14 +5,15 @@ import 'package:kirana_store/ui/main/home/sub_category/widget/sub_catergory_vert
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
 
-import '../../../ui.dart';
-
-
 class SubCategoryScreen extends StatefulWidget {
   final String itemName;
   final String id;
   final String bannerImage;
-  SubCategoryScreen({Key? key, required this.itemName, required this.id,required this.bannerImage})
+  const SubCategoryScreen(
+      {Key? key,
+      required this.itemName,
+      required this.id,
+      required this.bannerImage})
       : super(key: key);
 
   @override
@@ -26,15 +24,15 @@ class SubCategoryScreenState extends State<SubCategoryScreen> {
   late final FoodItemCubit _cubit;
   String itemName = "";
   String itemId = "";
-   String bannerImage="";
-  bool visibleBestSeller=true;
+  String bannerImage = "";
+  bool visibleBestSeller = true;
   @override
   void initState() {
     super.initState();
 
     itemName = widget.itemName;
     itemId = widget.id;
-    bannerImage=widget.bannerImage;
+    bannerImage = widget.bannerImage;
     if (kDebugMode) {
       print(itemId);
     }
@@ -59,7 +57,6 @@ class SubCategoryScreenState extends State<SubCategoryScreen> {
               ..getSubCategory(itemId);
             return _cubit;
           }),
-
         ],
         child: BlocListener<FoodItemCubit, FoodItemState>(
             listener: (context, state) {
@@ -75,40 +72,43 @@ class SubCategoryScreenState extends State<SubCategoryScreen> {
               if (state is FoodItemError) {
                 context.showToast(state.message);
               }
-
             },
-            child:  BlocBuilder<FoodItemCubit, FoodItemState>(
+            child: BlocBuilder<FoodItemCubit, FoodItemState>(
                 buildWhen: (previous, current) =>
-                current is FoodSubCategorySuccess,
+                    current is FoodSubCategorySuccess,
                 builder: (context, state) {
-                  if(state is FoodSubCategorySuccess) {
+                  if (state is FoodSubCategorySuccess) {
                     GetSubCategory getSubCategory = state.response;
 
                     return Scaffold(
-                      appBar: AppBar(
-                        backgroundColor: AppTheme.appYellow,
-                        iconTheme: IconThemeData(color: AppTheme.appWhite),
-                        centerTitle: true,
-                        elevation: 0.0,
-                        title: Container(
-                          margin: const EdgeInsets.only(right: 40),
-                          height: 50,
-                          alignment: Alignment.center,
-                          child: Text(
-                            itemName,
-                            style: TextStyle(
-                                color: AppTheme.appWhite,
-                                fontSize: 20,
-                                fontStyle: FontStyle.normal,
-                                fontFamily:StringConstant.fontFamily),
-                            textAlign: TextAlign.center,
+                        appBar: AppBar(
+                          backgroundColor: AppTheme.appYellow,
+                          iconTheme: IconThemeData(color: AppTheme.appWhite),
+                          centerTitle: true,
+                          elevation: 0.0,
+                          title: Container(
+                            margin: const EdgeInsets.only(right: 40),
+                            height: 50,
+                            alignment: Alignment.center,
+                            child: Text(
+                              itemName,
+                              style: TextStyle(
+                                  color: AppTheme.appWhite,
+                                  fontSize: 20,
+                                  fontStyle: FontStyle.normal,
+                                  fontFamily: StringConstant.fontFamily),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
-                      ),
-                      body:  getSubCategory.data==null?const SizedBox.shrink():
-                      getSubCategory.data!.isEmpty?const SizedBox.shrink():
-                      SubCategoryVerticalList(categoryData:  getSubCategory.data!, bannerImage:  bannerImage,)
-                    );
+                        body: getSubCategory.data == null
+                            ? const SizedBox.shrink()
+                            : getSubCategory.data!.isEmpty
+                                ? const SizedBox.shrink()
+                                : SubCategoryVerticalList(
+                                    categoryData: getSubCategory.data!,
+                                    bannerImage: bannerImage,
+                                  ));
                   }
                   return Scaffold(
                     appBar: AppBar(
@@ -132,7 +132,6 @@ class SubCategoryScreenState extends State<SubCategoryScreen> {
                       ),
                     ),
                   );
-                }
-            )));
+                })));
   }
 }

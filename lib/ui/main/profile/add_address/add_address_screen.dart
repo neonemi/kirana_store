@@ -62,7 +62,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                   height: 50,
                   alignment: Alignment.center,
                   child: Text(
-                    'My Address',
+                    StringConstant.myAddress,
                     style: TextStyle(
                         color: AppTheme.appWhite,
                         fontSize: 20,
@@ -79,7 +79,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                   child: ListView(
                     children: [
                       Text(
-                        'Title(Home, Work....)',
+                        StringConstant.titleHomeWork,
                         style: TextStyle(
                             color: AppTheme.appBlack,
                             fontSize: 16,
@@ -117,7 +117,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                       Container(
                         margin: const EdgeInsets.only(top: 10),
                         child: Text(
-                          'Your Location',
+                          StringConstant.location,
                           style: TextStyle(
                               color: AppTheme.appBlack,
                               fontSize: 16,
@@ -171,7 +171,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                         ),
                       ),
                       Text(
-                        'Landmark',
+                        StringConstant.landMark,
                         style: TextStyle(
                             color: AppTheme.appBlack,
                             fontSize: 16,
@@ -209,7 +209,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                       Container(
                         margin: const EdgeInsets.only(top: 10),
                         child: Text(
-                          'Floor(Optional)',
+                          StringConstant.floor,
                           style: TextStyle(
                               color: AppTheme.appBlack,
                               fontSize: 16,
@@ -248,7 +248,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                       Container(
                         margin: const EdgeInsets.only(top: 10),
                         child: Text(
-                          'Pincode',
+                          StringConstant.pincode,
                           style: TextStyle(
                               color: AppTheme.appBlack,
                               fontSize: 16,

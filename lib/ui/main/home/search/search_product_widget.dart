@@ -177,8 +177,10 @@ class SearchProductScreenState extends State<SearchProductScreen> {
                                   cartData.id == productData![index].id)
                                 Builder(builder: (context) {
                                   return Container(
-                                      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                      padding:
+                                          const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                      margin:
+                                          const EdgeInsets.fromLTRB(0, 5, 0, 5),
                                       alignment: Alignment.centerLeft,
                                       decoration: BoxDecoration(
                                           border: Border.all(
@@ -230,7 +232,10 @@ class SearchProductScreenState extends State<SearchProductScreen> {
                                       categoryName: productData![index]
                                           .category
                                           .toString(),
-                                      gst: productData![index].categoryrelation!.gst.toString(),
+                                      gst: productData![index]
+                                          .categoryrelation!
+                                          .gst
+                                          .toString(),
                                       isDiscounted: productData![index]
                                           .isDiscounted
                                           .toString(),

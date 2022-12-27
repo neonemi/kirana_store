@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kirana_store/core/utils/date_time_extension.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
 
@@ -60,23 +61,47 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ),
                 actions: [
                   GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         _cubit.readNotifications();
                       },
-                      child: Icon(Icons.more_vert,color: AppTheme.appWhite))
+                      child: Icon(Icons.more_vert, color: AppTheme.appWhite))
                 ],
               ),
               body: BlocBuilder<NotificationCubit, NotificationState>(
                   builder: (context, state) {
-                    if(state is NotificationSuccess){
-
-                    }
-                    if(state is NotificationReadSuccess){
-
-                    }
-                return const SizedBox(
-                  height: 200,
-                  width: 200,
+                if (state is NotificationSuccess) {}
+                if (state is NotificationReadSuccess) {}
+                return Container(
+                  margin: const EdgeInsets.all(10),
+                  width: MediaQuery.of(context).size.width,
+                  child: ListView.builder(
+                      itemCount: 0,
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return Container(
+                          alignment: Alignment.centerLeft,
+                          margin: const EdgeInsets.only(bottom: 10),
+                          child: Card(
+                            color: AppTheme.appWhite,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4)),
+                            child: ListTile(
+                              title: Text("Title",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: AppTheme.appBlack,
+                                  )),
+                              subtitle: Text(
+                                  DateTime.now().timeAgo(numericDates: false),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: AppTheme.appGrey,
+                                  )),
+                            ),
+                          ),
+                        );
+                      }),
                 );
               }))),
     );

@@ -132,13 +132,15 @@ class HelpScreenState extends State<HelpScreen> {
                     Icons.location_on_sharp,
                     color: AppTheme.appGrey,
                   ),
-                  Text(
-                    StringConstant.kareliLocation,
-                    style: TextStyle(
-                        color: AppTheme.appBlack,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600),
-                    textAlign: TextAlign.center,
+                  Expanded(
+                    child: Text(
+                      StringConstant.kareliLocation,
+                      style: TextStyle(
+                          color: AppTheme.appBlack,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ],
               ),

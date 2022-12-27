@@ -19,7 +19,6 @@ class HomeVerticalList extends StatelessWidget {
           physics: const ClampingScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            print('id: ${categoryData[index].id!} : ${categoryData[index].id! + 1}');
             return GestureDetector(
               onTap: () => {
               // Navigator.of(context).push(

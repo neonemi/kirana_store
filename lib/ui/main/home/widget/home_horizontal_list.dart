@@ -11,7 +11,7 @@ class HomeHorizontalList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   return Container(
+   return SizedBox(
      height: 200,
      // alignment: Alignment.center,
      child: ListView.builder(

@@ -9,6 +9,8 @@ import 'package:kirana_store/core/core.dart';
 import 'package:kirana_store/main.dart';
 import 'package:rxdart/rxdart.dart';
 
+import '../ui/ui.dart';
+
 
 //*** for background notification initiate this must be on top on any class ***//
 Future _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -50,6 +52,7 @@ class MessagingService {
 
   Future _getToken() async {
     final fcmToken = await FirebaseMessaging.instance.getToken();
+    bool login =await navKey.currentContext!.read<LocalRepository>().isLoggedIn();
     if (kDebugMode) {
       print(' fcm $fcmToken');
     }
@@ -65,6 +68,19 @@ class MessagingService {
       if (message != null) {
         log('payload open page from terminated app  on notification click');
         //navigation route to open page
+
+        if(login==true) {
+          Future.delayed(const Duration(seconds: 6), () {
+            var notificationData = message.data;
+            if (notificationData.isNotEmpty) {
+
+                navKey.currentState!.push(MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        const NotificationScreen()));
+
+            }
+          });
+         } else {}
       }
     });
     var printValue = false;
@@ -168,12 +184,16 @@ Future _showNotification(
   );
 }
 
-void openPage(RemoteMessage message, BuildContext context, int notificationId) {
-
+Future<void> openPage(RemoteMessage message, BuildContext context, int notificationId) async {
+  bool login =await navKey.currentContext!.read<LocalRepository>().isLoggedIn();
   var notificationData = message.data;
 
   log('payload$notificationData :: $notificationId');
-
-
+  //if(notificationData.isNotEmpty){
+      if(login==true){
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) => const NotificationScreen()));
+  }
+  // }
   //navigation route
 }

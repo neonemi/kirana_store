@@ -93,7 +93,7 @@ class _CartScreenState extends State<CartScreen> {
           if (state is CartSuccess) {}
           if(state is CartOrderPlacedSuccess){
             GetOrderResponse response=state.orderResponse;
-            AlertExtension(context).showSmartList(
+            AlertExtension(context).showPaymentMethodDialog(
                 onPayNow: () {
 
                   // _cubit.paymentPayload(response.orderId.toString(), 'xyz', response.paymentStatus!);

@@ -74,7 +74,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   height: 50,
                   alignment: Alignment.center,
                   child: Text(
-                    'Update Profile',
+                    StringConstant.updateProfile,
                     style: TextStyle(
                         color: AppTheme.appWhite,
                         fontSize: 20,

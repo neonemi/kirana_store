@@ -25,6 +25,7 @@ class _HomeContainerState extends State<HomeContainer> {
     super.initState();
     currentItem = widget.homeItem;
     userData();
+    preference();
   }
 
   Future<void> userData() async {
@@ -78,12 +79,12 @@ class _HomeContainerState extends State<HomeContainer> {
           return const HomeScreen();
         }
       case HomeItems.myCart:
-        if(cartListString.isNotEmpty) {
+        // if(cartListString.isNotEmpty) {
           return const CartScreen();
-        }else{
-          AlertExtension(context).showCartEmptyAlert(height: 180, width: MediaQuery.of(context).size.width-40, title: '');
-          return const HomeScreen();
-        }
+        // }else{
+        //   AlertExtension(context).showCartEmptyAlert(height: 180, width: MediaQuery.of(context).size.width-40, title: '');
+        //   return const HomeScreen();
+        // }
       // case HomeItems.smartList:
       //   return const SmartListScreen();
       case HomeItems.profile:
@@ -110,11 +111,11 @@ class _HomeContainerState extends State<HomeContainer> {
           return 0;
         }
       case HomeItems.myCart:
-        if(cartListString.isNotEmpty) {
+        // if(cartListString.isNotEmpty) {
           return 2;
-        }else{
-          return 0;
-        }
+        // }else{
+        //   return 0;
+        // }
       // case HomeItems.smartList:
       //   return 3;
       case HomeItems.profile:
@@ -140,11 +141,11 @@ class _HomeContainerState extends State<HomeContainer> {
           }
           break;
         case 2:
-          if(cartListString.isNotEmpty) {
+          // if(cartListString.isNotEmpty) {
             currentItem = HomeItems.myCart;
-          }else{
-            currentItem = HomeItems.myCart;
-          }
+          // }else{
+          //   currentItem = HomeItems.myCart;
+          // }
           break;
         // case 3:
         //   currentItem = HomeItems.smartList;
@@ -205,7 +206,7 @@ class _BottomNavigationBar extends StatelessWidget {
               image: FontAwesome.shopping_cart, text:StringConstant.myCart),
           // _bottomNavigationBarItem(
           //     image: FontAwesome.list, text: StringConstant.smartList),
-          _bottomNavigationBarItem(image: FontAwesome.male, text: StringConstant.profile),
+          _bottomNavigationBarItem(image: MaterialIcons.person, text: StringConstant.profile),
         ],
       ),
     );

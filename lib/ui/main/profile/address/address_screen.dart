@@ -62,7 +62,7 @@ class AddressScreenState extends State<AddressScreen> {
                   height: 50,
                   alignment: Alignment.center,
                   child: Text(
-                    'My Addresses',
+                    StringConstant.myAddresses,
                     style: TextStyle(
                         color: AppTheme.appWhite,
                         fontSize: 20,
@@ -98,7 +98,7 @@ class AddressScreenState extends State<AddressScreen> {
                                 color: AppTheme.appYellow,
                               ),
                               Text(
-                                'Add Address',
+                                StringConstant.addAddress,
                                 style: TextStyle(
                                     color: AppTheme.appYellow,
                                     fontSize: 16,
@@ -114,7 +114,7 @@ class AddressScreenState extends State<AddressScreen> {
                       ),
                     ),
                     Text(
-                      'Saved Addressess',
+                      StringConstant.savedAddress,
                       style: TextStyle(
                           color: AppTheme.appBlack,
                           fontSize: 14,
@@ -231,7 +231,7 @@ class AddressScreenState extends State<AddressScreen> {
                                                     child: SizedBox(
                                                       width: 100,
                                                       child: Text(
-                                                        'EDIT',
+                                                        StringConstant.edit,
                                                         style: TextStyle(
                                                           color: AppTheme
                                                               .appYellow,
@@ -252,7 +252,7 @@ class AddressScreenState extends State<AddressScreen> {
                                                     child: SizedBox(
                                                       width: 100,
                                                       child: Text(
-                                                        'DELETE',
+                                                        StringConstant.delete,
                                                         style: TextStyle(
                                                           color: AppTheme
                                                               .appYellow,
@@ -383,9 +383,9 @@ class AddressScreenState extends State<AddressScreen> {
   }
   _onTapDelete(BuildContext context,String id) {
     AlertExtension(context).showSuccessAlert(
-        message: 'Are you sure, you want to delete address?',
-        cancelTextButton: 'NO',
-        confirmTextButton: 'YES',
+        message: StringConstant.areYouSureYouWantToDeleteAddress,
+        cancelTextButton: StringConstant.no,
+        confirmTextButton: StringConstant.yes,
         onConfirm: () {
           _cubit.deleteAddress( addressId:  id);
         },

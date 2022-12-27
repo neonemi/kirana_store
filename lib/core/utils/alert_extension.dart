@@ -275,7 +275,7 @@ extension AlertExtension on BuildContext {
       );
     });
   }
-  showSmartList({
+  showPaymentMethodDialog({
     final void Function()? onCashDelivery,
     final void Function()? onPayNow,
   }) {

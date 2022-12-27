@@ -4,6 +4,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/ui/main/home/home.dart';
 
 import '../../../core/core.dart';
+import '../../ui.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,7 +24,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-   // _cubit = HomeCubit(context.read<CoreRepository>())..getFoodCategory();
+    getAddress();
+  }
+
+  Future<void> getAddress() async {
+    String address1= await context.read<LocalRepository>().getAddress();
+    if(address1.isNotEmpty){
+      setState(() {
+        addressName = address1;
+      });
+    }
   }
   @override
   void dispose() {
@@ -93,6 +103,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
+              actions: [
+                GestureDetector(
+                  onTap: () {
+                    SmartListDialogBuilder(context).showSmartListDialog(context, (String value) {
+                      print(value);
+
+                    });
+                  },
+                  child:
+                    Container(
+                      height: 20,
+                      width: 20,
+                    margin: EdgeInsets.only(right: 20),
+                    child: Center(
+                      child: Icon( FontAwesome.list_alt,
+                          size: 32,
+                          color: AppTheme.appBlack,),
+                    ),
+                  ),
+                ),
+              ],
 
             ),
             body: SingleChildScrollView(

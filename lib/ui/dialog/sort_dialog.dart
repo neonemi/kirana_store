@@ -8,7 +8,6 @@ class SortDialogBuilder {
 
   final BuildContext context;
 
-  TextEditingController commentController = TextEditingController();
 
   final List<Map<String, dynamic>> sortingList = [
   {"sort": [
