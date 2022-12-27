@@ -1,4 +1,4 @@
-package com.neologicx.kiranastore.kirana_store
+package com.neologicx.kiranaapp
 
 import io.flutter.embedding.android.FlutterActivity
 
