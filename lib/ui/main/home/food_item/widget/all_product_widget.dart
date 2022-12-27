@@ -225,7 +225,7 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                             .toString(),
                                         unitqtyname:
                                             productData![index].unitqtyname!,
-                                        categoryName: itemName!, gst: '', isDiscounted: '', discountedPrice: '');
+                                        categoryName: itemName!, gst: '', isDiscounted: productData![index].isDiscounted.toString(), discountedPrice: productData![index].discountedPrice!.toString());
                                     preference();
                                   }
                                 },

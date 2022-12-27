@@ -62,7 +62,7 @@ class CartCubit extends Cubit<CartState> {
    String cartamount,
    String coupon,
    String finalamount) async {
-    emit(CartLoading());
+    //emit(CartLoading());
     try {
       String? mobile = await coreRepository.localRepository.getMobile();
       String? name = await coreRepository.localRepository.getUserName();
@@ -72,11 +72,11 @@ class CartCubit extends Cubit<CartState> {
       print(address);
       String productListString = coreRepository.localRepository.getProductList() ?? '';
      print(productListString);
-      GetOrderResponse response = await coreRepository.order(mobile: mobile!, name: name, address: address!, products: productListString, cartamount: cartamount, coupon: coupon, finalamount: finalamount);
-     emit(CartOrderPlacedSuccess(response));
+     //  GetOrderResponse response = await coreRepository.order(mobile: mobile!, name: name, address: address!, products: productListString, cartamount: cartamount, coupon: coupon, finalamount: finalamount);
+     // emit(CartOrderPlacedSuccess(response));
     } catch (e) {
       String message = e.toString().replaceAll('api - ', '');
-      emit(CartError(message));
+    //  emit(CartError(message));
     }
   }
 

@@ -67,6 +67,8 @@ class CartController extends GetxController {
       name: nameProduct,
       unitqty: unitqty,
       unitqtyname: unitqtyname,
+      unitprice:unitPrice.toString(),
+      qty:quantity.toString()
     ));
     final String encodedData = CartData.encode(cartDataList);
     localRepository.setCartList(encodedData);
@@ -97,7 +99,9 @@ class CartController extends GetxController {
         price: cartData.price.toString(),
         name: cartData.name,
         unitqtyname: cartData.unitqtyname,
-        unitqty: cartData.unitqty
+        unitqty: cartData.unitqty,
+          unitprice:cartData.unitPrice.toString(),
+          qty:cartData.quantity.toString()
       );
       cartDataList.indexOf(cartData);
       cartDataList[cartDataList
@@ -147,12 +151,21 @@ class CartController extends GetxController {
         price: cartData.price,
         image: cartData.image,
         name: cartData.name,
-        // unitqty: cartData.unitqty!,
-        // unitqtyname: cartData.unitqtyname!,
-        // categoryName: cartData.categoryName!,
-        // gst: cartData.gst!,
-        // isDiscounted: cartData.isDiscounted!,
-        // discountedPrice: cartData.discountedPrice!,
+        unitqty: cartData.unitqty,
+        unitqtyname: cartData.unitqtyname,
+        categoryName: cartData.categoryName,
+        gst: cartData.gst,
+        isDiscounted: cartData.isDiscounted,
+        discountedPrice: cartData.discountedPrice
+      );
+      ProductArray productUpdate = ProductArray(
+          id: cartData.id.toString(),
+          price: cartData.price.toString(),
+          name: cartData.name,
+          unitqtyname: cartData.unitqtyname,
+          unitqty: cartData.unitqty,
+          unitprice:cartData.unitPrice.toString(),
+          qty:cartData.quantity.toString()
       );
       cartDataList.indexOf(cartData);
       cartDataList[cartDataList
@@ -161,11 +174,7 @@ class CartController extends GetxController {
       final String encodedData = CartData.encode(cartDataList);
       localRepository.setCartList(encodedData);
 
-      ProductArray productUpdate = ProductArray(
-        id: cartData.id.toString(),
-        price: cartData.price.toString(),
-        name: cartData.name,
-      );
+
 
       productDataList.indexOf(cartData);
       productDataList[productDataList

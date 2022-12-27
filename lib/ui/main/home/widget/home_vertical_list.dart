@@ -22,15 +22,16 @@ class HomeVerticalList extends StatelessWidget {
             print('id: ${categoryData[index].id!} : ${categoryData[index].id! + 1}');
             return GestureDetector(
               onTap: () => {
-              Navigator.of(context).push(
-              MaterialPageRoute(
-              builder: (BuildContext context) =>
-               FoodItemScreen(itemName: categoryData[index].name != null? categoryData[index].name.toString():"", id:  categoryData[index].id!=null? (categoryData[index].id!).toString():"",)))
+              // Navigator.of(context).push(
+              // MaterialPageRoute(
+              // builder: (BuildContext context) =>
+              //  FoodItemScreen(itemName: categoryData[index].name != null? categoryData[index].name.toString():"", id:  categoryData[index].id!=null? (categoryData[index].id!).toString():"",)))
 
-                // Navigator.of(context).push(
-                //     MaterialPageRoute(
-                //         builder: (BuildContext context) =>
-                //             SubCategoryScreen(itemName: categoryData[index].name != null? categoryData[index].name.toString():"", id:  categoryData[index].id!=null? (categoryData[index].id!).toString():"", bannerImage: Apis.imageBaseUrl + categoryData[index].image!,)))
+                Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            SubCategoryScreen(itemName: categoryData[index].name != null? categoryData[index].name.toString():"", id:  categoryData[index].id!=null? (categoryData[index].id!).toString():"", bannerImage: Apis.imageBaseUrl + categoryData[index].image!,)))
+
 
               },
               child: Stack(

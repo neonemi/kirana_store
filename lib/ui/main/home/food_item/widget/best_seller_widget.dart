@@ -38,8 +38,9 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 220,
+      alignment: Alignment.centerLeft,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: bestSellerData!.length,
@@ -224,7 +225,7 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                                               bestSellerData![index].image!,
                                         unitqty: bestSellerData![index].unitqty.toString(),
                                         unitqtyname:
-                                        bestSellerData![index].unitqtyname.toString(), categoryName: itemName!, gst: '', isDiscounted: '', discountedPrice: '',);
+                                        bestSellerData![index].unitqtyname.toString(), categoryName: itemName!, gst: '', isDiscounted:bestSellerData![index].isDiscounted.toString(), discountedPrice:bestSellerData![index].discountedPrice.toString(),);
                                       preference();
                                     }
                                   },

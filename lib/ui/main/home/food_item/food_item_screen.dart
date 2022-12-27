@@ -50,16 +50,16 @@ class FoodItemScreenState extends State<FoodItemScreen> {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MultiBlocProvider(
         providers: [
-          BlocProvider<FoodItemCubit>(create: (context) {
-            _cubit = FoodItemCubit(context.read<CoreRepository>())
-              ..getSubCategory(itemId);
-            return _cubit;
-          }),
           // BlocProvider<FoodItemCubit>(create: (context) {
           //   _cubit = FoodItemCubit(context.read<CoreRepository>())
-          //     ..getFoodBestSeller(itemId);
+          //     ..getSubCategory(itemId);
           //   return _cubit;
           // }),
+          BlocProvider<FoodItemCubit>(create: (context) {
+            _cubit = FoodItemCubit(context.read<CoreRepository>())
+              ..getFoodBestSeller(itemId);
+            return _cubit;
+          }),
         ],
         child: BlocListener<FoodItemCubit, FoodItemState>(
             listener: (context, state) {
@@ -78,19 +78,19 @@ class FoodItemScreenState extends State<FoodItemScreen> {
 
             },
             child:
-            BlocBuilder<FoodItemCubit, FoodItemState>(
-                buildWhen: (previous, current) =>
-                current is FoodSubCategorySuccess,
-                builder: (context, state) {
-                  if(state is FoodSubCategorySuccess) {
-                    GetSubCategory getSubCategory = state.response;
-                    // for(var i=0;i<=getSubCategory.data!.length;i++) {
-                       if( getSubCategory.data!=null && getSubCategory.data!.isNotEmpty) {
-                      _cubit.getFoodBestSeller(
-                          getSubCategory.data![0].id.toString());
-                    }
-                    // }
-                    return
+            // BlocBuilder<FoodItemCubit, FoodItemState>(
+            //     buildWhen: (previous, current) =>
+            //     current is FoodSubCategorySuccess,
+            //     builder: (context, state) {
+            //       if(state is FoodSubCategorySuccess) {
+            //         GetSubCategory getSubCategory = state.response;
+            //         // for(var i=0;i<=getSubCategory.data!.length;i++) {
+            //            if( getSubCategory.data!=null && getSubCategory.data!.isNotEmpty) {
+            //           _cubit.getFoodBestSeller(
+            //               getSubCategory.data![0].id.toString());
+            //         }
+            //         // }
+             //       return
                       Scaffold(
                       appBar: AppBar(
                         backgroundColor: AppTheme.appYellow,
@@ -119,8 +119,8 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                                 setState((){
                                   visibleBestSeller=false;
                                 });
-                                 _cubit.getFoodProduct(getSubCategory.data![0].id.toString(), value, "");
-                                 //_cubit.getFoodProduct(itemId, value, "");
+                                // _cubit.getFoodProduct(getSubCategory.data![0].id.toString(), value, "");
+                                 _cubit.getFoodProduct(itemId, value, "");
                               });
                             },
                             child: Container(
@@ -142,8 +142,8 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                                 setState((){
                                   visibleBestSeller=false;
                                 });
-                                 _cubit.getFoodProduct(getSubCategory.data![0].id.toString(), "", value);
-                                //_cubit.getFoodProduct(itemId, "", value);
+                                // _cubit.getFoodProduct(getSubCategory.data![0].id.toString(), "", value);
+                                _cubit.getFoodProduct(itemId, "", value);
                               });
                             },
                             child: Container(
@@ -161,8 +161,8 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                         ],
                       ),
                       body:
-    getSubCategory.data==null?const SizedBox.shrink():
-                      getSubCategory.data!.isEmpty?const SizedBox.shrink():
+    // getSubCategory.data==null?const SizedBox.shrink():
+    //                   getSubCategory.data!.isEmpty?const SizedBox.shrink():
     SingleChildScrollView(
                         child: Column(
                                 children: [
@@ -289,79 +289,81 @@ class FoodItemScreenState extends State<FoodItemScreen> {
                               )
 
                       ),
-                    );
-                  }
-                  return Scaffold(
-                    appBar: AppBar(
-                      backgroundColor: AppTheme.appYellow,
-                      iconTheme: IconThemeData(color: AppTheme.appWhite),
-                      centerTitle: true,
-                      elevation: 0.0,
-                      title: Container(
-                        margin: const EdgeInsets.only(right: 40),
-                        height: 50,
-                        alignment: Alignment.center,
-                        child: Text(
-                          itemName,
-                          style: TextStyle(
-                              color: AppTheme.appWhite,
-                              fontSize: 20,
-                              fontStyle: FontStyle.normal,
-                              fontFamily: "Montserrat"),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      actions: [
-                        GestureDetector(
-                          onTap:(){
-                            SortDialogBuilder(context).showSortDialog(context, (String value) {
-                              print(value);
-                              setState((){
-                                visibleBestSeller=false;
-                              });
-                              _cubit.getFoodProduct(itemId, value, "");
-                              // Navigator.of(context).pop;
-                            });
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.only(right: 10),
-                            child: RotatedBox(
-                                quarterTurns: 1,
-                                child: Image.asset(
-                                  AppIconKeys.swap,
-                                  color: AppTheme.appWhite,
-                                  height: 20,
-                                  width: 20,
-                                )),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: (){
-                            FilterDialogBuilder(context).showFilterDialog(context, (String value) {
-                              print(value);
-                              setState((){
-                                visibleBestSeller=false;
-                              });
-                              _cubit.getFoodProduct(itemId, "", value);
-                            });
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.only(right: 10),
-                            child: RotatedBox(
-                                quarterTurns: 1,
-                                child: Image.asset(
-                                  AppIconKeys.filter,
-                                  color: AppTheme.appWhite,
-                                  height: 20,
-                                  width: 20,
-                                )),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-              }
-     ))
-);
+                    )
+    //;
+                 // }
+                 //  return Scaffold(
+                 //    appBar: AppBar(
+                 //      backgroundColor: AppTheme.appYellow,
+                 //      iconTheme: IconThemeData(color: AppTheme.appWhite),
+                 //      centerTitle: true,
+                 //      elevation: 0.0,
+                 //      title: Container(
+                 //        margin: const EdgeInsets.only(right: 40),
+                 //        height: 50,
+                 //        alignment: Alignment.center,
+                 //        child: Text(
+                 //          itemName,
+                 //          style: TextStyle(
+                 //              color: AppTheme.appWhite,
+                 //              fontSize: 20,
+                 //              fontStyle: FontStyle.normal,
+                 //              fontFamily: "Montserrat"),
+                 //          textAlign: TextAlign.center,
+                 //        ),
+                 //      ),
+                 //      actions: [
+                 //        GestureDetector(
+                 //          onTap:(){
+                 //            SortDialogBuilder(context).showSortDialog(context, (String value) {
+                 //              print(value);
+                 //              setState((){
+                 //                visibleBestSeller=false;
+                 //              });
+                 //              _cubit.getFoodProduct(itemId, value, "");
+                 //              // Navigator.of(context).pop;
+                 //            });
+                 //          },
+                 //          child: Container(
+                 //            margin: const EdgeInsets.only(right: 10),
+                 //            child: RotatedBox(
+                 //                quarterTurns: 1,
+                 //                child: Image.asset(
+                 //                  AppIconKeys.swap,
+                 //                  color: AppTheme.appWhite,
+                 //                  height: 20,
+                 //                  width: 20,
+                 //                )),
+                 //          ),
+                 //        ),
+                 //        GestureDetector(
+                 //          onTap: (){
+                 //            FilterDialogBuilder(context).showFilterDialog(context, (String value) {
+                 //              print(value);
+                 //              setState((){
+                 //                visibleBestSeller=false;
+                 //              });
+                 //              _cubit.getFoodProduct(itemId, "", value);
+                 //            });
+                 //          },
+                 //          child: Container(
+                 //            margin: const EdgeInsets.only(right: 10),
+                 //            child: RotatedBox(
+                 //                quarterTurns: 1,
+                 //                child: Image.asset(
+                 //                  AppIconKeys.filter,
+                 //                  color: AppTheme.appWhite,
+                 //                  height: 20,
+                 //                  width: 20,
+                 //                )),
+                 //          ),
+                 //        )
+                 //      ],
+                 //    ),
+                 //  );
+
+ // }
+     ));
+// );
   }
 }

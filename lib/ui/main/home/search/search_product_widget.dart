@@ -227,7 +227,9 @@ class SearchProductScreenState extends State<SearchProductScreen> {
                                       categoryName: productData![index]
                                           .category
                                           .toString(),
-                                      gst: '', isDiscounted: '', discountedPrice: '',
+                                      gst: '', isDiscounted: productData![index]
+                                        .isDiscounted.toString(), discountedPrice: productData![index]
+                                        .discountedPrice.toString(),
                                     );
                                     preference();
                                   }
