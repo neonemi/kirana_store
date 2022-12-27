@@ -55,8 +55,50 @@ extension AlertExtension on BuildContext {
       );
     });
   }
-  hideSuccessAlert(){
-    SmartDialog.dismiss(status: SmartStatus.dialog);
+  // hideSuccessAlert(){
+  //   SmartDialog.dismiss(status: SmartStatus.dialog);
+  // }
+  showCartEmptyAlert({
+    required String title,
+    required double height,
+    required double width
+  }) {
+    SmartDialog.show(builder: (context) {
+      return Container(
+        height: height,
+        width: width,
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        alignment: Alignment.center,
+        child:Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:[
+              Container(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(title.isEmpty?'Alert':title,style: TextStyle(color: AppTheme.appBlack,fontWeight: FontWeight.w600,fontSize: 18),textAlign: TextAlign.left,)),
+             Container(
+                  padding: const EdgeInsets.all(8),child: const Text('Your cart is empty. Click the Proceed button to Order Kirana Products in your cart.')),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => SmartDialog.dismiss(),
+                    child: Text('CANCEL',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
+                  ),
+                  ElevatedButton(
+                    //Colors.green,
+                    onPressed: ()  => SmartDialog.dismiss(),
+                    child: Text('PROCEED',style: TextStyle(color: AppTheme.appBlack),textAlign: TextAlign.left,),
+                  ),
+                ],
+              )
+            ]),
+      );
+    });
   }
   showCameraAlert({
     required String title,

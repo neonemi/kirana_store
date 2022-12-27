@@ -69,15 +69,27 @@ class CartCubit extends Cubit<CartState> {
       String? mobile = await coreRepository.localRepository.getMobile();
       String? name = await coreRepository.localRepository.getUserName();
       String? address = await coreRepository.localRepository.getAddress();
+      bool? login =await coreRepository.localRepository.isLoggedIn();
       print(name);
       print(mobile);
       print(address);
       String productListString = coreRepository.localRepository.getProductList() ?? '';
       print(productListString);
-      GetOrderResponse response = await coreRepository.order(mobile: mobile!, name: name, address: address!, products: productListString, cartamount: cartamount, coupon: coupon, finalamount: finalamount);
-      print(jsonEncode(response));
-      // {"status":200,"message":"Order Created Successfully","order_id":531,"payment_status":"pending"}
-      emit(CartOrderPlacedSuccess(response));
+      if(login==true){
+        GetOrderResponse response = await coreRepository.order(
+            mobile: mobile!,
+            name: name,
+            address: address!,
+            products: productListString,
+            cartamount: cartamount,
+            coupon: coupon,
+            finalamount: finalamount);
+        print(jsonEncode(response));
+        // {"status":200,"message":"Order Created Successfully","order_id":531,"payment_status":"pending"}
+        emit(CartOrderPlacedSuccess(response));
+      }else{
+        emit(CartLoginError());
+      }
     } catch (e) {
       String message = e.toString().replaceAll('api - ', '');
      emit(CartError(message));

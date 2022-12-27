@@ -1,3 +1,4 @@
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -23,6 +24,7 @@ class _CartScreenState extends State<CartScreen> {
   int selectedIndex = 0;
   String cartListString = '';
   String address='';
+  bool login = false;
   Future<void> preference() async {
     cartListString = context.read<LocalRepository>().getCartList() ?? '';
     setState(() {
@@ -34,14 +36,21 @@ class _CartScreenState extends State<CartScreen> {
   void initState() {
     super.initState();
     getaddress();
+
   }
   Future<void> getaddress() async {
     address= await _getLocation();
+    setState((){
+      address;
+    });
+    // if(address.isNotEmpty){
+    //   preference();
+    // }
   }
   Future<String> _getLocation() async {
-    String address= await context.read<LocalRepository>().getAddress();
+    String address1= await context.read<LocalRepository>().getAddress();
     String currentLocation ='';
-    if(address.isEmpty) {
+    if(address1.isEmpty) {
       LocationPermission permission;
       permission = await Geolocator.requestPermission();
       Position position = await Geolocator.getCurrentPosition(
@@ -55,7 +64,7 @@ class _CartScreenState extends State<CartScreen> {
       "${first.name} ${first.subLocality} ${first.locality} ${first.administrativeArea} ${first.country} ${first.postalCode}";
       context.read<LocalRepository>().setAddress(currentLocation);
     }else{
-      currentLocation =address;
+      currentLocation =address1;
     }
     return currentLocation ;
   }
@@ -97,6 +106,16 @@ class _CartScreenState extends State<CartScreen> {
                 onCashDelivery: (){
 
                 });
+          }
+
+          if(state is CartLoginError){
+            AlertExtension(context).showSuccessAlert(message: StringConstant.pleaseRegisterLogin,cancelTextButton: StringConstant.no,confirmTextButton: StringConstant.yes,onConfirm: (){
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                builder: (context) {
+                  return const LoginScreen();
+                },
+              ), (e) => false);
+            }, height: 150, width: MediaQuery.of(context).size.width-40, title: '');
           }
           if (state is CartError) {
             context.showToast(state.message);
@@ -613,9 +632,6 @@ class _CartScreenState extends State<CartScreen> {
     AlertExtension(context).showPlaceOrderAlert(
         address: currentLocation,
         onProceed: () {
-          print(cartAmount);
-          print(coupon);
-          print(finalamount);
           _cubit.placeOrder(cartAmount, coupon, finalamount);
 
 
@@ -635,4 +651,6 @@ class _CartScreenState extends State<CartScreen> {
         builder: (BuildContext context) =>
         const CouponScreen()));
   }
+
+
 }

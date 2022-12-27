@@ -19,6 +19,7 @@ class _HomeContainerState extends State<HomeContainer> {
   late HomeItems currentItem;
   DateTime? currentBackPressTime;
   bool login = false;
+  String cartListString = '';
   @override
   void initState() {
     super.initState();
@@ -35,7 +36,15 @@ class _HomeContainerState extends State<HomeContainer> {
       print('is logged  $login');
     }
   }
-
+  Future<void> preference() async {
+    cartListString = context.read<LocalRepository>().getCartList();
+    setState(() {
+      cartListString;
+    });
+    if (kDebugMode) {
+      print('cartListString  $cartListString');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -69,9 +78,14 @@ class _HomeContainerState extends State<HomeContainer> {
           return const HomeScreen();
         }
       case HomeItems.myCart:
-        return const CartScreen();
-      case HomeItems.smartList:
-        return const SmartListScreen();
+        if(cartListString.isNotEmpty) {
+          return const CartScreen();
+        }else{
+          AlertExtension(context).showCartEmptyAlert(height: 180, width: MediaQuery.of(context).size.width-40, title: '');
+          return const HomeScreen();
+        }
+      // case HomeItems.smartList:
+      //   return const SmartListScreen();
       case HomeItems.profile:
         return const ProfileScreen();
       default:
@@ -80,7 +94,9 @@ class _HomeContainerState extends State<HomeContainer> {
   }
 
   void showDialog() {
-    print('username hi');
+    if (kDebugMode) {
+      print('username hi');
+    }
   }
 
   int _getPageIndex() {
@@ -94,11 +110,15 @@ class _HomeContainerState extends State<HomeContainer> {
           return 0;
         }
       case HomeItems.myCart:
-        return 2;
-      case HomeItems.smartList:
-        return 3;
+        if(cartListString.isNotEmpty) {
+          return 2;
+        }else{
+          return 0;
+        }
+      // case HomeItems.smartList:
+      //   return 3;
       case HomeItems.profile:
-        return 4;
+        return 3;
       default:
         return 0;
     }
@@ -120,12 +140,16 @@ class _HomeContainerState extends State<HomeContainer> {
           }
           break;
         case 2:
-          currentItem = HomeItems.myCart;
+          if(cartListString.isNotEmpty) {
+            currentItem = HomeItems.myCart;
+          }else{
+            currentItem = HomeItems.myCart;
+          }
           break;
+        // case 3:
+        //   currentItem = HomeItems.smartList;
+        //   break;
         case 3:
-          currentItem = HomeItems.smartList;
-          break;
-        case 4:
           currentItem = HomeItems.profile;
           break;
       }
@@ -179,8 +203,8 @@ class _BottomNavigationBar extends StatelessWidget {
               image: FontAwesome.file_text, text: StringConstant.orderHistory),
           _bottomNavigationBarItem(
               image: FontAwesome.shopping_cart, text:StringConstant.myCart),
-          _bottomNavigationBarItem(
-              image: FontAwesome.list, text: StringConstant.smartList),
+          // _bottomNavigationBarItem(
+          //     image: FontAwesome.list, text: StringConstant.smartList),
           _bottomNavigationBarItem(image: FontAwesome.male, text: StringConstant.profile),
         ],
       ),

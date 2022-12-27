@@ -241,35 +241,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 const AddressScreen()));
                           },
                         ),
-                        ListTile(
-                          visualDensity:
-                              const VisualDensity(horizontal: 0, vertical: -2),
-                          leading: Icon(
-                            Icons.menu_book,
-                            color: AppTheme.appBlack,
-                            size: 22,
-                          ),
-                          title: Text(
-                            'Menu',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: AppTheme.appBlack,
-                                fontFamily: StringConstant.fontFamily),
-                            textAlign: TextAlign.start,
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_sharp,
-                            color: AppTheme.appBlack,
-                            size: 22,
-                          ),
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (BuildContext context) => PrivacyScreen(
-                                      url: Apis.menuUrl,
-                                      heading: "Menu",
-                                    )));
-                          },
-                        ),
+                        // ListTile(
+                        //   visualDensity:
+                        //       const VisualDensity(horizontal: 0, vertical: -2),
+                        //   leading: Icon(
+                        //     Icons.menu_book,
+                        //     color: AppTheme.appBlack,
+                        //     size: 22,
+                        //   ),
+                        //   title: Text(
+                        //     'Menu',
+                        //     style: TextStyle(
+                        //         fontSize: 16,
+                        //         color: AppTheme.appBlack,
+                        //         fontFamily: StringConstant.fontFamily),
+                        //     textAlign: TextAlign.start,
+                        //   ),
+                        //   trailing: Icon(
+                        //     Icons.arrow_forward_sharp,
+                        //     color: AppTheme.appBlack,
+                        //     size: 22,
+                        //   ),
+                        //   onTap: () {
+                        //     Navigator.of(context).push(MaterialPageRoute(
+                        //         builder: (BuildContext context) => PrivacyScreen(
+                        //               url: Apis.menuUrl,
+                        //               heading: "Menu",
+                        //             )));
+                        //   },
+                        // ),
                         ListTile(
                           visualDensity:
                               const VisualDensity(horizontal: 0, vertical: -2),
