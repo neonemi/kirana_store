@@ -7,16 +7,16 @@ class AppTheme {
   static MaterialColor primaryColors = const MaterialColor(
     0xFF3F51B5,
     <int, Color>{
-      50: Color(0xFFE8EAF6),
-      100: Color(0xFFC5CAE9),
-      200: Color(0xFF9FA8DA),
-      300: Color(0xFF7986CB),
-      400: Color(0xFF5C6BC0),
-      500: Color(0xFF3F51B5),
-      600: Color(0xFF3949AB),
-      700: Color(0xFF303F9F),
-      800: Color(0xFF283593),
-      900: Color(0xFF1A237E),
+      50: Color(0xFFF9b130),
+      100: Color(0xFFF9b130),
+      200: Color(0xFFF9b130),
+      300: Color(0xFFF9b130),
+      400: Color(0xFFF9b130),
+      500: Color(0xFFF9b130),
+      600: Color(0xFFF9b130),
+      700: Color(0xFFF9b130),
+      800: Color(0xFFF9b130),
+      900: Color(0xFFF9b130),
     },
   );
 
@@ -62,6 +62,7 @@ ThemeData _buildTheme() {
       secondary: const Color(0xFFef3f3f),
       brightness: Brightness.light,
     ),
+    primaryColor: const Color(0xFFF9b130),
     appBarTheme: const AppBarTheme(
       color: Colors.white,
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -93,6 +94,9 @@ ThemeData _buildTheme() {
     ),
     bottomAppBarTheme: const BottomAppBarTheme(
       color: Colors.white,
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: Color(0xFFF9b130)
     ),
     snackBarTheme: const SnackBarThemeData(
       behavior: SnackBarBehavior.floating,

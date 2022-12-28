@@ -19,3 +19,4 @@ export 'get_all_address_response.dart';
 export 'get_payment_payload_response.dart';
 export 'get_track_order_response.dart';
 export 'product_array.dart';
+export 'receipt_model.dart';
