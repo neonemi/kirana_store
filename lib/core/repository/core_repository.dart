@@ -507,7 +507,7 @@ class CoreRepository {
 
   Future paymentPayload(
       {required String orderId,required String userId,required String transactionId,required paymentStatus }) async {
-    final Uri api = apiProvider.getUri(Apis.customerOrderUrl);
+    final Uri api = apiProvider.getUri(Apis.paymentPayloadUrl);
     String body = jsonEncode({
       'order_id': orderId,
       'userid':userId,
