@@ -18,8 +18,8 @@ class Apis {
   static String readNotificationUrl = "readnotifications";
   static String unReadCountNotificationUrl = "unreadnotificationcount";
   static String subCategory = "subcategory";
-  static String privacyUrl = "https://mundamisthan.com/privacypolicy";
-  static String menuUrl = "https://mundamisthan.com/menu";
+  static String privacyUrl = "$imageBaseUrl/privacypolicy";
+  static String menuUrl = "$imageBaseUrl/menu";
   static String filterUrl ="filters";
   static String searchUrl ='search';
   static String addAddressUrl ='addaddress';
