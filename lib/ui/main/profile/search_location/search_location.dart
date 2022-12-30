@@ -18,8 +18,8 @@ class SearchLocationScreen extends StatefulWidget {
 
 class _SearchLocationScreenState extends State<SearchLocationScreen> {
   late final SearchLocationCubit _cubit;
-  final double latitudevalue=28.0325;
-  final  double longitudevalue=73.3295;
+  double? latitudevalue;
+  double? longitudevalue;
   final zoomvalue = 16.0;
   StreamSubscription<LocationData>? locationSubscription;
   @override
@@ -37,12 +37,15 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
   Location currentLocation = Location();
   Set<Marker> _markers={};
   void getLocation() async{
-
     var location = await currentLocation.getLocation();
-    locationSubscription =  currentLocation.onLocationChanged.listen((LocationData loc){
+    setState((){
+      latitudevalue = location.latitude;
+      longitudevalue = location.longitude;
+    });
+    currentLocation.onLocationChanged.listen((LocationData loc){
 
       _controller?.animateCamera(CameraUpdate.newCameraPosition( CameraPosition(
-        target: LatLng(location.latitude! , location.longitude!),
+        target: LatLng(latitudevalue??0.0 , longitudevalue??0.0),
         zoom:zoomvalue,
       )));
       if (kDebugMode) {
@@ -52,11 +55,11 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
         print(loc.longitude);
       }//current longitude
       // setState(() {
-        _markers.add( Marker(markerId: const MarkerId(''),
-            position: LatLng(latitudevalue , longitudevalue),infoWindow: const InfoWindow(
-                title: ''
-            )
-        ));
+      _markers.add( Marker(markerId: const MarkerId(''),
+          position: LatLng(latitudevalue??0.0 , longitudevalue??0.0),infoWindow: const InfoWindow(
+              title: ''
+          )
+      ));
 
       // });
     });
@@ -108,13 +111,13 @@ class _SearchLocationScreenState extends State<SearchLocationScreen> {
               ),
               body: SizedBox(
                 height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
+                width:  MediaQuery.of(context).size.width,
                 child:
                 GoogleMap(
                   mapType: MapType.normal,
                   zoomControlsEnabled: false,
                   initialCameraPosition:  CameraPosition(
-                    target: LatLng(latitudevalue , longitudevalue),
+                    target: LatLng(latitudevalue??0.0 , longitudevalue??0.0),
                     zoom:zoomvalue,
                   ),
                   onMapCreated: (GoogleMapController controller){

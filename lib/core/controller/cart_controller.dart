@@ -214,10 +214,12 @@ class CartController extends GetxController {
 
   double gstPrice() {
     double gst = 0;
-    for (var item in cartDataList) {
-      int price = int.parse(
-          item.gst != null ? (item.gst!.isNotEmpty ? item.gst! : '0') : '0');
-      gst += item.quantity! * price;
+    if(cartDataList.isNotEmpty ){
+      for (var item in cartDataList) {
+        String price =
+            item.gst != null ? (item.gst!.isNotEmpty ? item.gst! : '0') : '0';
+        gst += item.quantity != null ? (item.quantity!) : 0 * int.parse(price);
+      }
     }
     print('gst cart controller $gst');
     return gst;
