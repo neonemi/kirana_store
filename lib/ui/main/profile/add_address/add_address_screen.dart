@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
 
 import '../../../ui.dart';
 
 class AddAddressScreen extends StatefulWidget {
-  const AddAddressScreen({Key? key}) : super(key: key);
+  String? title,
+  location,
+  landmark,
+  latValue,
+  longValue,
+  pincode;
+ dynamic floor;
+   AddAddressScreen({Key? key,this.floor,this.pincode,this.landmark,this.location,this.longValue,this.latValue,this.title}) : super(key: key);
 
   @override
   AddAddressScreenState createState() => AddAddressScreenState();
@@ -21,11 +30,46 @@ class AddAddressScreenState extends State<AddAddressScreen> {
   String locationValue = "";
   String latValue='';
   String longValue='';
+  Position? location;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   double fontSize = 14.0;
   @override
   void initState() {
     super.initState();
+    if(widget.floor!=null){
+      _floorController=widget.floor.toString();
+    }
+    if(widget.pincode!=null ){
+      if(widget.pincode!.isNotEmpty){
+        _pinController = widget.pincode!;
+      }
+    }
+    if(widget.longValue!=null ){
+      if(widget.longValue!.isNotEmpty){
+        longValue = widget.longValue!;
+      }
+    }
+    if(widget.latValue!=null ){
+      if(widget.latValue!.isNotEmpty){
+        latValue = widget.latValue!;
+      }
+    }
+    if(widget.location!=null ){
+      if(widget.location!.isNotEmpty){
+        locationValue = widget.location!;
+      }
+    }
+    if(widget.landmark!=null ){
+      if(widget.landmark!.isNotEmpty){
+        _landMarkController = widget.landmark!;
+      }
+    }
+    if(widget.title!=null ){
+      if(widget.title!.isNotEmpty){
+        _titleController = widget.title!;
+      }
+    }
+    locationFunction();
   }
 
 // Nov 18 2022
@@ -126,9 +170,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const SearchLocationScreen()));
+                          _navigationPush(context);
                         },
                         child: Container(
                           margin: const EdgeInsets.only(top: 10),
@@ -276,9 +318,9 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                             _pinController = landmark;
                           },
                           initialValue: _pinController,
-                          maxLength: 200,
+                          maxLength: 6,
                           // controller: _emailController,
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.number,
                           inputFormatters: <TextInputFormatter>[
                             FilteringTextInputFormatter.singleLineFormatter
                           ],
@@ -307,14 +349,7 @@ class AddAddressScreenState extends State<AddAddressScreen> {
                               ),
                               onPressed: ()  {
                                 _onTapSave(
-                                    context,
-                                    _titleController,
-                                    locationValue,
-                                    latValue,
-                                    longValue,
-                                    _floorController,
-                                    _landMarkController,
-                                    _pinController);
+                                    context);
                               },
                               child: Text(
                                 StringConstant.saveAddress,
@@ -335,15 +370,66 @@ class AddAddressScreenState extends State<AddAddressScreen> {
             )));
   }
 
-  _onTapSave(context,  String address, String location,
-      String lat, String lng, String floor, String landmark, String pincode) {
-    _cubit.addAddress(
-        address: address,
-        location: location,
-        lat: lat,
-        lng: lng,
-        floor: floor,
-        landmark: landmark,
-        pincode: pincode);
+  _onTapSave(context) {
+    if(_titleController.isNotEmpty) {
+      if(locationValue.isNotEmpty && latValue.isNotEmpty && longValue.isNotEmpty){
+        if(_landMarkController.isNotEmpty){
+          if(_pinController.isNotEmpty){
+            _cubit.addAddress(
+                address: _titleController,
+                location: locationValue,
+                lat: latValue,
+                lng: longValue,
+                floor: _floorController,
+                landmark: _landMarkController,
+                pincode: _pinController);
+          }else{
+            context.showToast("Please enter pin code");
+          }
+        }else{
+          context.showToast("Please enter landmark");
+        }
+      }else{
+        context.showToast("Please enter location");
+      }
+    }else{
+      context.showToast("Please enter title");
+    }
+  }
+  Future<void> locationFunction() async {
+    LocationPermission permission;
+    permission = await Geolocator.requestPermission();
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    debugPrint('location: ${position.latitude}');
+    setState(() {
+      location = position;
+    });
+    if (location != null) {
+      List<Placemark> addresses = await placemarkFromCoordinates(
+          location!.latitude ?? 0.0, location!.longitude ?? 0.0);
+
+      var first = addresses.first;
+      var currentLocationValue =
+          "${first.name} ${first.subLocality} ${first.locality} ${first.administrativeArea} ${first.country} ${first.postalCode}";
+
+      setState(() {
+        locationValue = currentLocationValue;
+        latValue = location!.latitude.toString();
+        longValue = location!.longitude.toString();
+      });
+    }
+    print('result push location: $location');
+  }
+  Future<void> _navigationPush(BuildContext context) async {
+    var result = await Navigator.of(context)
+        .push(MaterialPageRoute(
+        builder: (BuildContext context) => const SearchLocationScreen()))
+        .then((value) {});
+
+    if (result == null) {
+      locationFunction();
+    }
+
   }
 }

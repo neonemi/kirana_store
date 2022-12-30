@@ -68,6 +68,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
           canChangePageFormat: false,
           canChangeOrientation: false,
           canDebug: false,
+          pdfFileName: 'KiranaReceipt${customerOrderData!.id}',
           build: (format) => _generatePdf(format, 'Kirana App'),
         ),
       ),

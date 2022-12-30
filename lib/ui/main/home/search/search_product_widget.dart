@@ -87,19 +87,23 @@ class SearchProductScreenState extends State<SearchProductScreen> {
                         imageUrl:
                             Apis.imageBaseUrl + productData![index].image!,
                         boxFit: BoxFit.cover,
-                        height: 150,
+                        height: 120,
                         width: 120,
                       ),
                     ),
                   ),
+                  const SizedBox(height: 5,),
                   Container(
                     width: 160,
                     alignment: Alignment.centerLeft,
                     child: Text(
                       productData![index].name!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: AppTheme.appBlack, fontSize: 14),
                     ),
                   ),
+                  const SizedBox(height: 5,),
                   SizedBox(
                     width: 160,
                     child: Row(

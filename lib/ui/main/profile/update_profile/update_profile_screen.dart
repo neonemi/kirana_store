@@ -168,12 +168,12 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             height: 40,
                                             width: 40,
                                             decoration: BoxDecoration(
-                                                color: AppTheme.appYellow,
+                                                color: AppTheme.appWhite,
                                                 shape: BoxShape.circle),
                                             child: Icon(
-                                              Icons.facebook,
-                                              color: AppTheme.appWhite,
-                                              size: 40,
+                                              Icons.edit,
+                                              color: AppTheme.appYellow,
+                                              size: 20,
                                             )))
                                   ],
                                 ),
@@ -387,130 +387,130 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ],
                               ),
                             ),
-                            Container(
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 10),
-                                width: MediaQuery.of(context).size.width,
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Your Birthday',
-                                  style: TextStyle(
-                                      fontSize: fontSize,
-                                      color: AppTheme.appBlack),
-                                  textAlign: TextAlign.left,
-                                )),
-                            GestureDetector(
-                              onTap: () {
-                                _selectBirthday(context);
-                              },
-                              child: Container(
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 10),
-                                height: 50,
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(bottom: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: birthdayValue.isEmpty
-                                                ? Text(
-                                                    "Select Birthday",
-                                                    style: TextStyle(
-                                                        fontSize: fontSize,
-                                                        color:
-                                                            AppTheme.appGrey),
-                                                  )
-                                                : Text(
-                                                    birthdayValue.toString(),
-                                                    style: TextStyle(
-                                                        fontSize: fontSize,
-                                                        color:
-                                                            AppTheme.appBlack),
-                                                  ),
-                                          ),
-                                          Icon(
-                                            Icons.keyboard_arrow_down,
-                                            size: 28,
-                                            color: AppTheme.appGrey,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    const Divider(
-                                      height: 1,
-                                      color: Colors.grey,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Container(
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 0),
-                                width: MediaQuery.of(context).size.width,
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Your Anniversary',
-                                  style: TextStyle(
-                                      fontSize: fontSize,
-                                      color: AppTheme.appBlack),
-                                  textAlign: TextAlign.left,
-                                )),
-                            GestureDetector(
-                              onTap: () {
-                                _selectAnniversary(context);
-                              },
-                              child: Container(
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 10),
-                                height: 50,
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(bottom: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: anniversaryValue.isEmpty
-                                                ? Text(
-                                                    "Select Anniversary",
-                                                    style: TextStyle(
-                                                        fontSize: fontSize,
-                                                        color:
-                                                            AppTheme.appGrey),
-                                                  )
-                                                : Text(
-                                                    anniversaryValue.toString(),
-                                                    style: TextStyle(
-                                                        fontSize: fontSize,
-                                                        color:
-                                                            AppTheme.appBlack),
-                                                  ),
-                                          ),
-                                          Icon(
-                                            Icons.keyboard_arrow_down,
-                                            size: 28,
-                                            color: AppTheme.appGrey,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    const Divider(
-                                      height: 1,
-                                      color: Colors.grey,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
+                            // Container(
+                            //     margin: const EdgeInsets.only(
+                            //         left: 20, right: 20, top: 10),
+                            //     width: MediaQuery.of(context).size.width,
+                            //     alignment: Alignment.centerLeft,
+                            //     child: Text(
+                            //       'Your Birthday',
+                            //       style: TextStyle(
+                            //           fontSize: fontSize,
+                            //           color: AppTheme.appBlack),
+                            //       textAlign: TextAlign.left,
+                            //     )),
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     _selectBirthday(context);
+                            //   },
+                            //   child: Container(
+                            //     margin: const EdgeInsets.only(
+                            //         left: 20, right: 20, top: 10),
+                            //     height: 50,
+                            //     width: MediaQuery.of(context).size.width,
+                            //     child: Column(
+                            //       children: [
+                            //         Container(
+                            //           margin: const EdgeInsets.only(bottom: 10),
+                            //           child: Row(
+                            //             mainAxisAlignment:
+                            //                 MainAxisAlignment.spaceBetween,
+                            //             children: [
+                            //               Expanded(
+                            //                 child: birthdayValue.isEmpty
+                            //                     ? Text(
+                            //                         "Select Birthday",
+                            //                         style: TextStyle(
+                            //                             fontSize: fontSize,
+                            //                             color:
+                            //                                 AppTheme.appGrey),
+                            //                       )
+                            //                     : Text(
+                            //                         birthdayValue.toString(),
+                            //                         style: TextStyle(
+                            //                             fontSize: fontSize,
+                            //                             color:
+                            //                                 AppTheme.appBlack),
+                            //                       ),
+                            //               ),
+                            //               Icon(
+                            //                 Icons.keyboard_arrow_down,
+                            //                 size: 28,
+                            //                 color: AppTheme.appGrey,
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //         const Divider(
+                            //           height: 1,
+                            //           color: Colors.grey,
+                            //         )
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+                            // Container(
+                            //     margin: const EdgeInsets.only(
+                            //         left: 20, right: 20, top: 0),
+                            //     width: MediaQuery.of(context).size.width,
+                            //     alignment: Alignment.centerLeft,
+                            //     child: Text(
+                            //       'Your Anniversary',
+                            //       style: TextStyle(
+                            //           fontSize: fontSize,
+                            //           color: AppTheme.appBlack),
+                            //       textAlign: TextAlign.left,
+                            //     )),
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     _selectAnniversary(context);
+                            //   },
+                            //   child: Container(
+                            //     margin: const EdgeInsets.only(
+                            //         left: 20, right: 20, top: 10),
+                            //     height: 50,
+                            //     width: MediaQuery.of(context).size.width,
+                            //     child: Column(
+                            //       children: [
+                            //         Container(
+                            //           margin: const EdgeInsets.only(bottom: 10),
+                            //           child: Row(
+                            //             mainAxisAlignment:
+                            //                 MainAxisAlignment.spaceBetween,
+                            //             children: [
+                            //               Expanded(
+                            //                 child: anniversaryValue.isEmpty
+                            //                     ? Text(
+                            //                         "Select Anniversary",
+                            //                         style: TextStyle(
+                            //                             fontSize: fontSize,
+                            //                             color:
+                            //                                 AppTheme.appGrey),
+                            //                       )
+                            //                     : Text(
+                            //                         anniversaryValue.toString(),
+                            //                         style: TextStyle(
+                            //                             fontSize: fontSize,
+                            //                             color:
+                            //                                 AppTheme.appBlack),
+                            //                       ),
+                            //               ),
+                            //               Icon(
+                            //                 Icons.keyboard_arrow_down,
+                            //                 size: 28,
+                            //                 color: AppTheme.appGrey,
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //         const Divider(
+                            //           height: 1,
+                            //           color: Colors.grey,
+                            //         )
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
                             Container(
                               width: MediaQuery.of(context).size.width,
                               margin: const EdgeInsets.fromLTRB(20, 10, 20, 0),
@@ -623,12 +623,12 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                             height: 40,
                                             width: 40,
                                             decoration: BoxDecoration(
-                                                color: AppTheme.appYellow,
+                                                color: AppTheme.appWhite,
                                                 shape: BoxShape.circle),
                                             child: Icon(
-                                              Icons.facebook,
-                                              color: AppTheme.appWhite,
-                                              size: 40,
+                                              Icons.edit,
+                                              color: AppTheme.appYellow,
+                                              size: 20,
                                             )))
                                   ],
                                 ),
@@ -842,130 +842,130 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                 ],
                               ),
                             ),
-                            Container(
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 10),
-                                width: MediaQuery.of(context).size.width,
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Your Birthday',
-                                  style: TextStyle(
-                                      fontSize: fontSize,
-                                      color: AppTheme.appBlack),
-                                  textAlign: TextAlign.left,
-                                )),
-                            GestureDetector(
-                              onTap: () {
-                                _selectBirthday(context);
-                              },
-                              child: Container(
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 10),
-                                height: 50,
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(bottom: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: birthdayValue.isEmpty
-                                                ? Text(
-                                                    "Select Birthday",
-                                                    style: TextStyle(
-                                                        fontSize: fontSize,
-                                                        color:
-                                                            AppTheme.appGrey),
-                                                  )
-                                                : Text(
-                                                    birthdayValue.toString(),
-                                                    style: TextStyle(
-                                                        fontSize: fontSize,
-                                                        color:
-                                                            AppTheme.appBlack),
-                                                  ),
-                                          ),
-                                          Icon(
-                                            Icons.keyboard_arrow_down,
-                                            size: 28,
-                                            color: AppTheme.appGrey,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    const Divider(
-                                      height: 1,
-                                      color: Colors.grey,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Container(
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 0),
-                                width: MediaQuery.of(context).size.width,
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Your Anniversary',
-                                  style: TextStyle(
-                                      fontSize: fontSize,
-                                      color: AppTheme.appBlack),
-                                  textAlign: TextAlign.left,
-                                )),
-                            GestureDetector(
-                              onTap: () {
-                                _selectAnniversary(context);
-                              },
-                              child: Container(
-                                margin: const EdgeInsets.only(
-                                    left: 20, right: 20, top: 10),
-                                height: 50,
-                                width: MediaQuery.of(context).size.width,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(bottom: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: anniversaryValue.isEmpty
-                                                ? Text(
-                                                    "Select Anniversary",
-                                                    style: TextStyle(
-                                                        fontSize: fontSize,
-                                                        color:
-                                                            AppTheme.appGrey),
-                                                  )
-                                                : Text(
-                                                    anniversaryValue.toString(),
-                                                    style: TextStyle(
-                                                        fontSize: fontSize,
-                                                        color:
-                                                            AppTheme.appBlack),
-                                                  ),
-                                          ),
-                                          Icon(
-                                            Icons.keyboard_arrow_down,
-                                            size: 28,
-                                            color: AppTheme.appGrey,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    const Divider(
-                                      height: 1,
-                                      color: Colors.grey,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
+                            // Container(
+                            //     margin: const EdgeInsets.only(
+                            //         left: 20, right: 20, top: 10),
+                            //     width: MediaQuery.of(context).size.width,
+                            //     alignment: Alignment.centerLeft,
+                            //     child: Text(
+                            //       'Your Birthday',
+                            //       style: TextStyle(
+                            //           fontSize: fontSize,
+                            //           color: AppTheme.appBlack),
+                            //       textAlign: TextAlign.left,
+                            //     )),
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     _selectBirthday(context);
+                            //   },
+                            //   child: Container(
+                            //     margin: const EdgeInsets.only(
+                            //         left: 20, right: 20, top: 10),
+                            //     height: 50,
+                            //     width: MediaQuery.of(context).size.width,
+                            //     child: Column(
+                            //       children: [
+                            //         Container(
+                            //           margin: const EdgeInsets.only(bottom: 10),
+                            //           child: Row(
+                            //             mainAxisAlignment:
+                            //                 MainAxisAlignment.spaceBetween,
+                            //             children: [
+                            //               Expanded(
+                            //                 child: birthdayValue.isEmpty
+                            //                     ? Text(
+                            //                         "Select Birthday",
+                            //                         style: TextStyle(
+                            //                             fontSize: fontSize,
+                            //                             color:
+                            //                                 AppTheme.appGrey),
+                            //                       )
+                            //                     : Text(
+                            //                         birthdayValue.toString(),
+                            //                         style: TextStyle(
+                            //                             fontSize: fontSize,
+                            //                             color:
+                            //                                 AppTheme.appBlack),
+                            //                       ),
+                            //               ),
+                            //               Icon(
+                            //                 Icons.keyboard_arrow_down,
+                            //                 size: 28,
+                            //                 color: AppTheme.appGrey,
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //         const Divider(
+                            //           height: 1,
+                            //           color: Colors.grey,
+                            //         )
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+                            // Container(
+                            //     margin: const EdgeInsets.only(
+                            //         left: 20, right: 20, top: 0),
+                            //     width: MediaQuery.of(context).size.width,
+                            //     alignment: Alignment.centerLeft,
+                            //     child: Text(
+                            //       'Your Anniversary',
+                            //       style: TextStyle(
+                            //           fontSize: fontSize,
+                            //           color: AppTheme.appBlack),
+                            //       textAlign: TextAlign.left,
+                            //     )),
+                            // GestureDetector(
+                            //   onTap: () {
+                            //     _selectAnniversary(context);
+                            //   },
+                            //   child: Container(
+                            //     margin: const EdgeInsets.only(
+                            //         left: 20, right: 20, top: 10),
+                            //     height: 50,
+                            //     width: MediaQuery.of(context).size.width,
+                            //     child: Column(
+                            //       children: [
+                            //         Container(
+                            //           margin: const EdgeInsets.only(bottom: 10),
+                            //           child: Row(
+                            //             mainAxisAlignment:
+                            //                 MainAxisAlignment.spaceBetween,
+                            //             children: [
+                            //               Expanded(
+                            //                 child: anniversaryValue.isEmpty
+                            //                     ? Text(
+                            //                         "Select Anniversary",
+                            //                         style: TextStyle(
+                            //                             fontSize: fontSize,
+                            //                             color:
+                            //                                 AppTheme.appGrey),
+                            //                       )
+                            //                     : Text(
+                            //                         anniversaryValue.toString(),
+                            //                         style: TextStyle(
+                            //                             fontSize: fontSize,
+                            //                             color:
+                            //                                 AppTheme.appBlack),
+                            //                       ),
+                            //               ),
+                            //               Icon(
+                            //                 Icons.keyboard_arrow_down,
+                            //                 size: 28,
+                            //                 color: AppTheme.appGrey,
+                            //               )
+                            //             ],
+                            //           ),
+                            //         ),
+                            //         const Divider(
+                            //           height: 1,
+                            //           color: Colors.grey,
+                            //         )
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
                             Container(
                               width: MediaQuery.of(context).size.width,
                               margin: const EdgeInsets.fromLTRB(20, 10, 20, 0),
@@ -1059,12 +1059,12 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                           height: 40,
                                           width: 40,
                                           decoration: BoxDecoration(
-                                              color: AppTheme.appYellow,
+                                              color: AppTheme.appWhite,
                                               shape: BoxShape.circle),
                                           child: Icon(
-                                            Icons.facebook,
-                                            color: AppTheme.appWhite,
-                                            size: 40,
+                                            Icons.edit,
+                                            color: AppTheme.appYellow,
+                                            size: 20,
                                           )))
                                 ],
                               ),
@@ -1273,126 +1273,126 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               ],
                             ),
                           ),
-                          Container(
-                              margin: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10),
-                              width: MediaQuery.of(context).size.width,
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'Your Birthday',
-                                style: TextStyle(
-                                    fontSize: fontSize,
-                                    color: AppTheme.appBlack),
-                                textAlign: TextAlign.left,
-                              )),
-                          GestureDetector(
-                            onTap: () {
-                              _selectBirthday(context);
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10),
-                              height: 50,
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(bottom: 10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: birthdayValue.isEmpty
-                                              ? Text(
-                                                  "Select Birthday",
-                                                  style: TextStyle(
-                                                      fontSize: fontSize,
-                                                      color: AppTheme.appGrey),
-                                                )
-                                              : Text(
-                                                  birthdayValue.toString(),
-                                                  style: TextStyle(
-                                                      fontSize: fontSize,
-                                                      color: AppTheme.appBlack),
-                                                ),
-                                        ),
-                                        Icon(
-                                          Icons.keyboard_arrow_down,
-                                          size: 28,
-                                          color: AppTheme.appGrey,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  const Divider(
-                                    height: 1,
-                                    color: Colors.grey,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(
-                              margin: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 0),
-                              width: MediaQuery.of(context).size.width,
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'Your Anniversary',
-                                style: TextStyle(
-                                    fontSize: fontSize,
-                                    color: AppTheme.appBlack),
-                                textAlign: TextAlign.left,
-                              )),
-                          GestureDetector(
-                            onTap: () {
-                              _selectAnniversary(context);
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 10),
-                              height: 50,
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(bottom: 10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: anniversaryValue.isEmpty
-                                              ? Text(
-                                                  "Select Anniversary",
-                                                  style: TextStyle(
-                                                      fontSize: fontSize,
-                                                      color: AppTheme.appGrey),
-                                                )
-                                              : Text(
-                                                  anniversaryValue.toString(),
-                                                  style: TextStyle(
-                                                      fontSize: fontSize,
-                                                      color: AppTheme.appBlack),
-                                                ),
-                                        ),
-                                        Icon(
-                                          Icons.keyboard_arrow_down,
-                                          size: 28,
-                                          color: AppTheme.appGrey,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  const Divider(
-                                    height: 1,
-                                    color: Colors.grey,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                          // Container(
+                          //     margin: const EdgeInsets.only(
+                          //         left: 20, right: 20, top: 10),
+                          //     width: MediaQuery.of(context).size.width,
+                          //     alignment: Alignment.centerLeft,
+                          //     child: Text(
+                          //       'Your Birthday',
+                          //       style: TextStyle(
+                          //           fontSize: fontSize,
+                          //           color: AppTheme.appBlack),
+                          //       textAlign: TextAlign.left,
+                          //     )),
+                          // GestureDetector(
+                          //   onTap: () {
+                          //     _selectBirthday(context);
+                          //   },
+                          //   child: Container(
+                          //     margin: const EdgeInsets.only(
+                          //         left: 20, right: 20, top: 10),
+                          //     height: 50,
+                          //     width: MediaQuery.of(context).size.width,
+                          //     child: Column(
+                          //       children: [
+                          //         Container(
+                          //           margin: const EdgeInsets.only(bottom: 10),
+                          //           child: Row(
+                          //             mainAxisAlignment:
+                          //                 MainAxisAlignment.spaceBetween,
+                          //             children: [
+                          //               Expanded(
+                          //                 child: birthdayValue.isEmpty
+                          //                     ? Text(
+                          //                         "Select Birthday",
+                          //                         style: TextStyle(
+                          //                             fontSize: fontSize,
+                          //                             color: AppTheme.appGrey),
+                          //                       )
+                          //                     : Text(
+                          //                         birthdayValue.toString(),
+                          //                         style: TextStyle(
+                          //                             fontSize: fontSize,
+                          //                             color: AppTheme.appBlack),
+                          //                       ),
+                          //               ),
+                          //               Icon(
+                          //                 Icons.keyboard_arrow_down,
+                          //                 size: 28,
+                          //                 color: AppTheme.appGrey,
+                          //               )
+                          //             ],
+                          //           ),
+                          //         ),
+                          //         const Divider(
+                          //           height: 1,
+                          //           color: Colors.grey,
+                          //         )
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
+                          // Container(
+                          //     margin: const EdgeInsets.only(
+                          //         left: 20, right: 20, top: 0),
+                          //     width: MediaQuery.of(context).size.width,
+                          //     alignment: Alignment.centerLeft,
+                          //     child: Text(
+                          //       'Your Anniversary',
+                          //       style: TextStyle(
+                          //           fontSize: fontSize,
+                          //           color: AppTheme.appBlack),
+                          //       textAlign: TextAlign.left,
+                          //     )),
+                          // GestureDetector(
+                          //   onTap: () {
+                          //     _selectAnniversary(context);
+                          //   },
+                          //   child: Container(
+                          //     margin: const EdgeInsets.only(
+                          //         left: 20, right: 20, top: 10),
+                          //     height: 50,
+                          //     width: MediaQuery.of(context).size.width,
+                          //     child: Column(
+                          //       children: [
+                          //         Container(
+                          //           margin: const EdgeInsets.only(bottom: 10),
+                          //           child: Row(
+                          //             mainAxisAlignment:
+                          //                 MainAxisAlignment.spaceBetween,
+                          //             children: [
+                          //               Expanded(
+                          //                 child: anniversaryValue.isEmpty
+                          //                     ? Text(
+                          //                         "Select Anniversary",
+                          //                         style: TextStyle(
+                          //                             fontSize: fontSize,
+                          //                             color: AppTheme.appGrey),
+                          //                       )
+                          //                     : Text(
+                          //                         anniversaryValue.toString(),
+                          //                         style: TextStyle(
+                          //                             fontSize: fontSize,
+                          //                             color: AppTheme.appBlack),
+                          //                       ),
+                          //               ),
+                          //               Icon(
+                          //                 Icons.keyboard_arrow_down,
+                          //                 size: 28,
+                          //                 color: AppTheme.appGrey,
+                          //               )
+                          //             ],
+                          //           ),
+                          //         ),
+                          //         const Divider(
+                          //           height: 1,
+                          //           color: Colors.grey,
+                          //         )
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
                           Container(
                             width: MediaQuery.of(context).size.width,
                             margin: const EdgeInsets.fromLTRB(20, 10, 20, 0),
@@ -1540,7 +1540,7 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
       onGallery: () {
         getImagefromGallery();
       },
-      height: 210,
+      height: 220,
       width: MediaQuery.of(context).size.width - 40,
     );
   }

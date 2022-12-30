@@ -184,8 +184,8 @@ class CartController extends GetxController {
       localRepository.setProductList(encodedProductData);
       update();
     } else {
-      _onTapRemoveLastItem(context, cartData);
-      // deleteFromCart(idOrder: cartData.orderId!);
+     // _onTapRemoveLastItem(context, cartData);
+      deleteFromCart(idOrder: cartData.id!);
     }
   }
 

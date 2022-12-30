@@ -121,6 +121,7 @@ extension AlertExtension on BuildContext {
         child:Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children:[
               Container(
                   padding: const EdgeInsets.all(8),
@@ -146,9 +147,9 @@ extension AlertExtension on BuildContext {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  ElevatedButton(
+                  TextButton(
                     onPressed: () => SmartDialog.dismiss(),
-                    child: Text(cancelTextButton ??'Cancel',style: TextStyle(color: AppTheme.appBlack,fontWeight: FontWeight.w600),textAlign: TextAlign.left,),
+                    child: Text(cancelTextButton ??'Cancel',style: TextStyle(color: AppTheme.appBlack,fontWeight: FontWeight.w600,fontSize: 16),textAlign: TextAlign.left,),
                   ),
                 ],
               )

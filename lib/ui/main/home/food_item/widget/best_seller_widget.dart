@@ -104,7 +104,7 @@ class FoodBestSellerListState extends State<FoodBestSellerList> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           bestSellerData![index].name!,
-                          maxLines: 2,
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style:
                               TextStyle(color: AppTheme.appBlack, fontSize: 14),

@@ -66,6 +66,9 @@ class _CartScreenState extends State<CartScreen> {
     }else{
       currentLocation =address1;
     }
+    setState(() {
+      currentLocation;
+    });
     return currentLocation ;
   }
   @override

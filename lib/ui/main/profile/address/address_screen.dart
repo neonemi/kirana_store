@@ -82,7 +82,7 @@ class AddressScreenState extends State<AddressScreen> {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (BuildContext context) =>
-                                const AddAddressScreen()));
+                                 AddAddressScreen()));
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -123,6 +123,11 @@ class AddressScreenState extends State<AddressScreen> {
                     ),
                     BlocBuilder<AddressCubit, AddressState>(
                         builder: (context, state) {
+                          if (state is AddressLoading) {
+                            context.loaderOverlay.show();
+                          } else {
+                            context.loaderOverlay.hide();
+                          }
                       if (state is AllAddressSuccess) {
                         GetAllAddressResponse response = state.response;
                         return response.data == null
@@ -226,7 +231,14 @@ class AddressScreenState extends State<AddressScreen> {
                                                           MaterialPageRoute(
                                                               builder: (BuildContext
                                                                       context) =>
-                                                                  const AddAddressScreen()));
+                                                                   AddAddressScreen(
+                                                                      title:response.data![index].address,
+                                                                  location:response.data![index].location,
+                                                                  landmark:response.data![index].landmark,
+                                                                  latValue:response.data![index].lat,
+                                                                    longValue:response.data![index].lng,
+                                                                  pincode:response.data![index].pincode.toString(),
+                                                                    floor:response.data![index].floor,)));
                                                     },
                                                     child: SizedBox(
                                                       width: 100,

@@ -44,8 +44,8 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
       physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisSpacing: 10.0,
-        crossAxisSpacing: 10.0,
+        mainAxisSpacing: 0.0,
+        crossAxisSpacing: 0.0,
         crossAxisCount: 2,
       ),
       itemBuilder: (context, index) {
@@ -70,7 +70,6 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
           child: SizedBox(
               width: 160,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -83,21 +82,23 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                         imageUrl:
                             Apis.imageBaseUrl + productData![index].image!,
                         boxFit: BoxFit.cover,
-                        height: 100,
+                        height: 120,
                         width: 120,
                       ),
                     ),
                   ),
+                  const SizedBox(height: 5,),
                   Container(
                     width: 160,
                     alignment: Alignment.centerLeft,
                     child: Text(
                       productData![index].name!,
-                      maxLines: 2,
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: AppTheme.appBlack, fontSize: 14),
                     ),
                   ),
+                  const SizedBox(height: 5,),
                   SizedBox(
                     width: 160,
                     child: Row(
@@ -175,8 +176,8 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                   cartData.id == productData![index].id)
                                 Builder(builder: (context) {
                                   return Container(
-                                      padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                                      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                      padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                      margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
                                       alignment: Alignment.centerLeft,
                                       decoration: BoxDecoration(
                                           border: Border.all(
