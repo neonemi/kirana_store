@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kirana_store/core/core.dart';
+import 'package:kirana_store/ui/main/main.dart';
 
 class SmartListDialogBuilder {
   SmartListDialogBuilder(
@@ -282,8 +283,14 @@ class SmartListDialogBuilder {
   }
 
   void _pop(BuildContext context) {
-    Navigator.pop(context);
+   // Navigator.pop(context);
+    Navigator.pushReplacement(context, MaterialPageRoute(
+      builder: (context) {
+        return const HomeContainer(homeItem:HomeItems.myCart);
+      },
+    ));
   }
+
 }
 
 // cart.add(CartData(
