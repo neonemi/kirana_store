@@ -1,6 +1,3 @@
-
-import 'package:flutter/material.dart';
-
 import '../../core.dart';
 
 part 'coupon_state.dart';
@@ -19,5 +16,4 @@ class CouponCubit extends Cubit<CouponState> {
       emit(CouponError(message));
     }
   }
-
 }

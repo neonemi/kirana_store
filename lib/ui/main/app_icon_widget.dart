@@ -4,7 +4,7 @@ import 'package:kirana_store/core/core.dart';
 class AppLogo extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
       width: 100,
       child: ClipRRect(
@@ -12,7 +12,7 @@ class AppLogo extends StatelessWidget{
         child: Container(
           height:80,
           width: 80,
-          padding: EdgeInsets.all(4),
+          padding: const EdgeInsets.all(4),
           color: AppTheme.appWhite,
           child: Image.asset(
             AppIconKeys.dwarikaMain,

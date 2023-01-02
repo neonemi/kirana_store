@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kirana_store/core/model/cart_data.dart';
 
-import '../../../../core/controller/cart_controller.dart';
 import '../../../../core/core.dart';
 
 class FoodDetailsScreen extends StatefulWidget {

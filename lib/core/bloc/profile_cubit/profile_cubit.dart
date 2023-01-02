@@ -1,5 +1,4 @@
 
-import 'package:flutter/material.dart';
 
 import '../../core.dart';
 
@@ -37,4 +36,20 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(ProfileError(message));
     }
   }
+  // void getProfile() async {
+  //   emit(ProfileLoading());
+  //   try {
+  //     String userName= coreRepository.localRepository.getUserName();
+  //     String email= coreRepository.localRepository.getUserEmail();
+  //     String mobile= await coreRepository.localRepository.getMobile();
+  //     String image= await coreRepository.localRepository.getUserImage();
+  //     String dob= await coreRepository.localRepository.getDob();
+  //     String anniversary= await coreRepository.localRepository.getAniversary();
+  //     print('$userName,$email,$mobile,$image,$dob,$anniversary');
+  //     emit(ProfileSuccess(userName,email,mobile,image,dob,anniversary));
+  //   } catch (e) {
+  //     String message = e.toString().replaceAll('api - ', '');
+  //     emit(UpdateProfileError(message));
+  //   }
+  // }
 }

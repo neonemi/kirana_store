@@ -20,3 +20,4 @@ export 'get_payment_payload_response.dart';
 export 'get_track_order_response.dart';
 export 'product_array.dart';
 export 'receipt_model.dart';
+export 'smart_list_response.dart';

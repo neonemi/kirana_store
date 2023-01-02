@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
 
-import '../../../core/controller/cart_controller.dart';
 import '../../ui.dart';
 
 class SmartListScreen extends StatefulWidget {

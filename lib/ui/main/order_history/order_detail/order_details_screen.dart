@@ -385,7 +385,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             children: [
           pw.Container(
               margin:const pw.EdgeInsets.only(top: 10) ,
-              child: pw.Text('$title',
+              child: pw.Text(title,
                   style: pw.TextStyle(
                     color: pdfBlack,
                     fontSize: 22,))),

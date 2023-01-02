@@ -8,7 +8,6 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/ui/ui.dart';
-import 'core/controller/cart_controller.dart';
 import 'core/core.dart';
 import 'fcm/messaging_service.dart';
 

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kirana_store/core/core.dart';
 import 'package:kirana_store/ui/main/home/home.dart';
@@ -21,10 +20,6 @@ class SubCategoryVerticalList extends StatelessWidget {
           physics: const ClampingScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            // if (kDebugMode) {
-            //   print(
-            //     'id: ${categoryData![index].id!} : ${categoryData![index].id! + 1}');
-            // }
             return GestureDetector(
               onTap: () => {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -55,17 +50,17 @@ class SubCategoryVerticalList extends StatelessWidget {
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                    child:  Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
                           height: 50,
-                        //  width: 100,
+                          //  width: 100,
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                              border:
-                                  Border.all(color: AppTheme.appWhite, width: 2),
+                              border: Border.all(
+                                  color: AppTheme.appWhite, width: 2),
                               color: Colors.black12,
                               borderRadius: BorderRadius.circular(10)),
                           child: Center(

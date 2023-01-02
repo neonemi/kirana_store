@@ -194,29 +194,29 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                             const SizedBox(
                                               width: 20,
                                             ),
-                                            ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                foregroundColor: Colors.white,
-                                                backgroundColor:
-                                                    AppTheme.appRed,
-                                                elevation: 3,
-                                                padding:
-                                                    const EdgeInsets.all(8),
-                                                alignment: Alignment.center,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            30.0)),
-                                                // fixedSize: const Size(100, 30),
-                                                //////// HERE
-                                              ),
-                                              onPressed: () {},
-                                              child: const Text(
-                                                StringConstant.cancel,
-                                                style: TextStyle(fontSize: 14),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
+                                            // ElevatedButton(
+                                            //   style: ElevatedButton.styleFrom(
+                                            //     foregroundColor: Colors.white,
+                                            //     backgroundColor:
+                                            //         AppTheme.appRed,
+                                            //     elevation: 3,
+                                            //     padding:
+                                            //         const EdgeInsets.all(8),
+                                            //     alignment: Alignment.center,
+                                            //     shape: RoundedRectangleBorder(
+                                            //         borderRadius:
+                                            //             BorderRadius.circular(
+                                            //                 30.0)),
+                                            //     // fixedSize: const Size(100, 30),
+                                            //     //////// HERE
+                                            //   ),
+                                            //   onPressed: () {},
+                                            //   child: const Text(
+                                            //     StringConstant.cancel,
+                                            //     style: TextStyle(fontSize: 14),
+                                            //     textAlign: TextAlign.center,
+                                            //   ),
+                                            // ),
                                           ],
                                         ),
                                       ),

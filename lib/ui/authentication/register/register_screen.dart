@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:kirana_store/core/icons/app_icon_keys.g.dart';
 import '../../../../core/core.dart';
 import '../../ui.dart';
 
@@ -260,7 +258,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: (){
-                                    //launchPrivacyUrl(context: context, url: 'https://mundamisthan.com/privacypolicy');
                                     Navigator.of(context).push(MaterialPageRoute(
                                         builder: (BuildContext context) =>
                                          PrivacyScreen(url: Apis.privacyUrl, heading: StringConstant.privacyPolicy,)));
@@ -384,15 +381,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
       context.showToast(StringConstant.enterYourName);
     }
   }
-  Future<void> launchPrivacyUrl(
-      {required BuildContext context, required String url}) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      debugPrint('Unable to launch url');
-      ToastExtension(context).showToast(StringConstant.enableToLaunch);
-    }
-
-    return;
-  }
+  // Future<void> launchPrivacyUrl(
+  //     {required BuildContext context, required String url}) async {
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else {
+  //     debugPrint('Unable to launch url');
+  //     ToastExtension(context).showToast(StringConstant.enableToLaunch);
+  //   }
+  //
+  //   return;
+  // }
 }

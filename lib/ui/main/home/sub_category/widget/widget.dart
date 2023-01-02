@@ -1,1 +1,1 @@
-export 'sub_catergory_vertical.dart';
+export 'sub_category_vertical.dart';

@@ -252,15 +252,13 @@ class _CartScreenState extends State<CartScreen> {
                                       ),
                                       if(address.isEmpty)
                                         Expanded(
-                                          child: Container(
-                                            child: Text(StringConstant.add,
-                                                style: TextStyle(
-                                                    color: AppTheme.appWhite,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontStyle: FontStyle.normal,
-                                                    fontFamily: StringConstant.fontFamily)),
-                                          ),
+                                          child: Text(StringConstant.add,
+                                              style: TextStyle(
+                                                  color: AppTheme.appWhite,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontFamily: StringConstant.fontFamily)),
                                         )
                                     ],
                                   ),
@@ -294,7 +292,7 @@ class _CartScreenState extends State<CartScreen> {
                                       children: [
                                         ListTile(
                                           title: Text(
-                                              '${cartList[index].name!} ${cartList[index].unitqty!=null?( '(${cartList[index].unitqty} ${cartList[index].unitqtyname})'):''}',
+                                              '${cartList[index].name} ${cartList[index].unitqty!=null?( '(${cartList[index].unitqty} ${cartList[index].unitqtyname})'):''}',
                                               style: TextStyle(
                                                   color: AppTheme.appBlack,
                                                   fontSize: 16,

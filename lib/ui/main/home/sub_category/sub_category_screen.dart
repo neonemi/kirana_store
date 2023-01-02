@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:kirana_store/ui/main/home/sub_category/widget/sub_catergory_vertical.dart';
+import 'package:kirana_store/ui/main/home/sub_category/widget/sub_category_vertical.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
 
@@ -76,7 +76,13 @@ class SubCategoryScreenState extends State<SubCategoryScreen> {
             child: BlocBuilder<FoodItemCubit, FoodItemState>(
                 buildWhen: (previous, current) =>
                     current is FoodSubCategorySuccess,
+
                 builder: (context, state) {
+                  if (state is FoodItemLoading) {
+                    context.loaderOverlay.show();
+                  } else {
+                    context.loaderOverlay.hide();
+                  }
                   if (state is FoodSubCategorySuccess) {
                     GetSubCategory getSubCategory = state.response;
 

@@ -106,16 +106,22 @@ class _HomeScreenState extends State<HomeScreen> {
               actions: [
                 GestureDetector(
                   onTap: () {
-                    SmartListDialogBuilder(context).showSmartListDialog(context, (String value) {
-                      print(value);
-
-                    });
+                    SmartListResponse smartProductResponse = SmartListResponse.fromJson(smartData);
+                    if(smartProductResponse.data != null ){
+                      if(smartProductResponse.data!.isNotEmpty){
+                        print('smart $smartProductResponse');
+                        SmartListDialogBuilder(context)
+                            .showSmartListDialog(context, (String value) {
+                          print(value);
+                        }, smartProductResponse);
+                      }
+                    }
                   },
                   child:
                     Container(
                       height: 20,
                       width: 20,
-                    margin: EdgeInsets.only(right: 20),
+                    margin: const EdgeInsets.only(right: 20),
                     child: Center(
                       child: Icon( FontAwesome.list_alt,
                           size: 32,
@@ -146,6 +152,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   current is HomeSuccess,
 
                               builder: (context, state) {
+                                if (state is HomeLoading) {
+                                  context.loaderOverlay.show();
+                                } else {
+                                  context.loaderOverlay.hide();
+                                }
                                 if (state is HomeSuccess) {
                                   GetBannerImage bannerImage = state.response;
                                   if (kDebugMode) {

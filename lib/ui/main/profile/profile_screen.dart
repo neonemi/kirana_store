@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
@@ -65,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: AppTheme.appWhite,
                         fontSize: 20,
                         fontStyle: FontStyle.normal,
-                        fontFamily:StringConstant.fontFamily),
+                        fontFamily: StringConstant.fontFamily),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -103,20 +102,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               builder: (BuildContext context) =>
                                                   const UpdateProfileScreen()));
                                     },
-                                    child:state.image.isEmpty? Image.asset(
-                                      AppIconKeys.userPlaceholder,
-                                      height: 100,
-                                      width: 100,
-                                    ):SizedBox(
-                                        height: 100,
-                                        width: 100,
-                                        child: ClipRRect(
-                                            borderRadius:
-                                            BorderRadius.circular(50),child:Image.network(Apis.imageBaseUrl+state.image,fit: BoxFit.cover,))),
+                                    child: state.image.isEmpty
+                                        ? Image.asset(
+                                            AppIconKeys.userPlaceholder,
+                                            height: 100,
+                                            width: 100,
+                                          )
+                                        : SizedBox(
+                                            height: 100,
+                                            width: 100,
+                                            child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                child: Image.network(
+                                                  Apis.imageBaseUrl +
+                                                      state.image,
+                                                  fit: BoxFit.cover,
+                                                ))),
                                   ),
                                   Container(
-                                    margin:
-                                        const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                                    margin: const EdgeInsets.fromLTRB(
+                                        10, 10, 10, 10),
                                     child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -131,7 +137,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 style: TextStyle(
                                                     color: AppTheme.appWhite,
                                                     fontSize: 18,
-                                                    fontWeight: FontWeight.w600),
+                                                    fontWeight:
+                                                        FontWeight.w600),
                                               )),
                                           SizedBox(
                                               width: 200,
@@ -152,7 +159,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 },
                                 child: Text('Edit',
                                     style: TextStyle(
-                                        color: AppTheme.appWhite, fontSize: 14)))
+                                        color: AppTheme.appWhite,
+                                        fontSize: 14)))
                           ],
                         ),
                       ),
@@ -181,10 +189,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             size: 22,
                           ),
                           onTap: () {
-                            Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                    const OrderHistoryScreen(showAppBar: true,)));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const OrderHistoryScreen(
+                                      showAppBar: true,
+                                    )));
                           },
                         ),
                         ListTile(
@@ -211,7 +220,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                const NotificationScreen()));
+                                    const NotificationScreen()));
                           },
                         ),
                         ListTile(
@@ -238,7 +247,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                const AddressScreen()));
+                                    const AddressScreen()));
                           },
                         ),
                         // ListTile(
@@ -390,8 +399,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ],
                             ),
                           ),
-
-                               ],
+                        ],
                       ),
                     ),
                   ),
@@ -439,7 +447,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           style: TextStyle(
                               fontSize: 16,
                               color: AppTheme.appBlack,
-                              fontFamily:StringConstant.fontFamily),
+                              fontFamily: StringConstant.fontFamily),
                           textAlign: TextAlign.start,
                         ),
                         trailing: Icon(
@@ -502,9 +510,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         cancelTextButton: 'NO',
         confirmTextButton: 'YES',
         onConfirm: () {
-         _cubit.logout();
+          _cubit.logout();
         },
         height: 150,
-        width: MediaQuery.of(context).size.width - 40, title: '');
+        width: MediaQuery.of(context).size.width - 40,
+        title: '');
   }
 }

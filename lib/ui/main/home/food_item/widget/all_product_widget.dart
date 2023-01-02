@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kirana_store/ui/main/home/food_details/food_details_screen.dart';
-import '../../../../../core/controller/cart_controller.dart';
 import '../../../../../core/core.dart';
 import '../../../../../core/model/cart_data.dart';
 import '../../../../ui.dart';
@@ -64,7 +63,10 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                       imageProduct: productData![index].image!,
                       unitqty: productData![index].unitqty.toString(),
                       unitqtyname: productData![index].unitqtyname.toString(),
-                      categoryName: itemName!, discountedPrice: '', isDiscounted: '', gst: '',
+                      categoryName: itemName!,
+                      discountedPrice: '',
+                      isDiscounted: '',
+                      gst: '',
                     )));
           },
           child: SizedBox(
@@ -87,7 +89,9 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 5,),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   Container(
                     width: 160,
                     alignment: Alignment.centerLeft,
@@ -98,7 +102,9 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                       style: TextStyle(color: AppTheme.appBlack, fontSize: 14),
                     ),
                   ),
-                  const SizedBox(height: 5,),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   SizedBox(
                     width: 160,
                     child: Row(
@@ -149,16 +155,16 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                     if (kDebugMode) {
                                       print(cartData!.quantity);
                                     }
-                                    cartController
-                                        .counterRemoveProductToCart(context,cartData!);
+                                    cartController.counterRemoveProductToCart(
+                                        context, cartData!);
                                     preference();
                                   },
                                   child: Container(
                                       height: 20,
                                       width: 20,
                                       alignment: Alignment.center,
-                                      decoration:
-                                          BoxDecoration(color: AppTheme.appYellow),
+                                      decoration: BoxDecoration(
+                                          color: AppTheme.appYellow),
                                       child: Icon(
                                         Icons.remove,
                                         color: AppTheme.appBlack,
@@ -176,8 +182,10 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                   cartData.id == productData![index].id)
                                 Builder(builder: (context) {
                                   return Container(
-                                      padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-                                      margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                      padding:
+                                          const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                      margin:
+                                          const EdgeInsets.fromLTRB(0, 5, 0, 5),
                                       alignment: Alignment.centerLeft,
                                       decoration: BoxDecoration(
                                           border: Border.all(
@@ -226,7 +234,14 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                             .toString(),
                                         unitqtyname:
                                             productData![index].unitqtyname!,
-                                        categoryName: itemName!, gst: '', isDiscounted: productData![index].isDiscounted.toString(), discountedPrice: productData![index].discountedPrice.toString());
+                                        categoryName: itemName!,
+                                        gst: '',
+                                        isDiscounted: productData![index]
+                                            .isDiscounted
+                                            .toString(),
+                                        discountedPrice: productData![index]
+                                            .discountedPrice
+                                            .toString());
                                     preference();
                                   }
                                 },
@@ -234,8 +249,8 @@ class FoodAllProductScreenState extends State<FoodAllProductScreen> {
                                     height: 20,
                                     width: 20,
                                     alignment: Alignment.center,
-                                    decoration:
-                                        BoxDecoration(color: AppTheme.appYellow),
+                                    decoration: BoxDecoration(
+                                        color: AppTheme.appYellow),
                                     child: Icon(
                                       Icons.add,
                                       color: AppTheme.appBlack,
