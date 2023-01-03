@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:kirana_store/core/core.dart';
 
-
 class CouponScreen extends StatefulWidget {
   const CouponScreen({Key? key}) : super(key: key);
 
@@ -50,7 +49,7 @@ class CouponScreenState extends State<CouponScreen> {
               }
             },
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 _hideKeyboard();
               },
               child: Scaffold(
@@ -99,19 +98,19 @@ class CouponScreenState extends State<CouponScreen> {
                                   contentPadding: const EdgeInsets.symmetric(
                                       vertical: 10.0, horizontal: 10.0),
                                   enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: AppTheme.appLightGrey),
+                                    borderSide: BorderSide(
+                                        color: AppTheme.appLightGrey),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: AppTheme.appLightGrey),
+                                    borderSide: BorderSide(
+                                        color: AppTheme.appLightGrey),
                                   ),
                                   counterStyle: const TextStyle(
                                     height: double.minPositive,
                                   ),
                                   counterText: "",
                                   suffixIcon: GestureDetector(
-                                    onTap: (){
+                                    onTap: () {
                                       _hideKeyboard();
                                       _navigationPop(context);
                                     },
@@ -133,7 +132,7 @@ class CouponScreenState extends State<CouponScreen> {
                                 _couponController = coupon;
                               },
                               initialValue: _couponController,
-                              maxLength:50,
+                              maxLength: 50,
                               // maxLines: 2,
                               // controller: _emailController,
                               keyboardType: TextInputType.text,
@@ -158,18 +157,20 @@ class CouponScreenState extends State<CouponScreen> {
                               margin: const EdgeInsets.only(
                                   left: 20, right: 20, top: 20),
                               alignment: Alignment.center,
-                              child:
-                                  const Text(StringConstant.sorryNoCouponFound)),
+                              child: const Text(
+                                  StringConstant.sorryNoCouponFound)),
                         ],
                       ),
                     );
                   })),
             )));
   }
+
   void _hideKeyboard() {
     FocusManager.instance.primaryFocus?.unfocus();
   }
-  _navigationPop(BuildContext context){
+
+  _navigationPop(BuildContext context) {
     Navigator.of(context).pop('hi');
   }
 }

@@ -11,54 +11,6 @@ class SmartListDialogBuilder {
   final BuildContext context;
   final _controller = PageController();
   final cartController = Get.find<CartController>();
-  // List smartList = [
-  //   {
-  //     'name': 'Smart List 1',
-  //     "title": [
-  //       'Rice',
-  //       'Bread',
-  //       'Rice',
-  //       'Bread',
-  //       'Rice',
-  //       'Bread',
-  //       'Rice',
-  //       'Bread',
-  //       'Rice',
-  //       'Bread',
-  //       'Rice',
-  //       'Bread'
-  //     ],
-  //     "value": [
-  //       'Basmati',
-  //       'cake',
-  //       'Basmati',
-  //       'cake',
-  //       'Basmati',
-  //       'cake',
-  //       'Basmati',
-  //       'cake',
-  //       'Basmati',
-  //       'cake',
-  //       'Basmati',
-  //       'cake'
-  //     ],
-  //   },
-  //   {
-  //     'name': 'Smart List 2',
-  //     "title": ['Rice', 'Bread', 'Rice', 'Bread', 'Rice', 'Bread'],
-  //     "value": ['Basmati', 'cake', 'Basmati', 'cake', 'Basmati', 'cake'],
-  //   },
-  //   {
-  //     'name': 'Smart List 3',
-  //     "title": ['Rice', 'Bread', 'Rice'],
-  //     "value": ['Basmati', 'cake', 'Basmati'],
-  //   },
-  //   {
-  //     'name': 'Smart List 4',
-  //     "title": ['Rice'],
-  //     "value": ['Basmati'],
-  //   }
-  // ];
 
   showSmartListDialog(
       BuildContext context,
@@ -83,8 +35,6 @@ class SmartListDialogBuilder {
                 physics: const NeverScrollableScrollPhysics(),
                 padEnds: false,
                 itemBuilder: (BuildContext context, int index1) {
-                  print(index1 + 1);
-                  print(index1 + 1);
                   return Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,14 +233,13 @@ class SmartListDialogBuilder {
   }
 
   void _pop(BuildContext context) {
-   // Navigator.pop(context);
+    // Navigator.pop(context);
     Navigator.pushReplacement(context, MaterialPageRoute(
       builder: (context) {
-        return const HomeContainer(homeItem:HomeItems.myCart);
+        return const HomeContainer(homeItem: HomeItems.myCart);
       },
     ));
   }
-
 }
 
 // cart.add(CartData(

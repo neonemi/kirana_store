@@ -27,7 +27,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key, this.localRepository});
+  const MyApp({super.key, this.localRepository});
   //Local database which contains SharedPreference
   final LocalRepository? localRepository;
 

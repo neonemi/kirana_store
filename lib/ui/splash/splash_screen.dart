@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
       },
       child: Scaffold(
         backgroundColor: AppTheme.appYellow,
-        body: Container(
+        body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(

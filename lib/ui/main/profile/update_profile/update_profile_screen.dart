@@ -86,12 +86,11 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
               ),
               body: BlocBuilder<UpdateProfileCubit, UpdateProfileState>(
                   builder: (context, state) {
-                    final DateFormat format1 = DateFormat('MMM');
+                final DateFormat format1 = DateFormat('MMM');
                 if (state is GetProfileSuccess) {
                   if (_nameController.isEmpty) {
                     _nameController = state.userName;
                   }
-                  print(_nameController);
                   if (_emailController.isEmpty) {
                     _emailController = state.email;
                   }
@@ -102,7 +101,8 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     birthdayValue =
                         "${(format1.format(DateTime.parse(state.dob.toString())))} ${strDigits(DateTime.parse(state.dob.toString()).day)} ${strDigits4(DateTime.parse(state.dob.toString()).year)}";
                   }
-                  if (anniversaryValue.isEmpty && state.anniversary.isNotEmpty) {
+                  if (anniversaryValue.isEmpty &&
+                      state.anniversary.isNotEmpty) {
                     anniversaryValue =
                         "${(format1.format(DateTime.parse(state.anniversary)))} ${strDigits(DateTime.parse(state.anniversary).day)} ${strDigits4(DateTime.parse(state.anniversary).year)}";
                   }
@@ -983,9 +983,10 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                     //////// HERE
                                   ),
                                   onPressed: () => _onTapUpdate(context),
-                                  child:  Text(
+                                  child: Text(
                                     "Update",
-                                    style: TextStyle(fontSize: 16,color: AppTheme.appWhite),
+                                    style: TextStyle(
+                                        fontSize: 16, color: AppTheme.appWhite),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -1445,72 +1446,22 @@ class UpdateProfileScreenState extends State<UpdateProfileScreen> {
     if (_nameController.isNotEmpty && _nameController.length > 3) {
       if (_emailController.isNotEmpty &&
           AppFunctions.isEmailValid(_emailController)) {
-        if(_image==null) {
+        if (_image == null) {
           _cubit.updateProfile(
-            name: _nameController,
-            email: _emailController,
-            imageFile: null,
-            dob: birthdaySelectedDate,
-            anniversary: anniversarySelectedDate);
-        }else{
+              name: _nameController,
+              email: _emailController,
+              imageFile: null,
+              dob: birthdaySelectedDate,
+              anniversary: anniversarySelectedDate);
+        } else {
           _cubit.updateProfileFile(
               name: _nameController,
               email: _emailController,
               imageFile: _image,
               dob: birthdaySelectedDate,
-              anniversary: anniversarySelectedDate
-          );
+              anniversary: anniversarySelectedDate);
         }
       }
-    }
-  }
-
-  _selectBirthday(BuildContext context) async {
-    var date =
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-    final DateTime? selected = await showDatePicker(
-      context: context,
-      initialDate: date,
-      firstDate: DateTime(DateTime.now().year - 99),
-      lastDate: date,
-    );
-    final DateFormat format1 =
-        DateFormat('MMM'); // abbreviated, exp. : Jan, Feb, Mar
-    if (selected != null) {
-      setState(() {
-        //Nov 18 2022
-        //api formate 2000-01-15 00:00:00
-        birthdaySelectedDate = selected;
-        birthdayDateValue =
-            "${strDigits(birthdaySelectedDate!.day)}-${strDigits(birthdaySelectedDate!.month)}-${strDigits4(birthdaySelectedDate!.year)}";
-        birthdayValue =
-            "${(format1.format(birthdaySelectedDate!))} ${strDigits(birthdaySelectedDate!.day)} ${strDigits4(birthdaySelectedDate!.year)}";
-        if (kDebugMode) {
-          print(birthdayValue);
-        }
-      });
-    }
-  }
-
-  _selectAnniversary(BuildContext context) async {
-    var date =
-        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-    final DateTime? selected = await showDatePicker(
-      context: context,
-      initialDate: date,
-      firstDate: DateTime(DateTime.now().year - 99),
-      lastDate: date,
-    );
-    final DateFormat format1 =
-        DateFormat('MMM'); // abbreviated, exp. : Jan, Feb, Mar
-    if (selected != null) {
-      setState(() {
-        //Nov 18 2022
-        anniversarySelectedDate = selected;
-        anniversaryDateValue =
-            "${strDigits(anniversarySelectedDate!.day)}-${strDigits(anniversarySelectedDate!.month)}-${strDigits4(anniversarySelectedDate!.year)}";
-        anniversaryValue = anniversarySelectedDate!.toString();
-      });
     }
   }
 

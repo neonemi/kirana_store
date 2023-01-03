@@ -47,7 +47,6 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
               // }, title: 'Alert');
               context.showToast(state.otpResponse.message.toString());
             } else {
-              print("json hello ${state.otpResponse.data}");
               context.showToast(state.otpResponse.message.toString());
               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
                 builder: (context) {

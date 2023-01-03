@@ -109,10 +109,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     SmartListResponse smartProductResponse = SmartListResponse.fromJson(smartData);
                     if(smartProductResponse.data != null ){
                       if(smartProductResponse.data!.isNotEmpty){
-                        print('smart $smartProductResponse');
+                        debugPrint('smart $smartProductResponse');
                         SmartListDialogBuilder(context)
                             .showSmartListDialog(context, (String value) {
-                          print(value);
+                          debugPrint(value);
                         }, smartProductResponse);
                       }
                     }

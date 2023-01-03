@@ -246,7 +246,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                                     print('1 condition');
                                   }
                                   cartController
-                                      .counterAddProductToCart(cartData!);
+                                      .counterAddProductToCart(cartData);
                                   preference();
                                   if (kDebugMode) {
                                     print('3 condition');

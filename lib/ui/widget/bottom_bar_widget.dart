@@ -1,18 +1,16 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kirana_store/ui/widget/triangle_paint.dart';
 
 import '../../core/core.dart';
 
-
 class BottomItemWidget extends StatelessWidget {
-  const BottomItemWidget({
-    Key? key,
-    required this.isActive,
-    required this.image,
-    required this.text
-  }) : super(key: key);
+  const BottomItemWidget(
+      {Key? key,
+      required this.isActive,
+      required this.image,
+      required this.text})
+      : super(key: key);
 
   final IconData image;
   final String text;
@@ -48,12 +46,8 @@ class BottomItemWidget extends StatelessWidget {
         RotatedBox(
           quarterTurns: 2,
           child: CustomPaint(
-            painter:
-            TrianglePainter(
-              strokeColor:
-              !isActive
-                  ? AppTheme.appYellow
-                  : AppTheme.appWhite,
+            painter: TrianglePainter(
+              strokeColor: !isActive ? AppTheme.appYellow : AppTheme.appWhite,
               //strokeWidth: 3,
               paintingStyle: PaintingStyle.fill,
             ),
@@ -66,11 +60,11 @@ class BottomItemWidget extends StatelessWidget {
 
         SizedBox(
           height: 20,
-              width: 20,
+          width: 20,
           child: Icon(
             image,
             size: 22,
-            color:  AppTheme.appWhite,
+            color: AppTheme.appWhite,
           ),
         ),
         const SizedBox(
@@ -78,7 +72,10 @@ class BottomItemWidget extends StatelessWidget {
         ),
         SizedBox(
           height: 15,
-          child: Text(text,style: TextStyle(color: AppTheme.appWhite,fontSize: 10),),
+          child: Text(
+            text,
+            style: TextStyle(color: AppTheme.appWhite, fontSize: 10),
+          ),
         ),
       ],
     );
